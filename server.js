@@ -1,5 +1,25 @@
 const express = require('express')
 const app = express()
 
+const bodyParser = require('body-parser')
+const expressLayouts = require('express-ejs-layouts')
+const methodOverride = require('method-override')
+
+// Set The Template Engine
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.use(expressLayouts)
+
+app.use(methodOverride('_method'))
+
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
+
+// Handel Routers
+//app.use('/', (req, res) => res.send('Root Route'))
+app.use('/product', (req, res) => res.send('Product Route'))
+app.use('/user', (req, res) => res.send('User Route'))
+app.use('/categorie', (req, res) => res.send('Categorie Route'))
+app.use('*', (req, res) => res.send('There\'s No Route'))
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`))
