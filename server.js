@@ -1,5 +1,10 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
@@ -15,8 +20,14 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 
+// Setup Database
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+const db = mongoose.connection
+db.on('error', err => console.log(err))
+db.once('open', () => console.log(`Connecting To ${process.env.DATABASE_URL} DB `))
+
 // Handel Routers
-//app.use('/', (req, res) => res.send('Root Route'))
+app.use('/', (req, res) => res.send('Root Route'))
 app.use('/product', (req, res) => res.send('Product Route'))
 app.use('/user', (req, res) => res.send('User Route'))
 app.use('/categorie', (req, res) => res.send('Categorie Route'))
