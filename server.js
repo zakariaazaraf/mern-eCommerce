@@ -22,7 +22,9 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(bodyParser.json())
 
 // ROUTERS 
-const userRouter = require('./routes/users')
+const usersRouter = require('./routes/users')
+const productsRouter = require('./routes/products')
+const categoriesRouter = require('./routes/categories')
 
 // Setup Database
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -32,9 +34,9 @@ db.once('open', () => console.log(`Connecting To ${process.env.DATABASE_URL} DB 
 
 // Handel Routers
 //app.use('/', (req, res) => res.send('Root Route'))
-app.use('/products', (req, res) => res.send('Product Route'))
-app.use('/users', userRouter)
-app.use('/categories', (req, res) => res.send('Categorie Route'))
+app.use('/products', productsRouter)
+app.use('/users', usersRouter)
+app.use('/categories', categoriesRouter)
 app.use('*', (req, res) => res.send('There\'s No Route'))
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`))

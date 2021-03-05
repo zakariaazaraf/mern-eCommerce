@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 const productSchema = mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String},
-    userId: {type: Schema.Types.ObjectId, ref : 'User'},
-    categorieId: {type: Schema.Types.ObjectId, ref: 'Categorie'}
+    dateAdded: {type: Date, default: Date.now()},
+    userId: {type: mongoose.Schema.Types.ObjectId, required: true, ref : 'User'},
+    categorieId: [{type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Categorie'}],
+    commentId: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
 module.exports = mongoose.model('Product', productSchema)
