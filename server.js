@@ -19,6 +19,7 @@ app.use(expressLayouts)
 app.use(methodOverride('_method'))
 
 app.use(express.static('public'))
+app.use(express.static('frontend'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(bodyParser.json())
 
