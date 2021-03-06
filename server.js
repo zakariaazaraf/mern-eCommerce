@@ -13,6 +13,7 @@ const methodOverride = require('method-override')
 // Set The Template Engine
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 
 app.use(methodOverride('_method'))
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(bodyParser.json())
 
 // ROUTERS 
+const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const categoriesRouter = require('./routes/categories')
@@ -33,7 +35,7 @@ db.on('error', err => console.log(err))
 db.once('open', () => console.log(`Connecting To ${process.env.DATABASE_URL} DB `))
 
 // Handel Routers
-//app.use('/', (req, res) => res.send('Root Route'))
+app.use('/', indexRouter)
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/categories', categoriesRouter)
