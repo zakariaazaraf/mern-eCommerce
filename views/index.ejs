@@ -1,175 +1,47 @@
 <main>
     <section class='hero'>
         <div class="slides">
-            <div class="slide active" data-slide="1">
-                <img src="images/1.jpg" alt="">           
+           <% products.forEach((product, index)=>{ %>
+            <div class="slide <%=index === 0 ? 'active' : ''%>" data-slide="<%= index + 1 %>">
+                <img src="images/1.jpg" alt="">
                 <div class="content-container">
                     <div class="container">
                         <div class="content">
                             <div class="circles">
-                                <span class="circle active" data-dot='1'></span>
-                                <span class="circle" data-dot='2'></span>
-                                <span class="circle" data-dot='3'></span>
-                                <span class="circle" data-dot='4'></span>
-                                <span class="circle" data-dot='5'></span>
+                                <%
+                                    products.forEach((circle, circleIndex)=>{
+                                        %>
+                                            <span class="circle <%= circleIndex === 0 ? 'active' : ''%>" data-dot='<%= circleIndex + 1 %>'></span>
+                                        <%
+                                    }) 
+                                %>
                             </div>
-                            <h2 class='title'>INFIN8 NECKLACE</h2>
+                            <h2 class='title'>
+                                <%= product.name %>
+                            </h2>
                         </div>
                         <div class="shop-description">
-                            <p class="description">Oxidised sterling silver & black spinels</p>
-                            <a href="" class='btn'>shop now</a>
+                            <p class="description"><%= product.description%></p>
+                            <a href="/products/<%=product.id%>" class='btn'>shop now</a>
                         </div>
                     </div>
                 </div>
-                
             </div>
-            <div class="slide" data-slide="2">
-                <img src="images/2.jpg" alt="">           
-                <div class="content-container">
-                    <div class="container">
-                        <div class="content">
-                            <div class="circles">
-                                <span class="circle " data-dot='1'></span>
-                                <span class="circle" data-dot='2'></span>
-                                <span class="circle" data-dot='3'></span>
-                                <span class="circle" data-dot='4'></span>
-                                <span class="circle" data-dot='5'></span>
-                            </div>
-                            <h2 class='title'>INFIN8 NECKLACE</h2>
-                        </div>
-                        <div class="shop-description">
-                            <p class="description">Oxidised sterling silver & black spinels</p>
-                            <a href="" class='btn'>shop now</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="slide" data-slide="3">
-                <img src="images/3-1.jpg" alt="">           
-                <div class="content-container">
-                    <div class="container">
-                        <div class="content">
-                            <div class="circles">
-                                <span class="circle active" data-dot='1'></span>
-                                <span class="circle" data-dot='2'></span>
-                                <span class="circle" data-dot='3'></span>
-                                <span class="circle" data-dot='4'></span>
-                                <span class="circle" data-dot='5'></span>
-                            </div>
-                            <h2 class='title'>INFIN8 NECKLACE</h2>
-                        </div>
-                        <div class="shop-description">
-                            <p class="description">Oxidised sterling silver & black spinels</p>
-                            <a href="" class='btn'>shop now</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="slide" data-slide="4">
-                <img src="images/LNovum-mens-jewelry-accessories_0001_Seed-necklace-header-e1555944673372.jpg" alt="">           
-                <div class="content-container">
-                    <div class="container">
-                        <div class="content">
-                            <div class="circles">
-                                <span class="circle" data-dot='1'></span>
-                                <span class="circle" data-dot='2'></span>
-                                <span class="circle" data-dot='3'></span>
-                                <span class="circle" data-dot='4'></span>
-                                <span class="circle" data-dot='5'></span>
-                            </div>
-                            <h2 class='title'>INFIN8 NECKLACE</h2>
-                        </div>
-                        <div class="shop-description">
-                            <p class="description">Oxidised sterling silver & black spinels</p>
-                            <a href="" class='btn'>shop now</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="slide" data-slide="5">
-                <img src="images/Lnovum-shop-products-mens-accessories-5-1-e1555969426422.jpg" alt="">           
-                <div class="content-container">
-                    <div class="container">
-                        <div class="content">
-                            <div class="circles">
-                                <span class="circle" data-dot='1'></span>
-                                <span class="circle" data-dot='2'></span>
-                                <span class="circle" data-dot='3'></span>
-                                <span class="circle" data-dot='4'></span>
-                                <span class="circle" data-dot='5'></span>
-                            </div>
-                            <h2 class='title'>INFIN8 NECKLACE</h2>
-                        </div>
-                        <div class="shop-description">
-                            <p class="description">Oxidised sterling silver & black spinels</p>
-                            <a href="" class='btn'>shop now</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+          <% })%> 
         </div>
     </section>
 </main>
 <script>
+    const slides = document.querySelectorAll('.slide')
     let circlesContainer = document.querySelector('.slide.active .circles')
     let circles 
-    const slides = document.querySelectorAll('.slide')
     let targetSlide
     let activeSlide
     let activeDot
     let contentTransition //= document.querySelector('.slide .content-container')
 
-
-    circlesContainer.addEventListener('click',(e) =>{
-        console.log("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-        targetSlide = false
-        if(e.target.classList.contains('circle') && !e.target.classList.contains('active')){
-            slides.forEach(slide =>{
-                if(slide.dataset.slide === e.target.dataset.dot){
-                    targetSlide = slide
-                }
-                if(slide.classList.contains('active')){
-                    activeSlide = slide
-                }
-            })
-            circles = document.querySelectorAll('.slide.active .circle')
-            circles.forEach(circle=>{
-                if(circle.classList.contains('active')){
-                    activeDot = circle
-                }
-                circle.classList.remove('active')
-                contentTransition = document.querySelector('.slide .content-container')
-                console.log('circle')
-            })
-            
-        }
-        if(targetSlide){         
-            activeSlide.classList.remove('active')
-            targetSlide.classList.add('active')
-            targetSlide.addEventListener('animationend', ()=>{
-                circlesContainer = document.querySelector('.slide.active .circles')
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                circles = document.querySelectorAll('.slide.active .circle')
-                circles.forEach(circle => {
-                    circle.classList.remove('active')
-                    if (circle.dataset.dot === e.target.dataset.dot) {
-                        circle.classList.add('active')
-                    }
-                })
-            })
-        }
-    })
-
-    document.addEventListener('click', ()=>{
-        console.log('Body Cicked')
+    const animateSlides = ()=>{
         circlesContainer.addEventListener('click', (e) => {
-            console.log("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
             targetSlide = false
             if (e.target.classList.contains('circle') && !e.target.classList.contains('active')) {
                 slides.forEach(slide => {
@@ -196,8 +68,6 @@
                 targetSlide.classList.add('active')
                 targetSlide.addEventListener('animationend', () => {
                     circlesContainer = document.querySelector('.slide.active .circles')
-                    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                     circles = document.querySelectorAll('.slide.active .circle')
                     circles.forEach(circle => {
                         circle.classList.remove('active')
@@ -208,7 +78,28 @@
                 })
             }
         })
-        
+    }
+
+    animateSlides()
+
+    document.addEventListener('click', ()=>{
+        animateSlides()
+    })
+
+    const nav = document.querySelector('header nav')
+    const svgLogo = document.querySelector('.svg-logo')
+    document.addEventListener('scroll', (e)=>{
+        if(window.pageYOffset > 140){
+            nav.setAttribute('style',
+             'background: #fff; color: #000; padding: .6rem 2rem !important; transition: padding .3s ease'
+             )
+            svgLogo.style.fill = "#000"
+        }else{     
+            nav.setAttribute('style',
+                'background: transtarent; color: #FFF; padding: 2rem !important; transition: padding .3s ease'
+            )
+            svgLogo.style.fill = "#FFF"
+        }
     })
     
 

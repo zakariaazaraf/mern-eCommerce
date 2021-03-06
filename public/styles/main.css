@@ -44,7 +44,7 @@ header {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1260px;
   flex-grow: 1;
   padding: 0 2rem;
 }
@@ -59,6 +59,19 @@ header {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.4s ease;
+}
+
+.cart {
+  position: relative;
+}
+.cart .svg {
+  position: absolute;
+  top: 5px;
+  left: -6px;
+  width: 15px;
+  height: 15px;
+  fill: #fff;
+  line-height: 1;
 }
 
 .btn:hover {
@@ -89,7 +102,11 @@ header nav {
   animation-duration: 2s;
 }
 
-header nav > a svg {
+header nav .container {
+  justify-content: space-between !important;
+}
+
+header nav div > a svg {
   width: 150px;
   fill: #fff;
 }
@@ -108,11 +125,11 @@ header nav a {
   letter-spacing: 6px;
   transition: all 0.5s ease;
 }
-header nav > a:first-child {
+header nav .container > a:first-child {
   padding-left: 0;
 }
 
-header div a:last-child {
+header nav .container div a:last-child {
   padding-right: 0;
 }
 header nav a:hover {
