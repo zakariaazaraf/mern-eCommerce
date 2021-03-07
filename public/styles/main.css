@@ -14,6 +14,7 @@
 :root {
   --header-max-height: 145px;
   --main-height: 100vh;
+  --pseudo-background: #fff;
 }
 
 * {
@@ -68,21 +69,47 @@ a.simple {
   text-transform: uppercase;
 }
 
-.cart {
+.cart,
+.menu {
   position: relative;
 }
 .cart .svg {
   position: absolute;
-  top: 5px;
-  left: -6px;
+  top: 5.5px;
+  left: -8px;
   width: 15px;
   height: 15px;
   fill: #fff;
   line-height: 1;
+  transition: all 0.5s ease;
+}
+
+.menu::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 15px;
+  height: 1.6px;
+  width: 15px;
+  background-color: var(--pseudo-background);
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 10px;
+  height: 1.6px;
+  width: 15px;
+  background-color: var(--pseudo-background);
 }
 
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cart:hover > svg {
+  fill: rgb(172, 170, 170);
 }
 
 header > * {
@@ -100,8 +127,9 @@ header h5 {
 }
 
 header nav {
-  justify-content: space-between !important;
-  padding: 2rem !important;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem !important;
   color: #fff;
   opacity: 1;
   transform: translateX(0);
@@ -354,8 +382,53 @@ section.product article a:hover::after {
   opacity: 1;
 }
 
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Product Section */
+section.masterpiece {
+  display: flex;
+  justify-content: center;
+  background: url("./../images/2.jpg") center no-repeat;
+  color: #fff;
+  letter-spacing: normal;
+  font-weight: lighter;
+}
+
+section.masterpiece .container * {
+  padding: 1rem 0;
+}
+
+section.masterpiece .title {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding-left: 3rem;
+  position: relative;
+}
+
+section.masterpiece .title::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1.6rem;
+  width: 30px;
+  height: 1px;
+  background-color: #fff;
+}
+
+section.masterpiece .content {
+  padding: 5rem 0;
+  width: 50%;
+  font-size: 1.2rem;
+}
+
+section.masterpiece .content .description {
+  line-height: 2;
+  letter-spacing: 1.4px;
+}
+
 /* FOOTER STAYLE */
 footer {
+  display: flex;
+  justify-content: center;
   background-color: black;
   color: #fff;
   padding: 2rem 0;

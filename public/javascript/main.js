@@ -55,6 +55,7 @@ document.addEventListener('click', ()=>{
 
 const nav = document.querySelector('header nav')
 const svgLogo = document.querySelector('.svg-logo')
+const svgCart = document.querySelector('.svg-cart')
 
 const proverbSection = document.querySelector('.proverb')
 const productSection = document.querySelector('.product')
@@ -62,17 +63,22 @@ const productSection = document.querySelector('.product')
 const proverbSvg = document.querySelector('.proverb svg')
 const proverbTitle = document.querySelector('.proverb h2')
 
+
 document.addEventListener('scroll', (e)=>{
     if(window.pageYOffset > 140){
         nav.setAttribute('style',
-            'background: #fff; color: #000; padding: .6rem 2rem !important; transition: padding .3s ease'
+            'background: #fff; color: #000; padding: .6rem 0 !important; transition: padding .3s ease'
             )
         svgLogo.style.fill = "#000"
+        svgCart.style.fill = "#000"
+       document.documentElement.style.setProperty("--pseudo-background", "#000");
     }else{     
         nav.setAttribute('style',
-            'background: transtarent; color: #FFF; padding: 2rem !important; transition: padding .3s ease'
+            'background: transtarent; color: #FFF; padding: 2rem 0rem !important; transition: padding .3s ease'
         )
         svgLogo.style.fill = "#FFF"
+        svgCart.style.fill = "#FFF"
+       document.documentElement.style.setProperty("--pseudo-background", "#FFF");
     }
 
     if(proverbSection.offsetTop - 180 < window.pageYOffset){
