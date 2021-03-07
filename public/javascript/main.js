@@ -55,6 +55,13 @@ document.addEventListener('click', ()=>{
 
 const nav = document.querySelector('header nav')
 const svgLogo = document.querySelector('.svg-logo')
+
+const proverbSection = document.querySelector('.proverb')
+const productSection = document.querySelector('.product')
+
+const proverbSvg = document.querySelector('.proverb svg')
+const proverbTitle = document.querySelector('.proverb h2')
+
 document.addEventListener('scroll', (e)=>{
     if(window.pageYOffset > 140){
         nav.setAttribute('style',
@@ -66,6 +73,15 @@ document.addEventListener('scroll', (e)=>{
             'background: transtarent; color: #FFF; padding: 2rem !important; transition: padding .3s ease'
         )
         svgLogo.style.fill = "#FFF"
+    }
+
+    if(proverbSection.offsetTop - 180 < window.pageYOffset){
+        proverbSvg.classList.add('active')
+        proverbTitle.classList.add('active')
+        
+    }else{
+        proverbSvg.classList.remove('active')
+        proverbTitle.classList.remove('active')
     }
 })
     

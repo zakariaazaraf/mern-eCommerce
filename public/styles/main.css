@@ -223,6 +223,51 @@ main .hero .slide .content-container .shop-description {
   align-items: center;
 }
 
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Provers Section */
+.proverb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 2.7rem;
+  padding: 6rem 2rem;
+  letter-spacing: normal;
+  transition: all 1.5s ease;
+  overflow: hidden;
+}
+
+.proverb.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.proverb > * {
+  padding: 1rem;
+}
+
+.proverb svg.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.proverb svg {
+  width: 100px;
+  opacity: 0;
+  transform: translateX(600px);
+  transition: all 1.5s ease;
+}
+
+.proverb h2.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.proverb h2 {
+  opacity: 0;
+  transform: translateX(-600px);
+  transition: all 1.5s ease;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* Product Section */
 section.product {
   color: #fff;
@@ -234,6 +279,18 @@ section.product {
 section.product article {
   width: 50%;
   height: 500px;
+}
+
+section.product article:nth-child(n + 1) {
+  opacity: 1;
+  transform: translateX(0);
+  animation: fade-reverse 1.5s ease;
+}
+
+section.product article:nth-child(n + 2) {
+  opacity: 1;
+  transform: translateX(0);
+  animation: fade 1.5s ease;
 }
 
 section.product article a {
@@ -313,7 +370,7 @@ footer .container {
 @keyframes fade {
   from {
     opacity: 0;
-    transform: translateX(60px);
+    transform: translateX(100px);
   }
   to {
     opacity: 1;
@@ -324,7 +381,7 @@ footer .container {
 @keyframes fade-reverse {
   from {
     opacity: 0;
-    transform: translateX(-60px);
+    transform: translateX(-100px);
   }
   to {
     opacity: 1;
