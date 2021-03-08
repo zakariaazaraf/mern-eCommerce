@@ -3,7 +3,7 @@
         <div class="slides">
             <% if (products.length > 0){products.forEach((product, index)=>{ %>
                 <div class="slide <%=index === 0 ? 'active' : ''%>" data-slide="<%= index + 1 %>">
-                    <img src="<%=product.coverImage%>" alt="<%=product.name%>">
+                    <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
                     <div class="content-container">
                         <div class="container">
                             <div class="content">
