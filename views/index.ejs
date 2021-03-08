@@ -54,76 +54,22 @@
                 </div>
             </a>
         </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/2.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/1.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/2.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/1.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/2.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/1.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
-        <article>
-            <a href="/product/">
-                <img src="/images/2.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
+        <% if (products.length> 0){products.forEach((product, index)=>{ 
+            %>
+                <article>
+                    <a href="/product/">
+                        <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
+                        <div class="content">
+                            <h3 class="title"><%=product.name%></h3>
+                            <span class="price">$<%=product.price%></span>
+                            <span class="shop-link">shop now</span>
+                        </div>
+                    </a>
+                </article>
+            <% 
+            })
+            }
+        %>
     </section>
     <section class='masterpiece'>
         <div class="container">
