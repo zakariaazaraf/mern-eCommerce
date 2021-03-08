@@ -1,0 +1,40 @@
+<form action='/products' method="POST" class='form'>
+    <div>
+        <label for='name'>name: </label>
+        <input type='text' name='name' id='name' value=''>
+    </div>
+    <div>
+        <label for='description'>description: </label>
+        <input type='text' name='description' id='description' value=''>
+    </div>
+    <div>
+        <label for='price'>price: </label>
+        <input type='number' name='price' id='price' value=''>
+    </div>
+    <div>
+        <label for='userId'>user: </label>
+        <select name="userId" id="userId">
+            <%users.forEach(user=>{
+                %>
+                    <option value='<%=user.id%>'>
+                        <%=user.firstName%>
+                    </option>
+                <%
+            })%>
+        </select>
+        
+    </div>
+    <div>
+        <label for='categorieId'>categorie: </label>
+        <select name="categorieId" id="categorieId">
+            <%categories.forEach(categorie =>{
+                %>
+                    <option value='<%=categorie.id%>'>
+                        <%=categorie.name%>
+                    </option>
+                <%
+            })%>
+        </select>
+    </div>
+    <button type='submit' class='btn'>Add User</button>
+</form>

@@ -1,7 +1,8 @@
 const express = require('express')
-const user = require('../models/user')
+const User = require('../models/user')
 const router = express.Router()
 const Product = require('./../models/product')
+const Categorie = require('./../models/categorie')
 
 router.get('/', async (req, res)=>{
     try{
@@ -13,6 +14,21 @@ router.get('/', async (req, res)=>{
     }catch{
         res.status(500).json({
             message: 'Failed Getting Products'
+        })
+    }
+})
+
+router.get('/new', async (req, res)=>{
+    try{
+        const users = await User.find({})
+        const categories = await Categorie.find({})
+        res.render('products/addProduct', {
+            users: users,
+            categories: categories
+        })
+    }catch{
+        res.status(500).json({
+            message: 'Fetch users and categories Falied'
         })
     }
 })
@@ -38,13 +54,15 @@ router.get('/:id', async (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    const {name, description, userId, categorieId, commentId} = req.body
+    const {name, description, price, userId, categorieId, commentId} = req.body
+    
     const product = new Product({
         name : name,
         description: description,
+        price: price,
         userId: userId,
-        categorieId: categorieId/* ,
-        commentId: commentId */
+        categorieId: categorieId
+        //commentId: commentId 
     })
     try{
         const productCreated = await product.save()
@@ -55,19 +73,19 @@ router.post('/', async (req, res)=>{
     }catch{
         res.status(500).json({
             message: 'Failed Creating Product'
-        })
-        
+        })     
     }
 })
 
 router.put('/:id', async (req, res)=>{
     const {id} = req.params
-    const {name, description, userId, categorieId} = req.body
+    const {name, description, price, userId, categorieId} = req.body
     try{
         const product = await Product.findById(id)
         if(product){
             product.name = name || product.name
             product.description = description || product.description
+            product.price = price || product.price
             product.userId = userId || product.userId
             product.categorieId = categorieId || product.categorieId
             try{

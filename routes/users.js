@@ -17,6 +17,10 @@ router.get('/', async (req, res)=>{
     }
 })
 
+router.get('/new', (req, res)=>{
+    res.render('user/addUser')
+}) 
+
 router.get('/:id', async (req, res)=>{
     const {id} = req.params
     
@@ -42,12 +46,9 @@ router.get('/:id/edit', (req, res) =>{
     res.send('User edit Router')
 })
 
-router.get('/new', (req, res)=>{
-    res.send('User New Router')
-}) 
-
 router.post('/', async (req, res)=>{
     const {firstname, lastname, email, password} = req.body
+    
     const user = new User({
         firstName: firstname,
         lastName: lastname,

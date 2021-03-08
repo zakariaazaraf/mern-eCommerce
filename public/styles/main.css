@@ -426,6 +426,16 @@ section.masterpiece .content .description {
   letter-spacing: 1.4px;
 }
 
+/*  FORM USERS */
+.form {
+  height: 400px;
+  padding: 10rem 3rem;
+}
+
+/* .form button {
+  background-color: #000;
+} */
+
 /* FOOTER STAYLE */
 footer {
   display: flex;

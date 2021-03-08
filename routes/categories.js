@@ -15,6 +15,10 @@ router.get('/', async (req, res)=>{
     }
 })
 
+router.get('/new', async (req, res)=>{
+    res.render('categories/addCategorie')
+})
+
 router.get('/:id', async (req, res)=>{
     const {id} = req.params
     try{
