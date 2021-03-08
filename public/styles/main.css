@@ -179,6 +179,7 @@ main .hero {
 
 main .hero .slides {
   height: 100%;
+  overflow: hidden;
 }
 
 main .hero .slide {
