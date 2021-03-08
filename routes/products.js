@@ -3,6 +3,7 @@ const User = require('../models/user')
 const router = express.Router()
 const Product = require('./../models/product')
 const Categorie = require('./../models/categorie')
+const product = require('./../models/product')
 
 router.get('/', async (req, res)=>{
     try{
@@ -53,13 +54,32 @@ router.get('/:id', async (req, res)=>{
     }
 })
 
+router.get('/:id/edit', async (req, res)=>{
+    const {id} = req.params
+    try{
+        const product = await Product.findById(id)
+        const users = await User.find({})
+        const categories = await Categorie.find({})
+        res.render('products/editProduct', {
+            product: product,
+            users: users,
+            categories: categories
+        })
+    }catch{
+        res.status(500).json({
+            message: 'Fetch users and categories Falied'
+        })
+    }
+})
+
 router.post('/', async (req, res)=>{
-    const {name, description, price, userId, categorieId, commentId} = req.body
+    const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
     
     const product = new Product({
         name : name,
         description: description,
         price: price,
+        coverImage: coverImage,
         userId: userId,
         categorieId: categorieId
         //commentId: commentId 
@@ -79,13 +99,14 @@ router.post('/', async (req, res)=>{
 
 router.put('/:id', async (req, res)=>{
     const {id} = req.params
-    const {name, description, price, userId, categorieId} = req.body
+    const {name, description, price, coverImage, userId, categorieId} = req.body
     try{
         const product = await Product.findById(id)
         if(product){
             product.name = name || product.name
             product.description = description || product.description
             product.price = price || product.price
+            product.coverImage = coverImage || product.coverImage
             product.userId = userId || product.userId
             product.categorieId = categorieId || product.categorieId
             try{
@@ -94,19 +115,23 @@ router.put('/:id', async (req, res)=>{
                     product: productUpdate,
                     message: 'Product Updated Successfully'
                 })
-            }catch{
+                
+            }catch (err){
                 res.status(500).json({
                     message: 'Failed Upading Product'
                 })
+                console.log(err)
             }
+            return
         }
         res.status(201).json({
             message: 'There is No Such Product With This ID'
         })
-    }catch{
+    }catch (err){
         res.status(500).json({
             message: 'Failed Getting Product Data'
         })
+        console.log(err)
     }
 })
 
