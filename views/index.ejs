@@ -44,16 +44,6 @@
         <h2>wear whatever you want</h2>
     </section>
     <section class='product d-flex'>
-        <article>
-            <a href="/product/">
-                <img src="/images/1.jpg" alt="contunium nicke">
-                <div class="content">
-                    <h3 class="title">contunium nicke</h3>
-                    <span class="price">$133</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
         <% if (products.length> 0){products.forEach((product, index)=>{ 
             %>
                 <article>
@@ -63,14 +53,24 @@
                             <h3 class="title"><%=product.name%></h3>
                             <span class="price">$<%=product.price%></span>
                             <span class="shop-link">shop now</span>
-                        </div>
-                    </a>
-                </article>
-            <% 
-            })
-            }
-        %>
-    </section>
+                            </div>
+                            </a>
+                            </article>
+                            <% 
+                        })
+                    }
+                    %>
+                    <article>
+                        <a href="/product/">
+                            <img src="/images/1.jpg" alt="contunium nicke">
+                            <div class="content">
+                                <h3 class="title">contunium nicke</h3>
+                                <span class="price">$133</span>
+                                <span class="shop-link">shop now</span>
+                            </div>
+                        </a>
+                    </article>
+                    </section>
     <section class='masterpiece'>
         <div class="container">
             <p class='title'>craftsmaship</p>
