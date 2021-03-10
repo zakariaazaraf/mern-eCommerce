@@ -47,7 +47,7 @@
         <% if (products.length> 0){products.forEach((product, index)=>{ 
             %>
                 <article>
-                    <a href="/product/<%=product.id%>">
+                    <a href="/products/<%=product.id%>">
                         <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
                         <div class="content">
                             <h3 class="title"><%=product.name%></h3>
@@ -61,7 +61,7 @@
         }
         %>
         <article>
-            <a href="/product/<%=product.id%>">
+            <a href="/products/">
                 <img src="/images/menfashion.jpg" alt="">
                 <div class="content">
                     <h3 class="title">
