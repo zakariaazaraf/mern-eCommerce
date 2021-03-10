@@ -1,0 +1,13 @@
+<div class="product-details">
+    <div class="container">
+        <div class="product-image">
+            <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
+        </div>
+        <div class="product-info">
+            <h3 class='product-name'><%=product.name%></h3>
+            <h5><%=product.description%></h5>
+            <span><%product.dateAdded.toISOString()%></span>
+            <button class='add-to-cart'>add to cart</button>
+        </div>
+    </div>
+</div>

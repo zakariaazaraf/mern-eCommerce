@@ -39,9 +39,10 @@ router.get('/:id', async (req, res)=>{
     try{
         const product = await Product.findById(id)
         if(product){
-            res.status(200).json({
+            /* res.status(200).json({
                 product: product
-            })
+            }) */
+            res.render('products/product', {product: product})
             return
         }
         res.status(201).json({
