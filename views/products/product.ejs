@@ -4,10 +4,15 @@
             <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
         </div>
         <div class="product-info">
-            <h3 class='product-name'><%=product.name%></h3>
-            <h5><%=product.description%></h5>
-            <span><%product.dateAdded.toISOString()%></span>
-            <button class='add-to-cart'>add to cart</button>
+            <h4 class='product-name'><%=product.name%></h4>
+            <p><%=product.description%></p>
+            <span><%=product.dateAdded.toDateString()%></span>
+            <span>made in usa</span>
+            <span>$<%=product.price%></span>
+            <button class='add-to-cart btn'>add to cart</button>
         </div>
+    </div>
+    <div class="full-image">
+        <img src='/images/<%=product.coverImage%>' alt='<%=product.name%>'>
     </div>
 </div>

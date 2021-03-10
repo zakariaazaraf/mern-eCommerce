@@ -71,6 +71,7 @@ document.addEventListener('scroll', (e)=>{
     if(window.pageYOffset > 140){
         if(productDetails){
             nav.setAttribute('style', 'padding: .6rem 0 !important; transition: padding .3s ease')
+            document.documentElement.style.setProperty("--header-max-height", "auto");
         }else{
             nav.setAttribute('style',
                 'background: #fff; color: #000; padding: .6rem 0 !important; transition: padding .3s ease'
@@ -82,6 +83,7 @@ document.addEventListener('scroll', (e)=>{
     }else{  
         if(productDetails){
             nav.setAttribute('style', 'padding: 2rem 0rem !important; transition: padding .3s ease')
+            document.documentElement.style.setProperty("--header-max-height", "140px");
         }else{
             nav.setAttribute('style',
                 'background: transtarent; color: #FFF; padding: 2rem 0rem !important; transition: padding .3s ease'
