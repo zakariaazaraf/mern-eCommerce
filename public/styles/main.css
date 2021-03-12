@@ -267,12 +267,19 @@ main .hero .slide .content-container .shop-description {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 600px;
   text-transform: capitalize;
   font-size: 2.7rem;
   padding: 6rem 2rem;
+  border-top: 0.7px solid #fff;
+  border-bottom: 0.7px solid #fff;
   letter-spacing: normal;
   transition: all 1.5s ease;
   overflow: hidden;
+  background: url("../images/pexels-photo-3775120.jpeg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .proverb.active {
@@ -316,18 +323,20 @@ section.product {
 section.product article {
   width: 50%;
   height: 500px;
+  border-bottom: 0.2px solid #fff;
 }
 
 section.product article:nth-child(n + 1) {
   opacity: 1;
   transform: translateX(0);
-  animation: fade-reverse 1.5s ease;
+  animation: fade 1.5s ease;
+  border-right: 0.2px solid #fff;
 }
 
-section.product article:nth-child(n + 2) {
+section.product article:nth-child(2n + 1) {
   opacity: 1;
   transform: translateX(0);
-  animation: fade 1.5s ease;
+  animation: fade-reverse 1.5s ease;
 }
 
 section.product article a {
@@ -453,6 +462,7 @@ section.masterpiece .content .description {
   color: #000;
   padding-top: var(--header-max-height);
   letter-spacing: normal;
+  transition: all 1s ease;
 }
 
 .product-details .container {
