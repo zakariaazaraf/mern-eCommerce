@@ -192,10 +192,16 @@ header nav .menu-overly {
   display: flex;
   background-color: #fff;
   z-index: 10;
+  opacity: 0;
+}
+
+header nav .menu-overly .menu-left.active,
+header nav .menu-overly .menu-right.active {
+  transform: translateX(0);
 }
 
 header nav .menu-overly > div {
-  padding: 5rem 4rem;
+  padding: 5rem 3rem;
 }
 
 header nav .menu-overly a:hover {
@@ -216,6 +222,8 @@ header nav .menu-overly .menu-left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 1s ease;
+  transform: translateX(-100%);
 }
 
 header nav .menu-overly .menu-left p.title::after {
@@ -254,6 +262,71 @@ header nav .menu-overly .menu-left .links > ul.general-links li a {
 header nav .menu-overly .menu-right {
   background-color: rgb(26, 26, 26);
   flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: transform 1s ease;
+  transform: translateX(100%);
+}
+
+header nav .menu-overly .menu-right p,
+header nav .menu-overly .menu-right span {
+  letter-spacing: normal;
+  text-transform: capitalize;
+  font-size: 0.85rem;
+}
+
+header nav .menu-overly .menu-right .close-container {
+  width: 100%;
+  justify-content: flex-end;
+}
+header nav .menu-overly .menu-right .close-text {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: lighter;
+  margin-right: 1rem;
+}
+header nav .menu-overly .menu-right .close-btn {
+  position: relative;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: rgba(99, 99, 99, 0.178);
+  transition: all 0.7s ease;
+}
+
+header nav .menu-overly .menu-right .close-btn:hover {
+  background-color: #fff;
+}
+
+header nav .menu-overly .menu-right .close-btn:hover::after,
+header nav .menu-overly .menu-right .close-btn:hover::before {
+  background-color: rgb(53, 53, 53);
+}
+
+header nav .menu-overly .menu-right .close-btn::after,
+header nav .menu-overly .menu-right .close-btn::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 6.5px;
+  height: 1.5px;
+  width: 25px;
+  background-color: #fff;
+}
+
+header nav .menu-overly .menu-right .close-btn::before {
+  transform: rotate(45deg);
+}
+header nav .menu-overly .menu-right .close-btn::after {
+  transform: rotate(-45deg);
+}
+
+header nav .menu-overly .menu-right svg {
+  fill: #fff;
 }
 
 header nav .menu-overly .menu-left .links > ul.second-links li {
@@ -266,6 +339,35 @@ header nav .menu-overly .menu-left .links > ul.second-links li a {
   font-weight: lighter;
   text-transform: capitalize;
   letter-spacing: 1.6px;
+}
+
+header nav .menu-overly .menu-right .news-letter-form {
+  height: 35px;
+  margin: 0.7rem 0;
+}
+
+header nav .menu-overly .menu-right .news-letter-form input {
+  border: 1px solid gray;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  padding: 0.7rem;
+  height: 100%;
+  flex-grow: 1;
+}
+
+header nav .menu-overly .menu-right .news-letter-form button {
+  outline: none;
+  border: none;
+  height: 100%;
+  padding: 0.3rem 1.5rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+header nav .menu-overly .menu-right .news-letter-form button:hover {
+  background-color: rgba(255, 255, 255, 0.83);
 }
 
 main .hero {
