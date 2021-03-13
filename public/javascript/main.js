@@ -117,3 +117,22 @@ if(productDetails != null){
 }
 
 
+/* Overly Menu */
+const menuBtn = document.querySelector('.menu')
+const menuOverly = document.querySelector('.menu-overly')
+const menuLeft = document.querySelector('.menu-left')
+const menuRight = document.querySelector('.menu-right')
+const MenuClose = document.querySelector('.close-btn')
+
+menuBtn.addEventListener('click', ()=>{
+    menuOverly.classList.toggle('active')
+    menuLeft.classList.toggle('active')
+    menuRight.classList.toggle('active')
+})
+
+MenuClose.addEventListener('click', ()=>{
+    menuOverly.classList.toggle('active')
+    menuLeft.classList.toggle('active')
+    menuRight.classList.toggle('active')
+})
+

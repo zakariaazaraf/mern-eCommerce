@@ -192,12 +192,20 @@ header nav .menu-overly {
   display: flex;
   background-color: #fff;
   z-index: 10;
+  visibility: hidden;
+  transition: all 1s ease;
   opacity: 0;
+}
+
+.menu-overly.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 header nav .menu-overly .menu-left.active,
 header nav .menu-overly .menu-right.active {
   transform: translateX(0);
+  transition: transform 1s ease;
 }
 
 header nav .menu-overly > div {
