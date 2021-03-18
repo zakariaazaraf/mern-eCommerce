@@ -7,8 +7,7 @@ router.get('/', async (req, res)=>{
     try{
         const products = await Product.find({})
         res.render('orders/order', {orders: JSON.parse(req.cookies.orders), products: products})
-        console.log(req.cookies.orders)
-        console.log(products)
+
     }catch{
         res.status(500).json({msg: 'Failed Getting Product'})
     }

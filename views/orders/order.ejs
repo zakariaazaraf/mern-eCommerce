@@ -1,29 +1,31 @@
-<%orders.forEach(order=>{
-    products.forEach(product=>{
-    if(product.id == order.id){
-    %>
-    <div class="product-details">
-        <div class="container">
-            <div class="product-image">
-                <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
-            </div>
-            <div class="product-info">
-                <h4 class='product-name'>
-                    <%=product.name%>
-                </h4>
-                <p>
-                    <%=product.description%>
-                </p>
-                <span>
-                    <%=product.dateAdded.toDateString()%>
-                </span>
-                <span>made in usa</span>
-                <span>$<%=product.price%></span>
-                <a href='/shopping' class='add-to-cart btn' data-id='<%=product.id%>'>add to cart</a>
-            </div>
-        </div>
-        <div class="full-image">
-            <img src='/images/<%=product.coverImage%>' alt='<%=product.name%>'>
-        </div>
-    </div>
-    <% } }) })%>
+<%
+    orders.forEach(order=>{
+        products.forEach(product=>{
+            if(product.id == order.id){
+                %>
+                    <div class="product-details">
+                        <div class="container">
+                            <div class="product-image">
+                                <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
+                            </div>
+                            <div class="product-info">
+                                <h4 class='product-name'>
+                                    <%=product.name%>
+                                </h4>
+                                <p>
+                                    <%=product.description%>
+                                </p>
+                                <span>
+                                    <%=product.dateAdded.toDateString()%>
+                                </span>
+                                <span>made in usa</span>
+                                <span>$<%=product.price%></span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                <%
+            } 
+        }) 
+    })
+%>
