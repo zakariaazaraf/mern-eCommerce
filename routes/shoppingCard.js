@@ -1,12 +1,18 @@
 const express = require('express')
 const router = express.Router()
+const Product = require('./../models/product')
 
-router.get('/', (req, res)=>{
+router.get('/', async (req, res)=>{
     //res.status(200).json()
+    try{
+        const products = await Product.find({})
+        res.render('orders/order', {orders: JSON.parse(req.cookies.orders), products: products})
+        console.log(req.cookies.orders)
+        console.log(products)
+    }catch{
+        res.status(500).json({msg: 'Failed Getting Product'})
+    }
     
-    console.log(req.cookies)
-    
-    res.send(req.headers.cookie)
     
 }) 
 
