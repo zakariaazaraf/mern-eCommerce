@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override')
+const cookieParser = require('cookie-parser')
 
 // Set The Template Engine
 app.set('view engine', 'ejs')
@@ -17,6 +18,7 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 
 app.use(methodOverride('_method'))
+app.use(cookieParser())
 
 app.use(express.static('public'))
 app.use(express.static('frontend'))
@@ -28,6 +30,7 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const categoriesRouter = require('./routes/categories')
+const shoppingCardRouter = require('./routes/shoppingCard')
 
 // Setup Database
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -35,11 +38,13 @@ const db = mongoose.connection
 db.on('error', err => console.log(err))
 db.once('open', () => console.log(`Connecting To ${process.env.DATABASE_URL} DB `))
 
+
 // Handel Routers
 app.use('/', indexRouter)
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/categories', categoriesRouter)
+app.use('/shopping', shoppingCardRouter)
 app.use('*', (req, res) => res.send('There\'s No Route'))
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`))

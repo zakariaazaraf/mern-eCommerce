@@ -136,3 +136,25 @@ MenuClose.addEventListener('click', ()=>{
     menuRight.classList.toggle('active')
 })
 
+
+/* LOCAL STORAGE FOR SHOPPING CARD */
+const cardBtn = document.querySelector('.add-to-cart') 
+if(cardBtn){
+    cardBtn.addEventListener('click', ()=>{
+        
+        let orders
+        if(document.cookie !== ""){
+            orders = [{id: cardBtn.dataset.id}, ...JSON.parse(document.cookie.split('=')[1])]
+        }else{
+            orders = [{id: cardBtn.dataset.id}]
+        }
+        
+        document.cookie = "orders=" + JSON.stringify(orders) + ";path=/"
+        
+    })
+} 
+
+
+
+
+
