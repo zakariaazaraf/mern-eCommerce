@@ -3,14 +3,18 @@ const router = express.Router()
 const Product = require('./../models/product')
 
 router.get('/', async (req, res)=>{
-    //res.status(200).json()
-    try{
-        const products = await Product.find({})
-        res.render('orders/order', {orders: JSON.parse(req.cookies.orders), products: products})
-
-    }catch{
-        res.status(500).json({msg: 'Failed Getting Product'})
+    
+    let orders = req.cookies.orders != null ? req.cookies.orders : {}
+    if(Object.keys(orders).length > 0){
+        try{
+            const products = await Product.find({})
+            res.render('orders/order', {orders: JSON.parse(orders), products: products})
+    
+        }catch{
+            res.status(500).json({msg: 'Failed Getting Product'})
+        }
     }
+    res.render('orders/emptyCard')
     
     
 }) 

@@ -653,7 +653,8 @@ section.masterpiece .content .description {
 } */
 
 /* Product Details */
-.product-details {
+.product-details,
+.body-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -664,7 +665,8 @@ section.masterpiece .content .description {
   transition: all 1s ease;
 }
 
-.product-details .container {
+.product-details .container,
+.body-wrapper .container {
   display: flex;
   min-height: calc(100vh - var(--header-max-height));
 }
@@ -715,6 +717,38 @@ section.masterpiece .content .description {
 }
 
 .product-details .container .product-info .add-to-cart:hover {
+  border: 1px solid gray;
+  background-color: #fff;
+  color: rgb(77, 77, 77);
+}
+
+/* SHOPPING CARD */
+.shopping-card .container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.shopping-card .container > * {
+  padding: 1.5rem 0;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.shopping-card .container > .btn {
+  width: max-content;
+  color: #fff;
+  background: rgb(109, 108, 108);
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-weight: lighter;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border: 1px solid #fff;
+  transition: all 0.2s ease;
+}
+
+.shopping-card .container > .btn:hover {
   border: 1px solid gray;
   background-color: #fff;
   color: rgb(77, 77, 77);
