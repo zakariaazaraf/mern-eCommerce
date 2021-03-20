@@ -13,6 +13,7 @@ router.get('/', async (req, res)=>{
         }catch{
             res.status(500).json({msg: 'Failed Getting Product'})
         }
+        return
     }
     res.render('orders/emptyCard')
     

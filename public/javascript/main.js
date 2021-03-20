@@ -107,14 +107,18 @@ document.addEventListener('scroll', (e)=>{
     }
 })
     
+// Verify Header Colors Function
+headerColors = (section)=>{
+    if(section != null){
+    document.querySelector('header').style.backgroundColor = '#000'
+    document.querySelector('header').style.color = '#111'
+}
+}
 
 /* PRODUCT DETAILS */
 const productDetails = document.querySelector('.product-details')
 
-if(productDetails != null){
-    document.querySelector('header').style.backgroundColor = '#000'
-    document.querySelector('header').style.color = '#111'
-}
+headerColors(productDetails)
 
 
 /* Overly Menu */
@@ -137,7 +141,7 @@ MenuClose.addEventListener('click', ()=>{
 })
 
 
-/* LOCAL STORAGE FOR SHOPPING CARD */
+/* COOKIE FOR SHOPPING CARD */
 const cardBtn = document.querySelector('.add-to-cart') 
 if(cardBtn){
     cardBtn.addEventListener('click', ()=>{
@@ -153,6 +157,10 @@ if(cardBtn){
         
     })
 } 
+
+/* ORDERS PAGE */
+const ordersContainer = document.querySelector('.orders-container')
+headerColors(ordersContainer)
 
 
 
