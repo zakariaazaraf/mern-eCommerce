@@ -783,11 +783,23 @@ section.masterpiece .content .description {
 }
 
 .orders-container .container .card-orders .card-order .order-image img {
-  width: 140px;
-  height: 160px;
+  width: 120px;
+  height: 140px;
 }
 .orders-container .container .card-orders .card-order .order-info {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: rgb(60, 60, 60);
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 1rem;
+  padding-right: 0;
+  letter-spacing: normal;
+}
+
+.orders-container .container .card-orders .card-order .order-info > * {
+  padding: 0.3rem 0;
 }
 
 .orders-container .container .card-orders .card-order .order-cancel {
@@ -830,6 +842,135 @@ section.masterpiece .content .description {
   .order-cancel
   .remove::after {
   transform: rotate(-45deg);
+}
+
+.orders-container .container .shipping {
+  height: max-content;
+  color: #777;
+  padding: 2.5rem;
+  font-weight: 400;
+  border: 0.6px solid rgb(220, 220, 220);
+  letter-spacing: normal;
+  text-transform: capitalize;
+}
+
+.orders-container .container .shipping .checkout {
+  display: flex;
+}
+
+.orders-container .container .shipping .checkout > * {
+  flex-basis: 50%;
+}
+
+.orders-container .container .shipping .checkout .btn {
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+.orders-container .container .shipping .checkout .total {
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-container .container .shipping .checkout .total > * {
+  padding: 0.2rem 0;
+}
+
+.orders-container .container .shipping .checkout .total .total-price {
+  color: #000;
+  letter-spacing: 1.5px;
+  font-weight: bolder;
+}
+.orders-container .container .shipping .ship-info {
+  border-top: 0.6px solid rgb(220, 220, 220);
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  letter-spacing: normal;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.orders-container .container .shipping .ship-info > * {
+  padding: 0.7rem 0;
+}
+.orders-container .container .shipping .ship-info .ship-info-content {
+  display: flex;
+  align-items: center;
+}
+
+.orders-container .container .shipping .ship-info .ship-info-content > * {
+  flex-basis: 50%;
+}
+.orders-container
+  .container
+  .shipping
+  .ship-info
+  .ship-info-content
+  > *:first-child {
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bolder;
+  padding-right: 0.3rem;
+}
+
+.orders-container
+  .container
+  .shipping
+  .ship-info
+  .ship-info-content
+  .accept-holder {
+  display: flex;
+  align-items: center;
+}
+
+.orders-container
+  .container
+  .shipping
+  .ship-info
+  .ship-info-content
+  .accept-holder
+  > * {
+  height: max-content;
+  padding: 0.2rem;
+}
+
+.orders-container .container .shipping img {
+  max-width: 55px;
+  object-fit: contain;
+}
+.orders-container
+  .container
+  .shipping
+  .ship-info
+  .ship-info-content
+  .accept-holder
+  .accepted-cards {
+  display: flex;
+}
+
+.orders-container .container .shipping .ship-info .ship-dealing {
+  display: flex;
+}
+
+.orders-container .container .shipping .ship-info .ship-dealing .deal-info {
+  display: flex;
+  align-items: center;
+}
+
+.orders-container
+  .container
+  .shipping
+  .ship-info
+  .ship-dealing
+  .deal-info
+  :first-child {
+  margin-right: 0.5rem;
+}
+.orders-container .container .shipping .ship-info .img-icon-holder {
+  width: 40px;
+  height: max-content;
 }
 /* FOOTER STAYLE */
 footer {

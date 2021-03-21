@@ -1,7 +1,7 @@
 <div class="orders-container">
     <div class="container">
         <div class="card-orders">
-            <% 
+            <%  let total = 0
                 orders.forEach(order=>{
                     products.forEach(product=>{
                         if(product.id == order.id){
@@ -11,33 +11,69 @@
                                         <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
                                     </div>
                                     <div class="order-info">
-                                        <h4 class='product-name'>
+                                        <p class='product-name'>
                                             <%=product.name%>
-                                        </h4>
-                                        <p>
+                                        </p>
+                                        <p class='product-description'>
                                             <%=product.description%>
                                         </p>
-                                        <span>
-                                            <%=product.dateAdded.toDateString()%>
-                                        </span>
-                                        <span>made in usa</span>
-                                        <span>$<%=product.price%></span>
+                                        <span class='quantity'>$<%=product.price%> x <%= product.quantity ? product.quantity : 1%></span>
                                     </div>
                                     <div class="order-cancel" title="remove order">
                                         <span class='remove'></span>
                                     </div>
                                 </div>
                             <% 
+                            //total += parseInt(product.price, 10)
+                            total += product.price
                         } 
                     }) 
                 }) 
             %>
         </div>
-        <div class="shpping">
-            <h3>shipping info</h3>
-            <h3>shipping info</h3>
-            <h3>shipping info</h3>
-            <h3>shipping info</h3>
+        <div class="shipping">
+            <div class="checkout">
+                <div class="total">
+                    <span>totla :</span>
+                    <span class='total-price'>$<%=total.toFixed(2)%></span>
+                </div>
+                <button class='btn'>checkout</button>
+            </div>
+            <div class="ship-info">
+                <div class='ship-info-content'>
+                    <div>Items are shipped within 24 hours by tracked DHL courier services</div>
+                    <div class='accept-holder'>
+                        <span>we accept :</span>
+                        <div class="img-icon-holder">
+                            <img src="images/masterCard.png" alt="mastercard">
+                        </div>
+                        <div class="img-icon-holder">
+                            <img src="images/visa.png" alt="visa">
+                        </div>
+                    </div>
+                </div>
+                <div class='ship-dealing'>
+                    <div class='deal-info'>
+                        <div class="img-icon-holder">
+                            <img src="images/shippingIcon.png" alt="cart">
+                        </div>
+                        <p>Free Shipping Worldwide</p>
+                    </div>
+                    <div class='deal-info'>
+                        <div class="img-icon-holder">
+                            <img src="images/returns.png" alt="cart">
+                        </div>
+                        <p>Free Returns Worldwide</p>
+                    </div>
+                    <div class='deal-info'>
+                        <div class="img-icon-holder">
+                            <img src="images/cart.png" alt="cart">
+                        </div>
+                        <p>100% Safe & Secure</p>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
