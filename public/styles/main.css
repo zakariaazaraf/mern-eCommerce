@@ -972,19 +972,120 @@ section.masterpiece .content .description {
   width: 40px;
   height: max-content;
 }
+
 /* FOOTER STAYLE */
 footer {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+footer .nav-footer {
+  background-color: #111212;
+  color: #bbb;
+  padding: 3rem 0;
+  letter-spacing: normal;
+  text-transform: capitalize;
+}
+
+footer .nav-footer .divider {
+  background-color: #000;
+  height: 1.6px;
+  margin: 1.5rem 0;
+}
+
+footer .nav-footer .shipping-deal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer .nav-footer .shipping-deal .ship-box {
+  display: flex;
+  align-items: center;
+}
+
+footer .nav-footer .shipping-deal .payement {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer .nav-footer .shipping-deal .payement > * {
+  margin: 0 0.7rem;
+}
+
+footer .nav-footer .shipping-deal .ship-box div {
+  display: flex;
+  align-items: center;
+}
+
+footer .nav-footer .shipping-deal .img-holder {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.4rem;
+}
+
+footer .nav-footer .shipping-deal .img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+footer .nav-footer .footer-links {
+  display: flex;
+  justify-content: space-between;
+  color: #bbb;
+  padding: 3rem 0;
+}
+
+footer .nav-footer .footer-links .links {
+  display: flex;
+}
+
+footer .nav-footer .footer-links .links .links-box {
+  display: flex;
+  flex-direction: column;
+}
+
+footer .nav-footer .footer-links .links .links-box a {
+  color: #eee;
+  text-decoration: none;
+  padding: 1rem 0;
+  transition: color 0.5s ease;
+}
+
+footer .nav-footer .footer-links .links .links-box a:hover {
+  color: #aaa;
+}
+
+footer .nav-footer .footer-links .links .links-box:not(:last-child) {
+  margin-right: 2rem;
+}
+
+footer .nav-footer .footer-links .news-letter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+footer .nav-footer .footer-links .news-letter .input {
+  display: flex;
+  flex-direction: column;
+}
+
+footer .bottom-footer {
   background-color: black;
   color: #fff;
   padding: 2rem 0;
-  letter-spacing: normal;
 }
 
-footer .container {
+footer .bottom-footer .container {
   display: flex;
   justify-content: space-between;
+  letter-spacing: normal;
 }
 
 @keyframes fade {
