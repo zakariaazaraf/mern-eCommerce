@@ -31,6 +31,7 @@ const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
 const categoriesRouter = require('./routes/categories')
 const shoppingCardRouter = require('./routes/shoppingCard')
+const aboutRouter = require('./routes/about')
 
 // Setup Database
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -45,6 +46,7 @@ app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/categories', categoriesRouter)
 app.use('/shopping', shoppingCardRouter)
+app.use('/about', aboutRouter)
 app.use('*', (req, res) => res.send('There\'s No Route'))
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`))

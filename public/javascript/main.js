@@ -92,6 +92,11 @@ document.addEventListener('scroll', (e)=>{
             svgCart.style.fill = "#FFF"
            document.documentElement.style.setProperty("--pseudo-background", "#FFF");
         }
+
+        if(window.location.pathname == '/about'){
+            nav.style.background = "linear-gradient(0deg,transparent,#000)"
+            console.log('It Works')
+        }
     }
 
     if(proverbSection){
@@ -161,6 +166,10 @@ if(cardBtn){
 /* ORDERS PAGE */
 const ordersContainer = document.querySelector('.orders-container')
 headerColors(ordersContainer)
+
+/* ABOUT PAGE JS CODE */
+if(window.location.pathname == '/about') nav.style.background = "linear-gradient(0deg,transparent,#000)"
+
 
 
 

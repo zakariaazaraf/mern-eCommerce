@@ -973,6 +973,35 @@ section.masterpiece .content .description {
   height: max-content;
 }
 
+/* ABOUT PAGE */
+.about-container {
+  height: 100vh;
+  padding-top: var(--header-max-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f7;
+  box-shadow: 0 4rem 2rem rgba(128, 128, 128, 0.61);
+}
+
+.about-container .container > * {
+  font-size: 1.2rem;
+  padding: 0 12rem;
+  text-align: center;
+}
+
+.about-container .container h2 {
+  font-size: 4rem;
+  font-weight: lighter;
+  padding: 0 4rem;
+  padding-bottom: 2.5rem;
+  text-align: center;
+}
+
+.about-container .container p {
+  line-height: 2;
+}
+
 /* FOOTER STAYLE */
 footer {
   display: flex;
@@ -1071,6 +1100,24 @@ footer .nav-footer .footer-links .news-letter {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+footer .nav-footer .footer-links .news-letter .community {
+  display: flex;
+}
+
+footer .nav-footer .footer-links .news-letter .community > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+footer .nav-footer .footer-links .news-letter .community a svg {
+  width: 20px;
+  fill: #fff;
+  transition: all 0.5s ease;
+}
+
+footer .nav-footer .footer-links .news-letter .community a:hover > svg {
+  fill: rgb(177, 177, 177);
 }
 
 footer .nav-footer .footer-links .news-letter .input {
