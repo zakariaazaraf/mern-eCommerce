@@ -982,6 +982,8 @@ footer {
 }
 
 footer .nav-footer {
+  display: flex;
+  justify-content: center;
   background-color: #111212;
   color: #bbb;
   padding: 3rem 0;
@@ -1062,7 +1064,7 @@ footer .nav-footer .footer-links .links .links-box a:hover {
 }
 
 footer .nav-footer .footer-links .links .links-box:not(:last-child) {
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 
 footer .nav-footer .footer-links .news-letter {
@@ -1076,7 +1078,56 @@ footer .nav-footer .footer-links .news-letter .input {
   flex-direction: column;
 }
 
+footer .nav-footer .footer-links .news-letter .input label {
+  padding-bottom: 0.8rem;
+  font-size: 0.9rem;
+  letter-spacing: normal;
+}
+
+footer .nav-footer .footer-links .news-letter .input div {
+  position: relative;
+  width: 360px;
+}
+
+footer .nav-footer .footer-links .news-letter .input input[type="email"] {
+  width: 100%;
+  font-size: 1rem;
+  text-transform: capitalize;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid gray;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  outline: none;
+  color: #fff;
+}
+
+footer .nav-footer .footer-links .news-letter .input input[type="submit"] {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: color 0.5s esae;
+  text-transform: capitalize;
+}
+
+footer
+  .nav-footer
+  .footer-links
+  .news-letter
+  .input
+  input[type="submit"]:hover {
+  color: rgb(182, 182, 182);
+}
+
 footer .bottom-footer {
+  display: flex;
+  justify-content: center;
   background-color: black;
   color: #fff;
   padding: 2rem 0;
