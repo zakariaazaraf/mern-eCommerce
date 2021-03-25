@@ -1003,6 +1003,51 @@ section.masterpiece .content .description {
   line-height: 2;
 }
 
+/* MADE TO FADE PAGE */
+.made-to-fade {
+  display: flex;
+  justify-content: center;
+  background: url("../images/made.jpg");
+  position: relative;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  min-height: 550px;
+}
+
+.made-to-fade::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.55);
+}
+
+.made-to-fade .container .content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 50%;
+  color: #fff;
+  padding-bottom: 4rem;
+  z-index: 11;
+}
+
+.made-to-fade .container .content .title {
+  padding: 1rem;
+}
+
+.made-to-fade .container .content h2 {
+  font-size: 4.7rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: normal;
+}
+
 /* FOOTER STAYLE */
 footer {
   display: flex;
