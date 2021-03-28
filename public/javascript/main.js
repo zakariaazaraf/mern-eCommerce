@@ -93,9 +93,9 @@ document.addEventListener('scroll', (e)=>{
            document.documentElement.style.setProperty("--pseudo-background", "#FFF");
         }
 
-        if(window.location.pathname == '/about' || window.location.pathname == '/shopping'){
+        if(window.location.pathname == '/about' || window.location.pathname == '/shopping' || window.location.pathname == '/shop'){
             nav.style.background = "linear-gradient(0deg,transparent,#000)"
-            console.log('It Works')
+            
         }
     }
 
@@ -168,7 +168,9 @@ const ordersContainer = document.querySelector('.orders-container')
 headerColors(ordersContainer)
 
 /* ABOUT PAGE JS CODE */
-if(window.location.pathname == '/about' || window.location.pathname == '/shopping') nav.style.background = "linear-gradient(0deg,transparent,#000)"
+if(window.location.pathname == '/about' || window.location.pathname == '/shopping' || window.location.pathname == '/shop') {
+    nav.style.background = "linear-gradient(0deg,transparent,#000)"
+}
 
 
 

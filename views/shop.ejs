@@ -1,16 +1,24 @@
 <main>
     <div class="shop-container">
-        <div class="container">
+        
             <div class="categories">
-                <ul>
-                    <% 
-                        categories.forEach(categorie =>{
-                            %>
-                                <li><a href="#"><%=categorie.name%></a></li>
-                            <%
-                        })
-                    %>
-                </ul>
+                <div class="container">
+                    <p class='shop-by'><span>shop by</span>category</p>
+                    <ul class='categories-links'>
+                        <% 
+                            categories.forEach(categorie =>{
+                                %>
+                                    <li class="category-box">
+                                        <a href="#">
+                                            <span><%=categorie.name%></span>
+                                            <img src="/images/shortSkirts/2e5d86088477e647e3d5e4882774f493.jpg" alt="short skirt">
+                                        </a>
+                                    </li>
+                                <%
+                            })
+                        %>
+                    </ul>
+                </div>
             </div>
             <h1>shop page</h1>
             <section class='product d-flex'>
@@ -38,6 +46,6 @@
                     <% }) } %>
 
             </section>
-        </div>
+        
     </div>
 </main>
