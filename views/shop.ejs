@@ -1,7 +1,43 @@
 <main>
     <div class="shop-container">
         <div class="container">
+            <div class="categories">
+                <ul>
+                    <% 
+                        categories.forEach(categorie =>{
+                            %>
+                                <li><a href="#"><%=categorie.name%></a></li>
+                            <%
+                        })
+                    %>
+                </ul>
+            </div>
             <h1>shop page</h1>
+            <section class='product d-flex'>
+                <% if (products.length> 0){products.forEach((product, index)=>{
+                    %>
+                    <% categories.forEach(categorie=>{
+                        if(categorie.id == product.categorieId) {
+                        %>
+                            
+                            <article class="<%=categorie.name && categorie.name%>">
+                        
+                        <% } }) %>
+                        <a href="/products/<%=product.id%>">
+                            <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
+                            <div class="content">
+                                <h3 class="title">
+                                    <%=product.name%>
+                                </h3>
+                                <span class="price">$<%=product.price%></span>
+                                <span class="shop-link">shop now</span>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <% }) } %>
+
+            </section>
         </div>
     </div>
 </main>
