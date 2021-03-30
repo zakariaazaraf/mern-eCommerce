@@ -1,33 +1,123 @@
 <main>
     <section class='hero'>
         <div class="slides">
-            <% if (products.length > 0){products.forEach((product, index)=>{ %>
-                <div class="slide <%=index === 0 ? 'active' : ''%>" data-slide="<%= index + 1 %>">
-                    <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
-                    <div class="content-container">
-                        <div class="container">
-                            <div class="content">
-                                <div class="circles">
-                                    <% products.forEach((circle, circleIndex)=>{
-                                        %>
-                                        <span class="circle <%= circleIndex === 0 ? 'active' : ''%>"
-                                            data-dot='<%= circleIndex + 1 %>'></span>
-                                        <% }) %>
-                                </div>
-                                <h2 class='title'>
-                                    <%= product.name %>
-                                </h2>
+            
+            <div class="slide active" data-slide="1">
+                <img src="/images/viewpropertiesbytype-contentsection-components-2-insertions-0-background-style.jpg" 
+                    alt="New York Fashion Week">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                    <span class="circle active" data-dot='1'></span>
+                                    <span class="circle" data-dot='2'></span>
+                                    <span class="circle" data-dot='3'></span>
+                                    <span class="circle" data-dot='4'></span>
+                                    <span class="circle" data-dot='5'></span>
                             </div>
-                            <div class="shop-description">
-                                <p class="description">
-                                    <%= product.description%>
-                                </p>
-                                <a href="/products/<%=product.id%>" class='btn'>shop now</a>
+                            <h2 class='title'>
+                                New York Fashion Week
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <a href="/shop" class="btn">shop now</a>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+            <div class="slide" data-slide="2">
+                <img src="/images/skirt.png" 
+                    alt="New York Fashion Week">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                    <span class="circle active" data-dot='1'></span>
+                                    <span class="circle" data-dot='2'></span>
+                                    <span class="circle" data-dot='3'></span>
+                                    <span class="circle" data-dot='4'></span>
+                                    <span class="circle" data-dot='5'></span>
                             </div>
+                            <h2 class='title'>
+                                New York Fashion Week
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <a href="/shop" class="btn">shop now</a>
                         </div>
                     </div>
                 </div>
-                <% })}%>
+            </div>
+            <div class="slide" data-slide="3">
+                <img src="/images/menfashion.jpg" 
+                    alt="New York Fashion Week">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                    <span class="circle active" data-dot='1'></span>
+                                    <span class="circle" data-dot='2'></span>
+                                    <span class="circle" data-dot='3'></span>
+                                    <span class="circle" data-dot='4'></span>
+                                    <span class="circle" data-dot='5'></span>
+                            </div>
+                            <h2 class='title'>
+                                New York Fashion Week
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <a href="/shop" class="btn">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" data-slide="4">
+                <img src="/images/Boyfriend-Jeans-min-853x1024.jpg" 
+                    alt="New York Fashion Week">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                    <span class="circle active" data-dot='1'></span>
+                                    <span class="circle" data-dot='2'></span>
+                                    <span class="circle" data-dot='3'></span>
+                                    <span class="circle" data-dot='4'></span>
+                                    <span class="circle" data-dot='5'></span>
+                            </div>
+                            <h2 class='title'>
+                                New York Fashion Week
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <a href="/shop" class="btn">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" data-slide="5">
+                <img src="/images/dashing-formal-outfit-ideas-for-stylish-men-50-819x1024.jpg" 
+                    alt="New York Fashion Week">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                    <span class="circle active" data-dot='1'></span>
+                                    <span class="circle" data-dot='2'></span>
+                                    <span class="circle" data-dot='3'></span>
+                                    <span class="circle" data-dot='4'></span>
+                                    <span class="circle" data-dot='5'></span>
+                            </div>
+                            <h2 class='title'>
+                                New York Fashion Week
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <a href="/shop" class="btn">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
         </div>
     </section>
     <section class='proverb'>
@@ -60,18 +150,7 @@
             })
         }
         %>
-        <article>
-            <a href="/products/">
-                <img src="/images/menfashion.jpg" alt="">
-                <div class="content">
-                    <h3 class="title">
-                        men Fashion
-                    </h3>
-                    <span class="price">$498</span>
-                    <span class="shop-link">shop now</span>
-                </div>
-            </a>
-        </article>
+        
     </section>
     <section class='masterpiece'>
         <div class="container">
