@@ -3,7 +3,7 @@
         
             <div class="categories">
                 <div class="container">
-                    <p class='shop-by'><span>shop by</span>category</p>
+                    <p class='shop-by'><span>shop by</span> category</p>
                     <ul class='categories-links'>
                         <% 
                             categories.forEach(categorie =>{
@@ -28,22 +28,26 @@
                         if(categorie.id == product.categorieId) {
                         %>
                             
-                            <article class="<%=categorie.name && categorie.name%>">
+                        <article class="<%=categorie.name && categorie.name%>">
                         
                         <% } }) %>
                         <a href="/products/<%=product.id%>">
                             <img src="/images/<%=product.coverImage%>" alt="<%=product.name%>">
                             <div class="content">
                                 <h3 class="title">
-                                    <%=product.name%>
+                                    
                                 </h3>
                                 <span class="price">$<%=product.price%></span>
                                 <span class="shop-link">shop now</span>
                             </div>
                         </a>
+                        <p style="max-width: 200px; color: #000">
+                            <%=product.name.length > 25 ? product.name.substr(0,25) + ' ...' : product.name %>
+                        </p>
                     </article>
                     
-                    <% }) } %>
+                    <% }) } 
+                %>
 
             </section>
         

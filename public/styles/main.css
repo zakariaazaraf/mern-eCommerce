@@ -778,6 +778,7 @@ section.masterpiece .content .description {
 
 .orders-container .container .card-orders .card-order {
   display: flex;
+  justify-content: space-between;
   border: 0.6px solid rgb(220, 220, 220);
   border-top: none;
 }
@@ -794,7 +795,6 @@ section.masterpiece .content .description {
   height: 140px;
 }
 .orders-container .container .card-orders .card-order .order-info {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   color: rgb(60, 60, 60);
@@ -810,14 +810,14 @@ section.masterpiece .content .description {
 }
 
 .orders-container .container .card-orders .card-order .order-cancel {
-  width: 30px;
-  height: 30px;
   padding: 0;
   cursor: pointer;
 }
 
 .orders-container .container .card-orders .card-order .order-cancel .remove {
   position: relative;
+  display: block;
+  width: 20px;
 }
 
 .orders-container
@@ -834,10 +834,10 @@ section.masterpiece .content .description {
   .remove::before {
   position: absolute;
   content: "";
-  right: -24px;
-  top: 30px;
-  width: 16px;
-  height: 1.4px;
+  top: 15px;
+  right: 2px;
+  width: 100%;
+  height: 1.2px;
   background-color: gray;
   transform: rotate(45deg);
 }
@@ -1128,6 +1128,10 @@ ul {
   position: absolute;
   text-align: center;
   z-index: 99;
+}
+
+.shop-container article {
+  max-height: auto !important;
 }
 
 /* FOOTER STAYLE */
