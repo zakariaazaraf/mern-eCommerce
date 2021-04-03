@@ -59,6 +59,7 @@ if(circlesContainer != null){ // ERROR CAUSED BY THE SELECTOR ON DEFERENT PAGES
 const nav = document.querySelector('header nav')
 const svgLogo = document.querySelector('.svg-logo')
 const svgCart = document.querySelector('.svg-cart')
+const svgMobileLogo = document.querySelector('.mobile-logo svg')
 
 const proverbSection = document.querySelector('.proverb')
 const productSection = document.querySelector('.product')
@@ -78,6 +79,8 @@ document.addEventListener('scroll', (e)=>{
                 )
             svgLogo.style.fill = "#000"
             svgCart.style.fill = "#000"
+            svgMobileLogo.style.fill = "#000"
+
            document.documentElement.style.setProperty("--pseudo-background", "#000");
         }
     }else{  
@@ -90,6 +93,7 @@ document.addEventListener('scroll', (e)=>{
             )
             svgLogo.style.fill = "#FFF"
             svgCart.style.fill = "#FFF"
+            svgMobileLogo.style.fill = "#FFF"
            document.documentElement.style.setProperty("--pseudo-background", "#FFF");
         }
 

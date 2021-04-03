@@ -33,7 +33,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   max-height: var(--header-max-height);
   background: transparent;
   z-index: 100;
@@ -378,6 +378,46 @@ header nav .menu-overly .menu-right .news-letter-form button:hover {
   background-color: rgba(255, 255, 255, 0.83);
 }
 
+.mobile-logo {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  main .hero .slide .content-container .content .title {
+    width: 100% !important;
+    font-size: 4.5rem !important;
+  }
+  .mobile-logo {
+    display: block;
+  }
+  .mobile-logo svg {
+    width: 15px;
+    height: 15px;
+    fill: #fff;
+  }
+
+  .mobile-nav-icon {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav a.logo,
+  header nav .container > ul {
+    display: none !important;
+  }
+
+  .proverb h2 {
+    text-align: center;
+    font-size: 2.9rem;
+    padding: 4rem 0 0 0;
+  }
+
+  section.masterpiece .content {
+    width: 100% !important;
+  }
+}
+
 main .hero {
   max-width: 100vw;
   height: 100vh;
@@ -625,6 +665,7 @@ p.title {
   text-transform: uppercase;
   padding-left: 3rem !important;
   position: relative;
+  margin-top: 3rem;
 }
 
 p.title::after {
@@ -638,7 +679,7 @@ p.title::after {
 }
 
 section.masterpiece .content {
-  padding: 5rem 0;
+  padding: 3rem 0;
   width: 50%;
   font-size: 1.2rem;
 }
@@ -1258,6 +1299,7 @@ footer .nav-footer .footer-links {
   justify-content: space-between;
   color: #bbb;
   padding: 3rem 0;
+  flex-wrap: wrap;
 }
 
 footer .nav-footer .footer-links .links {
