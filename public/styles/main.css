@@ -382,6 +382,9 @@ header nav .menu-overly .menu-right .news-letter-form button:hover {
   display: none;
 }
 
+/****************************************************/
+/*** MEDIA QUERY FOR HOME PAGE, HEADER AND FOOTER ***/
+/****************************************************/
 @media (max-width: 600px) {
   main .hero .slide .content-container .content .title {
     width: 100% !important;
@@ -415,6 +418,47 @@ header nav .menu-overly .menu-right .news-letter-form button:hover {
 
   section.masterpiece .content {
     width: 100% !important;
+  }
+  /* Footer */
+  footer .nav-footer .shipping-deal {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  footer .nav-footer .shipping-deal > * {
+    padding: 0.8rem;
+  }
+
+  footer .nav-footer .footer-links {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  footer .nav-footer .footer-links > * {
+    padding: 1rem 0;
+  }
+
+  footer .nav-footer .footer-links .links {
+    justify-content: flex-start !important;
+  }
+
+  footer .nav-footer .footer-links .links .links-box {
+    flex-basis: 50% !important;
+  }
+
+  footer .nav-footer .footer-links .news-letter div {
+    padding: 0.5rem 0;
+  }
+
+  footer .nav-footer .footer-links .news-letter .input label {
+    padding: 0 !important;
+  }
+
+  footer .bottom-footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  footer .bottom-footer .container > * {
+    padding: 0.7rem 0;
   }
 }
 
@@ -1227,6 +1271,7 @@ ul {
 .product-title {
   max-width: 200px;
   color: #000;
+  padding-top: 0.5rem;
   letter-spacing: normal;
   font-weight: bold;
 }
@@ -1271,10 +1316,17 @@ footer .nav-footer .shipping-deal .payement {
   flex-basis: 100%;
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 footer .nav-footer .shipping-deal .payement > * {
   margin: 0 0.7rem;
+}
+
+footer .nav-footer .shipping-deal .payement .img-holder {
+  width: max-content;
+  max-width: 120px;
 }
 
 footer .nav-footer .shipping-deal .ship-box div {
@@ -1283,8 +1335,8 @@ footer .nav-footer .shipping-deal .ship-box div {
 }
 
 footer .nav-footer .shipping-deal .img-holder {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 0.4rem;
 }
 
@@ -1299,16 +1351,16 @@ footer .nav-footer .footer-links {
   justify-content: space-between;
   color: #bbb;
   padding: 3rem 0;
-  flex-wrap: wrap;
 }
 
 footer .nav-footer .footer-links .links {
   display: flex;
+  flex-wrap: wrap;
 }
 
 footer .nav-footer .footer-links .links .links-box {
-  display: flex;
-  flex-direction: column;
+  flex-basis: 30%;
+  padding: 1rem;
 }
 
 footer .nav-footer .footer-links .links .links-box a {
@@ -1322,14 +1374,11 @@ footer .nav-footer .footer-links .links .links-box a:hover {
   color: #aaa;
 }
 
-footer .nav-footer .footer-links .links .links-box:not(:last-child) {
-  margin-right: 3rem;
-}
-
 footer .nav-footer .footer-links .news-letter {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-left: 1rem;
 }
 
 footer .nav-footer .footer-links .news-letter .community {
@@ -1369,13 +1418,21 @@ footer .nav-footer .footer-links .news-letter .input div {
 footer .nav-footer .footer-links .news-letter .input input[type="email"] {
   width: 100%;
   font-size: 1rem;
-  text-transform: capitalize;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid gray;
   padding: 0.5rem 0.5rem 0.5rem 0;
   outline: none;
   color: #fff;
+}
+
+footer
+  .nav-footer
+  .footer-links
+  .news-letter
+  .input
+  input[type="email"]::placeholder {
+  color: #686868;
 }
 
 footer .nav-footer .footer-links .news-letter .input input[type="submit"] {
