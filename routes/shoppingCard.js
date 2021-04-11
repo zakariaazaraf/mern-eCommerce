@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Product = require('./../models/product')
 
-router.get('/', async (req, res)=>{
+const isAuth = require('./../middleware/is-auth')
+
+router.get('/', isAuth, async (req, res)=>{
     
     let orders = req.cookies.orders != null ? req.cookies.orders : {}
     if(Object.keys(orders).length > 0){

@@ -5,20 +5,55 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/user')
 
-router.get('login', async (req, res)=>{
-    const {email, passwaord} = req.body
+router.post('/login', async (req, res)=>{
+    const {email, password} = req.body
+
+    try{
+
+        const user = await User.findOne({ email })
+    
+        if(!user){
+            return res.status(400).json({ message: 'Invaild Credential !' });
+        }
+    
+        const isMatch = await bcrypt.compare(password, user.password)
+    
+        if(!isMatch){
+            return res.status(400).json({ message: 'Invaild Credential !' });
+        }
+    
+        const payload = {
+            user: {
+                _id: user.id
+            }
+        }
+    
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1hr'});
+    
+        res.status(200).json({
+            message: 'Loged In Successfully',
+            token
+        });
+
+    }catch(e){
+
+        console.log(`Error : ${e}`);
+        res.status(500).json({
+            message: `Server Error ${e}`
+        });
+    }
 
     
 })
 
-router.get('register', async (req, res)=>{
+router.post('/register', async (req, res)=>{
     const {firstname, lastname, password, email} = req.body
 
     try{
 
         const hashedPassword = await bcrypt.hash(password, 12)
          
-        const user = await User.findOne({ email });
+        let user = await User.findOne({ email });
         if(user){
             res.status(400).json({
                 message: 'Email Already Exists'
@@ -30,10 +65,11 @@ router.get('register', async (req, res)=>{
             firstName: firstname,
             lastName: lastname,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            dateJoined: Date.now()
         })
 
-        const newUser = await newUser.save()
+        const newUser = await user.save()
         const payload = {
             user: {
                 _id: newUser.id
