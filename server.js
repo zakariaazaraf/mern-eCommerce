@@ -35,6 +35,7 @@ const aboutRouter = require("./routes/about");
 const madeToFadeRouter = require("./routes/madeToFade");
 const communityRouter = require("./routes/community");
 const shopRouter = require("./routes/shop");
+const authRouter = require('./routes/auth')
 
 // Setup Database
 mongoose.connect(process.env.DATABASE_URL, {
@@ -57,6 +58,7 @@ app.use("/about", aboutRouter);
 app.use("/made-to-fade", madeToFadeRouter);
 app.use("/community", communityRouter);
 app.use("/shop", shopRouter);
+app.use('/auth', authRouter)
 app.use("*", (req, res) => res.send("There's No Route"));
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`));
