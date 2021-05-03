@@ -144,9 +144,11 @@ header nav {
   padding: 2rem 0rem !important;
   color: #fff;
   opacity: 1;
-  transform: translateX(0);
-  animation-name: fade-reverse;
-  animation-duration: 2s;
+  /*  transform: translateX(0);
+  animation-name: fade-reverse; */
+  transform: translateY(0);
+  animation-name: fade-horizon;
+  animation-duration: 1.2s;
 }
 
 header nav .container {
@@ -380,86 +382,6 @@ header nav .menu-overly .menu-right .news-letter-form button:hover {
 
 .mobile-logo {
   display: none;
-}
-
-/****************************************************/
-/*** MEDIA QUERY FOR HOME PAGE, HEADER AND FOOTER ***/
-/****************************************************/
-@media (max-width: 600px) {
-  main .hero .slide .content-container .content .title {
-    width: 100% !important;
-    font-size: 4.5rem !important;
-  }
-  .mobile-logo {
-    display: block;
-  }
-  .mobile-logo svg {
-    width: 15px;
-    height: 15px;
-    fill: #fff;
-  }
-
-  .mobile-nav-icon {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  header nav a.logo,
-  header nav .container > ul {
-    display: none !important;
-  }
-
-  .proverb h2 {
-    text-align: center;
-    font-size: 2.9rem;
-    padding: 4rem 0 0 0;
-  }
-
-  section.masterpiece .content {
-    width: 100% !important;
-  }
-  /* Footer */
-  footer .nav-footer .shipping-deal {
-    flex-direction: column;
-    align-items: flex-start !important;
-  }
-
-  footer .nav-footer .shipping-deal > * {
-    padding: 0.8rem;
-  }
-
-  footer .nav-footer .footer-links {
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-  footer .nav-footer .footer-links > * {
-    padding: 1rem 0;
-  }
-
-  footer .nav-footer .footer-links .links {
-    justify-content: flex-start !important;
-  }
-
-  footer .nav-footer .footer-links .links .links-box {
-    flex-basis: 50% !important;
-  }
-
-  footer .nav-footer .footer-links .news-letter div {
-    padding: 0.5rem 0;
-  }
-
-  footer .nav-footer .footer-links .news-letter .input label {
-    padding: 0 !important;
-  }
-
-  footer .bottom-footer .container {
-    flex-direction: column;
-    text-align: center;
-  }
-  footer .bottom-footer .container > * {
-    padding: 0.7rem 0;
-  }
 }
 
 main .hero {
@@ -1081,8 +1003,9 @@ section.masterpiece .content .description {
 
 /* ABOUT PAGE */
 .about-container {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: var(--header-max-height);
+  padding-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1473,6 +1396,7 @@ footer .bottom-footer .container {
   letter-spacing: normal;
 }
 
+/* Animation fading vertically */
 @keyframes fade {
   from {
     opacity: 0;
@@ -1492,5 +1416,130 @@ footer .bottom-footer .container {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Animation Fading Horizontally */
+
+@keyframes fade-horizon {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  70% {
+    opacity: 0.7;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/****************************************************/
+/*** MEDIA QUERY FOR HOME PAGE, HEADER AND FOOTER ***/
+/****************************************************/
+
+@media (max-width: 900px) {
+  main .hero .slide .content-container .content .title {
+    width: 100% !important;
+    font-size: 4.5rem !important;
+  }
+  .mobile-logo {
+    display: block;
+  }
+  .mobile-logo svg {
+    width: 15px;
+    height: 15px;
+    fill: #fff;
+  }
+
+  .mobile-nav-icon {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav a.logo,
+  header nav .container > ul {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Made To Fade Page */
+  .made-to-fade .container .content {
+    width: auto;
+    padding-bottom: 2.6rem;
+  }
+
+  /* About Page */
+  .about-container .container {
+    padding: 0;
+  }
+  .about-container .container h2 {
+    font-size: 3.7rem;
+    padding: 1rem;
+  }
+
+  .about-container .container > * {
+    padding: 1rem;
+  }
+
+  .proverb h2 {
+    text-align: center;
+    font-size: 2.9rem;
+    padding: 4rem 0 0 0;
+  }
+
+  section.masterpiece .content {
+    width: 100% !important;
+  }
+  /* Footer */
+  footer .nav-footer .shipping-deal {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  footer .nav-footer .shipping-deal > * {
+    padding: 0.8rem;
+  }
+
+  footer .nav-footer .footer-links {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  footer .nav-footer .footer-links > * {
+    padding: 1rem 0;
+  }
+
+  footer .nav-footer .footer-links .links {
+    justify-content: flex-start !important;
+  }
+
+  footer .nav-footer .footer-links .links .links-box {
+    flex-basis: 50% !important;
+  }
+
+  footer .nav-footer .footer-links .news-letter div {
+    padding: 0.5rem 0;
+  }
+
+  footer .nav-footer .footer-links .news-letter .input div {
+    width: auto;
+  }
+
+  footer .nav-footer .footer-links .news-letter .input label {
+    padding: 0 !important;
+  }
+
+  footer .bottom-footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  footer .bottom-footer .container > * {
+    padding: 0.7rem 0;
   }
 }
