@@ -4,9 +4,10 @@ const Product = require('./../models/product')
 
 const isAuth = require('./../middleware/is-auth')
 
-router.get('/', isAuth, async (req, res)=>{
+router.get('/'/* , isAuth */, async (req, res)=>{
     
     let orders = req.cookies.orders != null ? req.cookies.orders : {}
+
     if(Object.keys(orders).length > 0){
         try{
             const products = await Product.find({})
