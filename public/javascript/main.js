@@ -1,4 +1,4 @@
-
+const pathname = window.location.pathname; // Path name 
 const slides = document.querySelectorAll('.slide')
 let circlesContainer = document.querySelector('.slide.active .circles')
 let circles 
@@ -69,40 +69,32 @@ const proverbTitle = document.querySelector('.proverb h2')
 
 
 document.addEventListener('scroll', (e)=>{
+
     if(window.pageYOffset > 140){
-        if(productDetails){
-            nav.setAttribute('style', 'padding: .6rem 0 !important; transition: padding .3s ease')
-            document.documentElement.style.setProperty("--header-max-height", "auto");
-        }else{
-            nav.setAttribute('style',
-                'background: #fff; color: #000; padding: .6rem 0 !important; transition: padding .3s ease'
-                )
-            svgLogo.style.fill = "#000"
-            svgCart.style.fill = "#000"
-            svgMobileLogo.style.fill = "#000"
 
-           document.documentElement.style.setProperty("--pseudo-background", "#000");
-        }
+
+        setupNavigation(0.6);
+
+        svgLogo.style.fill = "#000"
+        svgCart.style.fill = "#000"
+        svgMobileLogo.style.fill = "#000"
+
+       document.documentElement.style.setProperty("--pseudo-background", "#000");
+       nav.style.color = "#000";
+       nav.style.backgroundColor = "#FFF";
+
     }else{  
-        if(productDetails){
-            nav.setAttribute('style', 'padding: 2rem 0rem !important; transition: padding .3s ease')
-            document.documentElement.style.setProperty("--header-max-height", "140px");
-        }else{
-            nav.setAttribute('style',
-                'background: transtarent; color: #FFF; padding: 2rem 0rem !important; transition: padding .3s ease'
-            )
-            svgLogo.style.fill = "#FFF"
-            svgCart.style.fill = "#FFF"
-            svgMobileLogo.style.fill = "#FFF"
-           document.documentElement.style.setProperty("--pseudo-background", "#FFF");
-        }
-
-        if(window.location.pathname == '/about' || window.location.pathname == '/shopping' || window.location.pathname == '/shop'){
-            nav.style.background = "linear-gradient(0deg,transparent,#000)"
-            
-        }
+        
+        
+        setupNavigation(2);
+        svgLogo.style.fill = "#FFF"
+        svgCart.style.fill = "#FFF"
+        svgMobileLogo.style.fill = "#FFF"
+        document.documentElement.style.setProperty("--pseudo-background", "#FFF");
+        
     }
 
+    // Animate Prover section while you get the section point
     if(proverbSection){
 
         if(proverbSection.offsetTop - 180 < window.pageYOffset){
@@ -114,20 +106,10 @@ document.addEventListener('scroll', (e)=>{
             proverbTitle.classList.remove('active')
         }
     }
+
 })
     
-// Verify Header Colors Function
-headerColors = (section)=>{
-    if(section != null){
-    document.querySelector('header').style.backgroundColor = '#000'
-    document.querySelector('header').style.color = '#111'
-}
-}
 
-/* PRODUCT DETAILS */
-const productDetails = document.querySelector('.product-details')
-
-headerColors(productDetails)
 
 
 /* Overly Menu */
@@ -167,17 +149,53 @@ if(cardBtn){
     })
 } 
 
-/* ORDERS PAGE */
-const ordersContainer = document.querySelector('.orders-container')
-headerColors(ordersContainer)
 
-/* ABOUT PAGE JS CODE */
-if(window.location.pathname == '/about' || window.location.pathname == '/shopping' || window.location.pathname == '/shop') {
-    nav.style.background = "linear-gradient(0deg,transparent,#000)"
+
+
+const path = window.location.pathname.split('/')[1];
+
+
+const setupNavigation = (padding)=>{
+
+    switch(path){
+    
+        case 'shop': 
+            nav.setAttribute(
+                'style',
+                `background-color: #000;padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+            );
+    
+        break;
+    
+        case 'shopping': 
+            nav.setAttribute(
+                'style',
+                `background: linear-gradient(0deg,transparent,#000);padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+            );
+        break;
+    
+        case 'about': 
+            nav.setAttribute(
+                'style',
+                `background: linear-gradient(0deg,transparent,#000);padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+            );
+    
+        break;
+    
+        case 'products': 
+            nav.setAttribute(
+                'style',
+                `backgroun-color: #000;padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+            );
+        break;
+    
+        default: 
+            nav.setAttribute(
+                'style',
+                `padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+            );
+    }
+
 }
 
-
-
-
-
-
+setupNavigation(2);

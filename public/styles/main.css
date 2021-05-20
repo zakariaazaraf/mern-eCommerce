@@ -124,6 +124,10 @@ a.simple {
   fill: rgb(172, 170, 170);
 }
 
+header svg:hover {
+  fill: rgb(172, 170, 170);
+}
+
 header > * {
   width: 100%;
 }
@@ -141,7 +145,7 @@ header h5 {
 header nav {
   display: flex;
   justify-content: center;
-  padding: 2rem 0rem !important;
+  padding: 2rem 0rem;
   color: #fff;
   opacity: 1;
   /*  transform: translateX(0);
@@ -169,6 +173,7 @@ header nav a {
   text-decoration: none;
   color: inherit;
   text-transform: uppercase;
+  font-family: -webkit-pictograph;
   font-size: 0.6rem;
   font-weight: bold;
   letter-spacing: 6px;
@@ -181,9 +186,21 @@ header nav .container > a:first-child {
 header nav .container div a:last-child {
   padding-right: 0;
 }
-header nav a:hover {
+
+/* header nav a:hover {
   color: rgb(172, 170, 170);
 }
+
+header nav a:hover svg {
+  fill: rgb(172, 170, 170);
+  transition: all 0.5s ease;
+}
+
+header nav a:hover::after,
+header nav a:hover::before {
+  background-color: rgb(172, 170, 170);
+  transition: all 0.5s ease;
+} */
 
 /* Menu Overly */
 header nav .menu-overly {
