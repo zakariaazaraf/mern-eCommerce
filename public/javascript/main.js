@@ -185,7 +185,7 @@ const setupNavigation = (padding)=>{
         case 'products': 
             nav.setAttribute(
                 'style',
-                `backgroun-color: #000;padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+                `background-color: #000;padding: ${padding}rem 0rem !important; transition: padding .3s ease`
             );
         break;
     
