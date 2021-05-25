@@ -70,28 +70,29 @@ const proverbTitle = document.querySelector('.proverb h2')
 
 document.addEventListener('scroll', (e)=>{
 
-    if(window.pageYOffset > 140){
-
-
-        setupNavigation(0.6);
-
-        svgLogo.style.fill = "#000"
-        svgCart.style.fill = "#000"
-        svgMobileLogo.style.fill = "#000"
-
-       document.documentElement.style.setProperty("--pseudo-background", "#000");
-       nav.style.color = "#000";
-       nav.style.backgroundColor = "#FFF";
-
-    }else{  
-        
-        
-        setupNavigation(2);
-        svgLogo.style.fill = "#FFF"
-        svgCart.style.fill = "#FFF"
-        svgMobileLogo.style.fill = "#FFF"
-        document.documentElement.style.setProperty("--pseudo-background", "#FFF");
-        
+    // Check If The Overly Menu Is Active, Then Execute This Piece Of Code    
+    if(!menuLeft.classList.contains('active')){
+        if(window.pageYOffset > 140){
+    
+            setupNavigation(0.75);
+    
+            svgLogo.style.fill = "#000"
+            svgCart.style.fill = "#000"
+            svgMobileLogo.style.fill = "#000"
+    
+           document.documentElement.style.setProperty("--pseudo-background", "#000");
+           nav.style.color = "#000";
+           nav.style.backgroundColor = "#FFF";
+    
+        }else{  
+                 
+            setupNavigation(2);
+            svgLogo.style.fill = "#FFF"
+            svgCart.style.fill = "#FFF"
+            svgMobileLogo.style.fill = "#FFF"
+            document.documentElement.style.setProperty("--pseudo-background", "#FFF");
+            
+        }
     }
 
     // Animate Prover section while you get the section point
@@ -156,7 +157,7 @@ const path = window.location.pathname.split('/')[1];
 
 
 const setupNavigation = (padding)=>{
-
+   
     switch(path){
     
         case 'shop': 
@@ -195,10 +196,13 @@ const setupNavigation = (padding)=>{
                 `padding: ${padding}rem 0rem !important; transition: padding .3s ease`
             );
     }
-
+    
 }
 
-setupNavigation(2);
+// Check If The Overly Menu Is Active
+if(!menuLeft.classList.contains('active')){
+    setupNavigation(2);
+}
 
 const cartBtnContent = document.querySelector('.cart .cart-content');
 

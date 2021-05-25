@@ -85,8 +85,8 @@ a.simple {
   position: absolute;
   top: 5.5px;
   left: -8px;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   fill: #fff;
   line-height: 1;
   transition: all 0.5s ease;
@@ -96,24 +96,24 @@ a.simple {
   width: 25px;
   height: 25px;
 }
-.menu::after {
-  content: "";
-  position: absolute;
-  left: -8px;
-  top: 15px;
-  height: 1.6px;
-  width: 15px;
-  background-color: var(--pseudo-background);
-}
 
+.menu::after,
 .menu::before {
   content: "";
   position: absolute;
+  height: 1.6px;
+  width: 16px;
+  background-color: var(--pseudo-background);
+  transition: all 0.5s ease;
+}
+.menu::after {
+  left: -8px;
+  top: 15px;
+}
+
+.menu::before {
   left: -8px;
   top: 10px;
-  height: 1.6px;
-  width: 15px;
-  background-color: var(--pseudo-background);
 }
 
 .btn:hover {
@@ -1459,6 +1459,37 @@ footer .bottom-footer .container {
 /*** MEDIA QUERY FOR HOME PAGE, HEADER AND FOOTER ***/
 /****************************************************/
 
+/* Largest Media Query, This For Menu Overly */
+@media (max-width: 1000px) {
+  header nav .menu-overly {
+    flex-direction: column;
+    flex-flow: column-reverse;
+  }
+
+  header nav .menu-overly .menu-left {
+    flex-basis: 65%;
+    justify-content: space-around;
+  }
+
+  header nav .menu-overly .menu-left p.title {
+    margin-top: 1rem;
+  }
+
+  header nav .menu-overly .menu-right {
+    flex-basis: 35%;
+    justify-content: space-around;
+  }
+
+  header nav .menu-overly > div {
+    padding: 0 2rem;
+  }
+
+  header nav .menu-overly .menu-left .links > ul.general-links li a {
+    padding: 0rem 0.5rem;
+    font-size: 1.6rem;
+  }
+}
+
 @media (max-width: 900px) {
   main .hero .slide .content-container .content .title {
     width: 100% !important;
@@ -1468,9 +1499,10 @@ footer .bottom-footer .container {
     display: block;
   }
   .mobile-logo svg {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     fill: #fff;
+    transition: all 0.5s ease;
   }
 
   .mobile-nav-icon {
