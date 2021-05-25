@@ -199,3 +199,20 @@ const setupNavigation = (padding)=>{
 }
 
 setupNavigation(2);
+
+const cartBtnContent = document.querySelector('.cart .cart-content');
+
+/* change the icon content text on resize */
+const changeIconContentOnSmallScreen = ()=>{
+    if(window.innerWidth < 400){
+        menuBtn.innerText = '';
+        cartBtnContent.innerText = '';
+    }else{
+        menuBtn.innerText = 'MENU';
+        cartBtnContent.innerText = 'CART';
+    }
+}
+
+window.addEventListener('resize', changeIconContentOnSmallScreen);
+
+changeIconContentOnSmallScreen();
