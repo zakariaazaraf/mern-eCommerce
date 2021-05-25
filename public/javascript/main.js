@@ -70,31 +70,30 @@ const proverbTitle = document.querySelector('.proverb h2')
 
 document.addEventListener('scroll', (e)=>{
 
-    // Check If The Overly Menu Is Active, Then Execute This Piece Of Code    
-    if(!menuLeft.classList.contains('active')){
-        if(window.pageYOffset > 140){
     
-            setupNavigation(0.75);
-    
-            svgLogo.style.fill = "#000"
-            svgCart.style.fill = "#000"
-            svgMobileLogo.style.fill = "#000"
-    
-           document.documentElement.style.setProperty("--pseudo-background", "#000");
-           nav.style.color = "#000";
-           nav.style.backgroundColor = "#FFF";
-    
-        }else{  
-                 
-            setupNavigation(2);
-            svgLogo.style.fill = "#FFF"
-            svgCart.style.fill = "#FFF"
-            svgMobileLogo.style.fill = "#FFF"
-            document.documentElement.style.setProperty("--pseudo-background", "#FFF");
-            
-        }
-    }
+    //nav.color = '#FFF';
+    if(window.pageYOffset > 140){
 
+        setupNavigation(0.75);
+
+        svgLogo.style.fill = "#000"
+        svgCart.style.fill = "#000"
+        svgMobileLogo.style.fill = "#000"
+
+        document.documentElement.style.setProperty("--pseudo-background", "#000");
+        nav.style.color = "#000";
+        nav.style.backgroundColor = "#FFF";
+
+    }else{  
+                
+        setupNavigation(2);
+        svgLogo.style.fill = "#FFF"
+        svgCart.style.fill = "#FFF"
+        svgMobileLogo.style.fill = "#FFF"
+        document.documentElement.style.setProperty("--pseudo-background", "#FFF");
+        
+    }
+    
     // Animate Prover section while you get the section point
     if(proverbSection){
 
@@ -199,10 +198,10 @@ const setupNavigation = (padding)=>{
     
 }
 
-// Check If The Overly Menu Is Active
-if(!menuLeft.classList.contains('active')){
-    setupNavigation(2);
-}
+
+//nav.color = '#FFF';
+setupNavigation(2);
+
 
 const cartBtnContent = document.querySelector('.cart .cart-content');
 
@@ -220,3 +219,9 @@ const changeIconContentOnSmallScreen = ()=>{
 window.addEventListener('resize', changeIconContentOnSmallScreen);
 
 changeIconContentOnSmallScreen();
+
+menuBtn.addEventListener('click', (event)=>{
+    if(menuOverly.classList.contains('active')){
+        nav.color = '#FFF';
+    }
+})
