@@ -38,20 +38,31 @@ router.get('/:id', async (req, res)=>{
     const {id} = req.params
     try{
         const product = await Product.findById(id)
+        let orders = req.cookies.orders != null ? req.cookies.orders : {}
+        let exists = false;
+
+        JSON.parse(orders).forEach(element => {
+            if(element.id === product.id){
+                exists = true;
+            }
+        });
+
         if(product){
             /* res.status(200).json({
                 product: product
             }) */
-            res.render('products/product', {product: product})
+            res.render('products/product', {product: product, exists: exists})
             return
         }
         res.status(201).json({
             message: 'There is No Such Product Id'
         })
-    }catch{
+    }catch(e){
         res.status(500).json({
             message: 'Failed Getting Product'
         })
+
+        //console.log(e)
     }
 })
 

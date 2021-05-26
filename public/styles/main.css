@@ -747,7 +747,8 @@ section.masterpiece .content .description {
   justify-content: flex-end;
 }
 
-.product-details .container .product-info .add-to-cart {
+.product-details .container .product-info .add-to-cart,
+.product-details .container .product-info .in-card {
   text-transform: uppercase;
   color: #fff;
   background: rgb(109, 108, 108);
@@ -760,7 +761,8 @@ section.masterpiece .content .description {
   transition: all 0.2s ease;
 }
 
-.product-details .container .product-info .add-to-cart:hover {
+.product-details .container .product-info .add-to-cart:hover,
+.product-details .container .product-info .in-card:hover {
   border: 1px solid gray;
   background-color: #fff;
   color: rgb(77, 77, 77);
