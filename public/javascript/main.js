@@ -212,20 +212,21 @@ const cardBtn = document.querySelector('.add-to-cart')
 if(cardBtn){
     cardBtn.addEventListener('click', (event)=>{
         
-        let id = event.target.dataset.id;
-        addProduct(id)
+        let product = event.target.dataset;
+        addProduct(product)
         
     })
 } 
 
-const addProduct = (productId)=>{
-
+const addProduct = (product)=>{
+    
+    const {id, price} = product;
     let orders = [];
 
     if(document.cookie !== ""){
-        orders = [{id: productId}, ...JSON.parse(document.cookie.split('=')[1])]
+        orders = [{id: id, price: price}, ...JSON.parse(document.cookie.split('=')[1])]
     }else{
-        orders = [{id: productId}]
+        orders = [{id: id, price: price}]
     }
     
     document.cookie = "orders=" + JSON.stringify(orders) + ";path=/"
@@ -234,22 +235,25 @@ const addProduct = (productId)=>{
 /* Delete Product From Shop Card */
 
 const deleteproduct = (id) =>{
-    let products = getProduct(),
-        newOrders = [];
+
+    const products = getProduct();
+    let newOrders = [];
+
     products.forEach(product =>{
         if(product.id !== id){
-            //addProduct(product.id)
             
             if(newOrders){
-                newOrders = [{id: product.id}, ...newOrders]
+                newOrders = [{id: product.id, price: product.price}, ...newOrders]
             }else{
-                newOrders = [{id: product.id}]
+                newOrders = [{id: product.id, price: product.price}]
             }
         }
     })
+
     // Override The Orders In The Coockies
     document.cookie = "orders=" + JSON.stringify(newOrders) + ";path=/"
-    //document.cookie = "";
+
+    calculateTotla();
 }
 
 const getProduct = ()=>{
@@ -260,9 +264,18 @@ const getProduct = ()=>{
 
 const calculateTotla = ()=>{
 
+    let totlaCardPrice = document.querySelector('.checkout .total .total-price');
+    let cardTotla = 0;
+    const products = getProduct();
+
+    products.forEach(product => {
+        cardTotla += parseInt(product.price);
+    });
+    
+    totlaCardPrice.innerHTML = `$${cardTotla.toFixed(2)}`;
 }
 
-const orderCancelBtns = document.querySelectorAll('.order-cancel')
+const orderCancelBtns = document.querySelectorAll('.order-cancel .remove')
 
 orderCancelBtns.forEach(orderCancelBtn => {
     
@@ -271,8 +284,7 @@ orderCancelBtns.forEach(orderCancelBtn => {
             id = product.dataset.id;
     
         deleteproduct(id) 
-    
-        console.log('Delete Product')
+        product.outerHTML = '';
         
     });
 })
