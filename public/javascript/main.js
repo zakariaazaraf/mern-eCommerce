@@ -107,7 +107,7 @@ document.addEventListener('scroll', (e)=>{
         }
     }
 
-})
+});
     
 
 
@@ -132,28 +132,8 @@ MenuClose.addEventListener('click', ()=>{
 })
 
 
-/* COOKIE FOR SHOPPING CARD */
-const cardBtn = document.querySelector('.add-to-cart') 
-if(cardBtn){
-    cardBtn.addEventListener('click', ()=>{
-        
-        let orders
-        if(document.cookie !== ""){
-            orders = [{id: cardBtn.dataset.id}, ...JSON.parse(document.cookie.split('=')[1])]
-        }else{
-            orders = [{id: cardBtn.dataset.id}]
-        }
-        
-        document.cookie = "orders=" + JSON.stringify(orders) + ";path=/"
-        
-    })
-} 
-
-
-
 
 const path = window.location.pathname.split('/')[1];
-
 
 const setupNavigation = (padding)=>{
    
@@ -224,4 +204,78 @@ menuBtn.addEventListener('click', (event)=>{
     if(menuOverly.classList.contains('active')){
         nav.color = '#FFF';
     }
+});
+
+
+/* COOKIE FOR SHOPPING CARD */
+const cardBtn = document.querySelector('.add-to-cart') 
+if(cardBtn){
+    cardBtn.addEventListener('click', (event)=>{
+        
+        let id = event.target.dataset.id;
+        addProduct(id)
+        
+    })
+} 
+
+const addProduct = (productId)=>{
+
+    let orders = [];
+
+    if(document.cookie !== ""){
+        orders = [{id: productId}, ...JSON.parse(document.cookie.split('=')[1])]
+    }else{
+        orders = [{id: productId}]
+    }
+    
+    document.cookie = "orders=" + JSON.stringify(orders) + ";path=/"
+}
+
+/* Delete Product From Shop Card */
+
+const deleteproduct = (id) =>{
+    let products = getProduct(),
+        newOrders = [];
+    products.forEach(product =>{
+        if(product.id !== id){
+            //addProduct(product.id)
+            
+            if(newOrders){
+                newOrders = [{id: product.id}, ...newOrders]
+            }else{
+                newOrders = [{id: product.id}]
+            }
+        }
+    })
+    // Override The Orders In The Coockies
+    document.cookie = "orders=" + JSON.stringify(newOrders) + ";path=/"
+    //document.cookie = "";
+}
+
+const getProduct = ()=>{
+    let products = JSON.parse(document.cookie.split('=')[1])
+
+    return products;
+}
+
+const calculateTotla = ()=>{
+
+}
+
+const orderCancelBtns = document.querySelectorAll('.order-cancel')
+
+orderCancelBtns.forEach(orderCancelBtn => {
+    
+    orderCancelBtn.addEventListener('click', (event)=>{
+         let product = event.target.parentElement.parentElement,
+            id = product.dataset.id;
+    
+        deleteproduct(id) 
+    
+        console.log('Delete Product')
+        
+    });
 })
+
+
+

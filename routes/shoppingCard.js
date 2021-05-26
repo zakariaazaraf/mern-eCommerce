@@ -8,7 +8,7 @@ router.get('/'/* , isAuth */, async (req, res)=>{
     
     let orders = req.cookies.orders != null ? req.cookies.orders : {}
 
-    if(Object.keys(orders).length > 0){
+    if(orders.length > 2){ // Weired Behviour
         try{
             const products = await Product.find({})
             res.render('orders/order', {orders: JSON.parse(orders), products: products})
@@ -19,7 +19,7 @@ router.get('/'/* , isAuth */, async (req, res)=>{
         return
     }
     res.render('orders/emptyCard')
-    
+
     
 }) 
 

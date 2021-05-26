@@ -1444,10 +1444,10 @@ footer .bottom-footer .container {
     transform: translateY(-50px);
   }
 
-  70% {
+  /* 70% {
     opacity: 0.7;
     transform: translateY(15px);
-  }
+  } */
 
   100% {
     opacity: 1;

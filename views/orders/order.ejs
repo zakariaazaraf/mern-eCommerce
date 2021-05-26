@@ -6,7 +6,7 @@
                     products.forEach(product=>{
                         if(product.id == order.id){
                             %>
-                                <div class="card-order">
+                                <div class="card-order" data-id='<%= product.id %>'>
                                     <div class="order-image">
                                         <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
                                     </div>
