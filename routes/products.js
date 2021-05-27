@@ -41,11 +41,15 @@ router.get('/:id', async (req, res)=>{
         let orders = req.cookies.orders != null ? req.cookies.orders : {}
         let exists = false;
 
-        JSON.parse(orders).forEach(element => {
-            if(element.id === product.id){
-                exists = true;
-            }
-        });
+        if(Object.keys(orders).length > 0){
+            
+            JSON.parse(orders).forEach(element => {
+                if(element.id === product.id){
+                    exists = true;
+                }
+            });
+        }
+
 
         if(product){
             /* res.status(200).json({
