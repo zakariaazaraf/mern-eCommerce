@@ -86,11 +86,11 @@ document.addEventListener('scroll', (e)=>{
 
     }else{  
                 
-        setupNavigation(2);
         svgLogo.style.fill = "#FFF"
         svgCart.style.fill = "#FFF"
         svgMobileLogo.style.fill = "#FFF"
         document.documentElement.style.setProperty("--pseudo-background", "#FFF");
+        setupNavigation(2);
         
     }
     
@@ -142,9 +142,12 @@ const setupNavigation = (padding)=>{
         case 'shop': 
             nav.setAttribute(
                 'style',
-                `background-color: #000;padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+                `background-color: #FFF; color:#000; padding: ${padding}rem 0rem !important; transition: padding .3s ease`
             );
-    
+            svgLogo.style.fill = "#000";
+            svgCart.style.fill = "#000";
+            svgMobileLogo.style.fill = "#000";
+            document.documentElement.style.setProperty("--pseudo-background", "#000");
         break;
     
         case 'shopping': 

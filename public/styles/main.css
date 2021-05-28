@@ -176,7 +176,7 @@ header nav a {
   font-family: -webkit-pictograph;
   font-size: 0.6rem;
   font-weight: bold;
-  letter-spacing: 6px;
+  letter-spacing: 7px;
   transition: all 0.5s ease;
 }
 header nav .container > a:first-child {
@@ -1124,6 +1124,29 @@ section.masterpiece .content .description {
   padding-top: 170px;
 }
 
+.shop-container .categories .shop-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shop-container .categories .shop-name .category-btn-anchor {
+  flex-grow: 1;
+  text-align: end;
+  margin-left: 3rem;
+  cursor: pointer;
+}
+
+.shop-container .categories svg {
+  width: 45px;
+  stroke: #c6c6c6;
+}
+
+.shop-container .categories .category-btn-anchor svg {
+  fill: none;
+  stroke: #686868;
+  width: 30px;
+}
+
 .shop-container .categories .container {
   display: flex;
   flex-direction: column;
@@ -1131,19 +1154,47 @@ section.masterpiece .content .description {
 
 .shop-container .categories .container .categories-links {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin: 0.8rem 0;
+}
+
+.shop-container
+  .categories
+  .container
+  .categories-links
+  .category
+  .category-name {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.shop-container
+  .categories
+  .container
+  .categories-links
+  .category
+  .category-name
+  > span {
+  text-align: center;
 }
 
 .shop-container .categories .container .categories-links .category-box {
-  position: relative;
+  /*position: relative;
   width: 300px;
-  height: 140px;
+  height: 140px; */
   margin: 1rem;
   transition: all 0.4s ease;
   cursor: pointer;
 }
+
 .shop-container
   .categories
   .container
@@ -1169,7 +1220,7 @@ section.masterpiece .content .description {
 
 .shop-container .categories .container .categories-links .category-box a {
   font-weight: bold;
-  color: #fff;
+  color: #000;
   letter-spacing: normal;
 }
 
