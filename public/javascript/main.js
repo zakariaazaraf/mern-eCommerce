@@ -293,4 +293,12 @@ orderCancelBtns.forEach(orderCancelBtn => {
 })
 
 
+const categoryToggleLink = document.querySelector('.category-btn-anchor');
+const categorySvgIcon = document.querySelector('.category-btn-anchor svg');
+const categoriesLinks = document.querySelector('.categories-links');
 
+categoryToggleLink.addEventListener('click', ()=>{
+    console.log('clicked');
+    categorySvgIcon.classList.toggle('rotate');
+    categoriesLinks.classList.toggle('test-active');
+})

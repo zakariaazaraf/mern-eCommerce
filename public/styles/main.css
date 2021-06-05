@@ -1136,6 +1136,10 @@ section.masterpiece .content .description {
   cursor: pointer;
 }
 
+.shop-container .categories .shop-name .category-btn-anchor svg {
+  transition: all 0.25s ease;
+}
+
 .shop-container .categories svg {
   width: 45px;
   stroke: #c6c6c6;
@@ -1539,7 +1543,10 @@ footer .bottom-footer .container {
 
   header nav .menu-overly .menu-left .links > ul.general-links li a {
     padding: 0rem 0.5rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+  }
+  header nav .menu-overly .menu-left .links > ul.second-links li a {
+    font-size: 1.2rem;
   }
 }
 
@@ -1680,4 +1687,22 @@ footer .bottom-footer .container {
     margin: auto;
     margin-bottom: 1rem;
   }
+
+  /* Overly links */
+
+  header nav .menu-overly .menu-left .links > ul.general-links li a {
+    font-size: 1.3rem;
+  }
+  header nav .menu-overly .menu-left .links > ul.second-links li a {
+    font-size: 1.15rem;
+  }
+}
+
+.test-active {
+  display: none !important;
+}
+
+.rotate {
+  transform: rotateZ(180deg);
+  transition: all 0.25s ease;
 }
