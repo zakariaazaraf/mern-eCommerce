@@ -1568,6 +1568,11 @@ footer .bottom-footer .container {
   header nav .container > ul {
     display: none !important;
   }
+
+  /* Order Page */
+  .orders-container .container {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1643,5 +1648,20 @@ footer .bottom-footer .container {
   }
   footer .bottom-footer .container > * {
     padding: 0.7rem 0;
+  }
+
+  /* Order page */
+
+  .orders-container .container .shipping .checkout {
+    flex-direction: column;
+  }
+
+  .orders-container .container .shipping .ship-info .ship-info-content {
+    flex-direction: column;
+  }
+
+  .orders-container .container .shipping .ship-info .ship-dealing {
+    flex-direction: column;
+    align-items: center;
   }
 }
