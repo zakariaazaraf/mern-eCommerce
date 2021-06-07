@@ -547,10 +547,11 @@ section.product article {
   /* width: 50%;
   height: 500px; */
   width: auto;
-  max-height: 400px;
+  max-height: 460px;
   border-bottom: 0.2px solid #fff;
   border-radius: 5px;
   margin: 1rem;
+  overflow: hidden;
 }
 
 section.product article:nth-child(n + 1) {
@@ -1698,7 +1699,8 @@ footer .bottom-footer .container {
   }
 }
 
-.test-active, .display-none {
+.test-active,
+.display-none {
   display: none !important;
 }
 

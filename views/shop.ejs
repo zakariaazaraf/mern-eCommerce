@@ -19,7 +19,7 @@
                             <%  categories.forEach(categorie=>{
                                 %>
                                 <li class="category">
-                                    <a href="#" class='category-name' data-category='<%= categorie.name %>'>
+                                    <a href="#product" class='category-name' data-category='<%= categorie.name %>'>
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <path
@@ -127,7 +127,7 @@
                     
                 </div>
             </div>
-            <section class='product d-flex'>
+            <section class='product d-flex' id='product'>
                 <% if (products.length> 0){products.forEach((product, index)=>{
                     %>
                     <% categories.forEach(categorie=>{
