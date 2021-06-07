@@ -19,7 +19,7 @@
                             <%  categories.forEach(categorie=>{
                                 %>
                                 <li class="category">
-                                    <a href="#" class='category-name'>
+                                    <a href="#" class='category-name' data-category='<%= categorie.name %>'>
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <path
@@ -134,7 +134,7 @@
                         if(categorie.id == product.categorieId) {
                         %>
                             
-                        <article class="<%=categorie.name && categorie.name%>">
+                        <article class="<%=categorie.name && categorie.name%>" data-category="<%= categorie.name %>">
                         
                         <% } }) %>
                         <a href="/products/<%=product.id%>">

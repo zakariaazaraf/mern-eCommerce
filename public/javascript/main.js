@@ -293,12 +293,43 @@ orderCancelBtns.forEach(orderCancelBtn => {
 })
 
 
-const categoryToggleLink = document.querySelector('.category-btn-anchor');
-const categorySvgIcon = document.querySelector('.category-btn-anchor svg');
-const categoriesLinks = document.querySelector('.categories-links');
+/* Handel The Category Product To Display */
 
-categoryToggleLink.addEventListener('click', ()=>{
-    console.log('clicked');
-    categorySvgIcon.classList.toggle('rotate');
-    categoriesLinks.classList.toggle('test-active');
-})
+if(window.location.pathname === '/shop'){
+
+    const categoryToggleLink = document.querySelector('.category-btn-anchor');
+    const categorySvgIcon = document.querySelector('.category-btn-anchor svg');
+    const categoriesLinks = document.querySelector('.categories-links');
+    
+    categoryToggleLink.addEventListener('click', ()=>{
+        
+        categorySvgIcon.classList.toggle('rotate');
+        categoriesLinks.classList.toggle('test-active');
+    });
+    
+    const categories = document.querySelectorAll('.categories-links .category .category-name');
+    
+    categories.forEach(category => {
+        category.addEventListener('click', displayProductsCategory);
+    });
+    
+    function displayProductsCategory(){
+        // Category Name
+        let selectedCategory = this.dataset.category;
+        let products = document.querySelectorAll('.product article');
+    
+        products.forEach(product => {
+    
+            let productCategory = product.dataset.category;
+            
+            // Hide All Product 
+            product.classList.add('display-none');
+            
+            // Display Selected Product Category
+            if(productCategory === selectedCategory){
+                product.classList.remove('display-none');
+            }
+        })
+    
+    }
+}
