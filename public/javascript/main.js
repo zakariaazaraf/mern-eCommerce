@@ -151,9 +151,13 @@ const setupNavigation = (padding)=>{
             defaultNavigation(padding);
         break;
 
-        /* case 'card': 
+        case 'shipping': 
             defaultNavigation();
-        break; */
+        break;
+
+        case 'blog': 
+            defaultNavigation();
+        break;
     
         case 'shopping': 
             nav.setAttribute(

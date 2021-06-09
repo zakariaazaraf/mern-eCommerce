@@ -37,6 +37,9 @@ const communityRouter = require("./routes/community");
 const shopRouter = require("./routes/shop");
 const authRouter = require('./routes/auth')
 const guaranteeRouter = require('./routes/guarantee');
+const shippingRouter = require('./routes/shipping');
+const contactsRouter = require('./routes/contacts');
+const blogRouter = require('./routes/blog');
 
 // Setup Database
 mongoose.connect(process.env.DATABASE_URL, {
@@ -61,6 +64,9 @@ app.use("/community", communityRouter);
 app.use("/shop", shopRouter);
 app.use('/auth', authRouter)
 app.use('/guarantee', guaranteeRouter);
+app.use('/shipping', shippingRouter);
+app.use('/contacts', contactsRouter);
+app.use('/blog', blogRouter);
 app.use("*", (req, res) => res.send("There's No Route"));
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server Running...`));
