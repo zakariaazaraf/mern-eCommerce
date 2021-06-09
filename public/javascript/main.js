@@ -140,15 +140,20 @@ const setupNavigation = (padding)=>{
     switch(path){
     
         case 'shop': 
-            nav.setAttribute(
-                'style',
-                `background-color: #FFF; color:#000; padding: ${padding}rem 0rem !important; transition: padding .3s ease`
-            );
-            svgLogo.style.fill = "#000";
-            svgCart.style.fill = "#000";
-            svgMobileLogo.style.fill = "#000";
-            document.documentElement.style.setProperty("--pseudo-background", "#000");
+            defaultNavigation(padding);
         break;
+
+        case 'guarantee': 
+            defaultNavigation(padding);
+        break;
+
+        case 'contacts': 
+            defaultNavigation(padding);
+        break;
+
+        /* case 'card': 
+            defaultNavigation();
+        break; */
     
         case 'shopping': 
             nav.setAttribute(
@@ -181,9 +186,20 @@ const setupNavigation = (padding)=>{
     
 }
 
+const defaultNavigation = (padding)=>{
+    nav.setAttribute(
+        'style',
+        `background-color: #FFF; color:#000; padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+    );
+    svgLogo.style.fill = "#000";
+    svgCart.style.fill = "#000";
+    svgMobileLogo.style.fill = "#000";
+    document.documentElement.style.setProperty("--pseudo-background", "#000");
+}
 
 //nav.color = '#FFF';
 setupNavigation(2);
+
 
 
 const cartBtnContent = document.querySelector('.cart .cart-content');
