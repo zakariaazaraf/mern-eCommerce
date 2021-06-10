@@ -1119,15 +1119,32 @@ section.masterpiece .content .description {
 
 .shop-container .categories {
   background-color: #f6f6f7;
-  height: 100vh;
+  /* height: 100vh; */
+  height: auto;
   display: flex;
   justify-content: center;
   padding-top: 170px;
 }
 
+.shop-container .categories .container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .shop-container .categories .shop-name {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.shop-container .categories .shop-name .name {
+  font-family: Futura New, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #1b1c1e;
+  letter-spacing: 2px;
 }
 
 .shop-container .categories .shop-name .category-btn-anchor {
@@ -1135,6 +1152,7 @@ section.masterpiece .content .description {
   text-align: end;
   margin-left: 3rem;
   cursor: pointer;
+  line-height: 10px;
 }
 
 .shop-container .categories .shop-name .category-btn-anchor svg {
@@ -1142,27 +1160,38 @@ section.masterpiece .content .description {
 }
 
 .shop-container .categories svg {
-  width: 45px;
-  stroke: #c6c6c6;
+  width: 55px;
+  stroke: #ffffff;
 }
 
 .shop-container .categories .category-btn-anchor svg {
   fill: none;
   stroke: #686868;
-  width: 30px;
-}
-
-.shop-container .categories .container {
-  display: flex;
-  flex-direction: column;
+  width: 25px;
 }
 
 .shop-container .categories .container .categories-links {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
+  flex-direction: column;
   flex-wrap: wrap;
-  margin: 0.8rem 0;
+  margin: 0.8rem 0 0.8rem 2rem;
+}
+
+.shop-container .categories .container .categories-links::before {
+  position: absolute;
+  content: "";
+  left: -10px;
+  top: 0;
+  height: -webkit-fill-available;
+  width: 1px;
+  background: #e1e1e1;
+}
+
+.shop-container .categories .container .categories-links .category {
+  padding: 0.3rem 0;
 }
 
 .shop-container
@@ -1172,7 +1201,7 @@ section.masterpiece .content .description {
   .category
   .category-name {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   color: #000;
   font-size: 0.6rem;
   font-weight: 600;
@@ -1187,8 +1216,8 @@ section.masterpiece .content .description {
   .categories-links
   .category
   .category-name
-  > span {
-  text-align: center;
+  span:first-child {
+  padding-right: 0.7rem;
 }
 
 .shop-container .categories .container .categories-links .category-box {
@@ -1235,10 +1264,9 @@ ul {
 
 .shop-container .categories .container .shop-by {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
 }
 
-.shop-container .categories .container .shop-by span {
+.shop-container .categories .container .shop-by > span:first-child {
   display: block;
   color: rgb(180, 180, 180);
   font-size: 1.8rem;
