@@ -143,9 +143,9 @@ const setupNavigation = (padding)=>{
             defaultNavigation(padding);
         break;
 
-        case 'guarantee': 
+        /* case 'guarantee': 
             defaultNavigation(padding);
-        break;
+        break; */
 
         case 'contacts': 
             defaultNavigation(padding);

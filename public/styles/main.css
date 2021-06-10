@@ -430,7 +430,71 @@ main .hero .slide img {
   height: 100%;
 }
 
-main .hero .slide .content-container {
+/* Start Guarantee Page */
+
+main .guarantee-hero {
+  height: 80vh;
+}
+
+main .guarantee-hero .wrapper {
+  position: relative;
+  height: 100%;
+}
+
+main .guarantee-rules h4 {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+}
+
+main .guarantee-hero p.title,
+main .guarantee-rules p.title {
+  padding: 1rem 0;
+  margin: 0;
+}
+
+main .guarantee-rules p.title {
+  letter-spacing: normal;
+  text-transform: capitalize;
+  padding-left: 2.25rem;
+}
+main .guarantee-rules p.title::after {
+  background: #000;
+  width: 20px;
+  height: 2px;
+}
+
+main .guarantee-hero .content-container h2.title {
+  width: 70%;
+  font-size: 4rem;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+main .guarantee-rules {
+  margin: 4rem 0;
+  color: #2c2c2c;
+  letter-spacing: normal;
+}
+
+main .guarantee-rules .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .guarantee-rules .rule {
+  width: 60%;
+  margin: 1.5rem 0;
+}
+
+main .guarantee-rules p:not(.title) {
+  font-size: 13px;
+  margin: 0.7rem 0;
+  line-height: 1.4;
+}
+
+main .hero .slide .content-container,
+main .guarantee-hero .content-container {
   position: absolute;
   left: 0;
   top: var(--header-max-height);
@@ -440,10 +504,6 @@ main .hero .slide .content-container {
   justify-content: center;
   align-items: center;
   color: #fff;
-  opacity: 1;
-  transform: translateX(0);
-  animation-name: fade;
-  animation-duration: 2s;
 }
 
 main .hero .slide .content-container * {
