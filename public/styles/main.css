@@ -1191,6 +1191,83 @@ section.masterpiece .content .description {
   letter-spacing: normal;
 }
 
+.footer-hero-made-to-fade .wrapper .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-hero-made-to-fade .wrapper .content h4,
+.fade-description h4 {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.fade-description {
+  padding: 3rem 5rem;
+  color: #2c2c2c;
+  letter-spacing: normal;
+}
+
+.fade-description > * {
+  padding: 1rem 0;
+}
+
+.fade-description p {
+  font-size: 13px;
+  margin: 1.7rem 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.fade-information {
+  background: #f6f6f7;
+  padding: 4rem;
+  color: #2c2c2c;
+  letter-spacing: normal;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.fade-information .container {
+  display: flex;
+}
+
+.fade-information .container .information {
+  padding: 0 0.5rem;
+}
+
+.fade-information p.title {
+  margin: 0;
+}
+.fade-information p {
+  padding: 1rem 0;
+}
+
+.fade-information ul li {
+  padding: 0.4rem 0;
+}
+
+.fade-information p.title::after {
+  background: #000;
+}
+
+.fade-information svg {
+  width: 10px;
+  margin-right: 0.5rem;
+}
+
+.footer-hero-made-to-fade .wrapper .content > * {
+  margin: 1.25rem 0;
+}
+
+.footer-hero-made-to-fade .wrapper .content .btn {
+  width: fit-content;
+}
+
 /* COMMUNITY PAGE */
 .community-bg {
   position: relative;
@@ -1722,6 +1799,30 @@ footer .bottom-footer .container {
   .made-to-fade .container .content {
     width: auto;
     padding-bottom: 2.6rem;
+  }
+
+  .made-to-fade .container .content h2 {
+    font-size: 4rem;
+  }
+
+  .fade-description {
+    padding: 3rem 1rem;
+  }
+
+  .fade-information {
+    padding: 4rem 1rem;
+  }
+
+  .fade-information .container {
+    flex-direction: column;
+  }
+
+  .fade-information .container .information {
+    padding: 1rem 0;
+  }
+
+  .footer-hero .wrapper .content {
+    padding: 3rem 1rem;
   }
 
   /* About Page */
