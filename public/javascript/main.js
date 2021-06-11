@@ -140,7 +140,7 @@ const setupNavigation = (padding)=>{
     switch(path){
     
         case 'shop': 
-            defaultNavigation(padding);
+            defaultNavigation(padding, 'FFF', '000');
         break;
 
         /* case 'guarantee': 
@@ -148,7 +148,7 @@ const setupNavigation = (padding)=>{
         break; */
 
         case 'contacts': 
-            defaultNavigation(padding);
+            defaultNavigation(padding, 'transparent', '000');
         break;
 
         case 'shipping': 
@@ -190,15 +190,15 @@ const setupNavigation = (padding)=>{
     
 }
 
-const defaultNavigation = (padding)=>{
+const defaultNavigation = (padding, bg, color)=>{
     nav.setAttribute(
         'style',
-        `background-color: #FFF; color:#000; padding: ${padding}rem 0rem !important; transition: padding .3s ease`
+        `background-color: #${bg}; color:#${color}; padding: ${padding}rem 0rem !important; transition: padding .3s ease`
     );
-    svgLogo.style.fill = "#000";
-    svgCart.style.fill = "#000";
-    svgMobileLogo.style.fill = "#000";
-    document.documentElement.style.setProperty("--pseudo-background", "#000");
+    svgLogo.style.fill = `#${color}`;
+    svgCart.style.fill = `#${color}`;
+    svgMobileLogo.style.fill = `#${color}`;
+    document.documentElement.style.setProperty("--pseudo-background", `#${color}`);
 }
 
 //nav.color = '#FFF';
