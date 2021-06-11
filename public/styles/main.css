@@ -70,6 +70,31 @@ img {
   transition: all 0.4s ease;
 }
 
+/* Start Footer-hero */
+.footer-hero {
+  height: 460px;
+}
+
+.footer-hero .wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.footer-hero .wrapper .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 3rem;
+  color: #fff;
+}
+
+/* End Footer-hero */
+
 a.simple {
   text-decoration: none;
   color: #fff;
@@ -433,7 +458,7 @@ main .hero .slide img {
 /* Start Guarantee Page */
 
 main .guarantee-hero {
-  height: 80vh;
+  height: 100vh;
 }
 
 main .guarantee-hero .wrapper {
@@ -491,6 +516,16 @@ main .guarantee-rules p:not(.title) {
   font-size: 13px;
   margin: 0.7rem 0;
   line-height: 1.4;
+}
+
+main .guarantee-rules .signature-container {
+  display: flex;
+  align-items: center;
+}
+
+main .guarantee-rules .signature-container img {
+  width: 200px;
+  padding-left: 2rem;
 }
 
 main .hero .slide .content-container,
@@ -1675,6 +1710,11 @@ footer .bottom-footer .container {
   .product-details .container .product-info .in-card {
     padding: 0.7rem 3rem;
   }
+
+  /* Start Guarantee Page */
+  main .guarantee-rules .rule {
+    width: 75%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1785,6 +1825,30 @@ footer .bottom-footer .container {
   header nav .menu-overly .menu-left .links > ul.second-links li a {
     font-size: 1.15rem;
   }
+
+  /* Start Guarantee Media */
+  main .guarantee-hero .content-container h2.title {
+    width: 100%;
+    font-size: 3.4rem;
+  }
+
+  main .guarantee-rules h4 {
+    font-size: 2.2rem;
+  }
+
+  main .guarantee-rules .rule {
+    width: 100%;
+  }
+
+  main .guarantee-rules .signature-container {
+    flex-direction: column;
+  }
+
+  .footer-hero .btn {
+    padding: 1rem 1.5rem;
+  }
+
+  /* End Guarantee Media */
 }
 
 .test-active,
