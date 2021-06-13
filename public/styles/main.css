@@ -1631,6 +1631,8 @@ ul {
 }
 
 .shpping-return-process {
+  display: flex;
+  justify-content: center;
   margin: 4rem 0;
   color: #2c2c2c;
   letter-spacing: normal;
@@ -1662,8 +1664,9 @@ ul {
 .shpping-return-process .process .shipping,
 .shpping-return-process .process .return {
   flex-basis: 50%;
+  margin: 0 0.5rem;
 }
-/* Shipping & Return */
+/* End Shipping & Return */
 
 /* FOOTER STAYLE */
 footer {
@@ -2001,6 +2004,10 @@ footer .bottom-footer .container {
 }
 
 @media (max-width: 600px) {
+  /* Geniral */
+  .container {
+    padding: 0 1rem;
+  }
   /* Made To Fade Page */
   .made-to-fade .container .content {
     width: auto;
@@ -2081,6 +2088,11 @@ footer .bottom-footer .container {
     flex-wrap: wrap;
     flex-direction: column;
   }
+
+  footer .nav-footer .footer-links .news-letter {
+    padding-left: 0;
+  }
+
   footer .nav-footer .footer-links > * {
     padding: 1rem 0;
   }
@@ -2150,7 +2162,7 @@ footer .bottom-footer .container {
   /* Start Guarantee Media */
   main .guarantee-hero .content-container h2.title {
     width: 100%;
-    font-size: 3.4rem;
+    font-size: 3rem;
   }
 
   main .guarantee-rules h4 {
@@ -2199,6 +2211,18 @@ footer .bottom-footer .container {
     flex-direction: column;
   }
   /* End Contact Page */
+
+  /* Stqrt Shipping & Return */
+
+  .shpping-return-process .process {
+    flex-direction: column;
+  }
+
+  .shpping-return-process .process .shipping,
+  .shpping-return-process .process .return {
+    flex-basis: 100%;
+  }
+  /* End Shipping & Return */
 }
 
 .test-active,
