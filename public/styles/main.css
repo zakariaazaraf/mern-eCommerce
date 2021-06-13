@@ -1488,6 +1488,8 @@ ul {
 }
 
 .contact-body {
+  display: flex;
+  justify-content: center;
   padding: 3rem 0;
   color: #2c2c2c;
   letter-spacing: normal;
@@ -1638,7 +1640,9 @@ ul {
   letter-spacing: normal;
 }
 
-.shpping-return-process h4 {
+.shpping-return-process h3 {
+  font-weight: 300;
+  font-size: 1.7rem;
   padding-bottom: 3rem;
   border-bottom: 1.5px solid #cacaca;
 }
