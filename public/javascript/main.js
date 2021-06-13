@@ -160,17 +160,19 @@ const setupNavigation = (padding)=>{
         break;
     
         case 'shopping': 
-            nav.setAttribute(
+            /* nav.setAttribute(
                 'style',
                 `background: linear-gradient(0deg,transparent,#000);padding: ${padding}rem 0rem !important; transition: padding .3s ease`
-            );
+            ); */
+            defaultNavigation(padding, 'FFF', '000');
         break;
     
         case 'about': 
-            nav.setAttribute(
+            /* nav.setAttribute(
                 'style',
                 `background: linear-gradient(0deg,transparent,#000);padding: ${padding}rem 0rem !important; transition: padding .3s ease`
-            );
+            ); */
+            defaultNavigation(padding, 'FFF', '000');
     
         break;
     
