@@ -1606,6 +1606,65 @@ ul {
 
 /* End Contact page */
 
+/* Shipping & Return */
+
+.shipping-return .title {
+  color: #252525 !important;
+}
+
+.shipping-return p.title::after {
+  background-color: #000 !important;
+}
+
+.shipping-return-process .title {
+  color: #000 !important;
+}
+
+.shpping-return-process p.title::after {
+  background: #000;
+  height: 2px;
+}
+
+.shpping-return-process a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shpping-return-process {
+  margin: 4rem 0;
+  color: #2c2c2c;
+  letter-spacing: normal;
+}
+
+.shpping-return-process h4 {
+  padding-bottom: 3rem;
+  border-bottom: 1.5px solid #cacaca;
+}
+
+.shpping-return-process .process {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.shpping-return-process .process p.title {
+  padding: 1rem 0;
+}
+
+.shpping-return-process .process p.title::after {
+  background: #000;
+}
+
+.shpping-return-process .process p:not(p.title) {
+  padding: 0.7rem 0;
+}
+
+.shpping-return-process .process .shipping,
+.shpping-return-process .process .return {
+  flex-basis: 50%;
+}
+/* Shipping & Return */
+
 /* FOOTER STAYLE */
 footer {
   display: flex;

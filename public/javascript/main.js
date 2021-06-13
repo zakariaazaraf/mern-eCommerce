@@ -152,7 +152,7 @@ const setupNavigation = (padding)=>{
         break;
 
         case 'shipping': 
-            defaultNavigation();
+            defaultNavigation(padding, 'transparent', '000');
         break;
 
         case 'blog': 
