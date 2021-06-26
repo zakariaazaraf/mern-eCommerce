@@ -1114,10 +1114,10 @@ section.masterpiece .content .description {
 .about-container {
   min-height: 100vh;
   padding-top: var(--header-max-height);
-  padding-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: #f6f6f7;
   box-shadow: 0 4rem 2rem rgba(128, 128, 128, 0.61);
 }
@@ -1140,6 +1140,56 @@ section.masterpiece .content .description {
   line-height: 2;
 }
 
+.about-container .about-image {
+  position: relative;
+}
+
+.about-container .about-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(0deg, #000, transparent);
+}
+
+.about-container .about-image .about-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  color: #fff;
+  transform: translateY(-50%);
+}
+
+.about-container .about-image .about-content .container > div {
+  margin: 2rem 4rem;
+  line-height: 1.9;
+}
+
+.about-container .about-image .about-content .top-content {
+  font-size: 1.7rem;
+  letter-spacing: -1px;
+}
+
+.about-container .about-image .about-content .bottom-content {
+  font-size: 1.2rem;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.about-container .about-notation svg {
+  width: 100px;
+}
+
+.about-container .footer-hero {
+  width: 100%;
+  height: 540px;
+}
 /* MADE TO FADE PAGE */
 .made-to-fade {
   display: flex;
