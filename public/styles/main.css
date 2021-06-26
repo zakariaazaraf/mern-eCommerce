@@ -1128,6 +1128,10 @@ section.masterpiece .content .description {
   text-align: center;
 }
 
+.about-container > .container {
+  padding: 4rem 2rem;
+}
+
 .about-container .container h2 {
   font-size: 4rem;
   font-weight: lighter;
@@ -1182,8 +1186,49 @@ section.masterpiece .content .description {
   margin-bottom: 0;
 }
 
+.about-container .about-notation,
+.about-container .about-description {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.about-container .about-notation {
+  background: #000;
+  color: #fff;
+  padding-bottom: 7rem;
+}
+
+.about-container .about-notation .container > div {
+  margin: 3rem;
+}
+
 .about-container .about-notation svg {
-  width: 100px;
+  width: 50px;
+  fill: #fff;
+}
+
+.about-container .about-notation .content {
+  line-height: 2;
+  font-size: 1.8rem;
+  letter-spacing: normal;
+}
+
+.about-container .about-description {
+  background: #fff;
+}
+
+.about-container .about-description .container > * {
+  padding: 1rem 12rem;
+}
+
+.about-container .about-description h3 {
+  font-size: 1.7rem;
+}
+
+.about-container .about-description p {
+  letter-spacing: normal;
 }
 
 .about-container .footer-hero {
@@ -2055,6 +2100,20 @@ footer .bottom-footer .container {
     flex-direction: column;
     align-items: center;
   }
+
+  /* Start About Page */
+
+  .about-container .container > * {
+    padding: 0 4rem;
+  }
+
+  .about-container .about-image .about-content .container > div {
+    margin: 2rem;
+  }
+
+  .about-container .about-image .about-content {
+    transform: translateY(-20%);
+  }
 }
 
 @media (max-width: 600px) {
@@ -2102,7 +2161,8 @@ footer .bottom-footer .container {
   }
 
   .about-container .container > * {
-    padding: 1rem;
+    padding: 1rem 0.7rem 0 0.7rem;
+    font-size: 1rem;
   }
 
   .proverb h2 {
@@ -2277,6 +2337,35 @@ footer .bottom-footer .container {
     flex-basis: 100%;
   }
   /* End Shipping & Return */
+
+  /* Start About Page */
+  .about-container .container h2 {
+    font-size: 2.5rem;
+    padding: 0;
+  }
+
+  .about-container .container p {
+    line-height: 1.5;
+  }
+
+  .about-container .about-image .about-content {
+    transform: translateY(0);
+  }
+
+  .about-container .about-image .about-content .container > div {
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .about-container .about-image .about-content .top-content {
+    font-size: 1.3rem;
+  }
+
+  .about-container .about-image .about-content .bottom-content {
+    font-size: 1rem;
+  }
+
+  /* End About Page */
 }
 
 .test-active,
