@@ -2241,6 +2241,17 @@ footer .bottom-footer .container {
   .about-container .about-image .about-content .top-content {
     padding: 0 1rem;
   }
+
+  /* Start community Page */
+  .community-section .community-bg .community-home .community-body {
+    width: 100%;
+  }
+
+  .community-section .community-bg .community-home .community-body .content {
+    width: 85%;
+  }
+
+  /* End community Page */
 }
 
 @media (max-width: 600px) {
@@ -2453,7 +2464,7 @@ footer .bottom-footer .container {
   }
   /* End Contact Page */
 
-  /* Stqrt Shipping & Return */
+  /* Start Shipping & Return */
 
   .shpping-return-process .process {
     flex-direction: column;
@@ -2501,6 +2512,22 @@ footer .bottom-footer .container {
   }
 
   /* End About Page */
+
+  /* Start Community page */
+  .community-bg .community-home .brand-quote {
+    font-size: 2.35rem;
+  }
+
+  .community-section .community-bg .community-home .community-body .content {
+    width: 100%;
+    font-weight: 0.9rem;
+  }
+
+  .community-section .testimonials .testimonial {
+    padding: 0;
+  }
+
+  /* End Community page */
 }
 
 .test-active,
