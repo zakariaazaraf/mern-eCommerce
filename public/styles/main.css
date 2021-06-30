@@ -1373,12 +1373,55 @@ section.masterpiece .content .description {
 
 .community-bg .community-home {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 2rem 15rem;
   color: #fff;
   z-index: 99;
+}
+
+.community-bg .community-home > * {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.community-bg .community-home .title {
+  font-weight: lighter;
+  color: #cdcdcd;
+}
+
+.community-bg .community-home .dashed-title {
+  position: relative;
+}
+
+.community-bg .community-home .dashed-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 1.7px;
+  background: gray;
+  transform: translateX(-50%);
+  /* transform: translate(-50%, 0); */
+}
+
+.community-bg .community-home .brand-quote {
+  font-size: 3.3rem;
+  font-weight: lighter;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+
+.community-bg .community-home .content {
+  color: #e9e9e9;
+  font-weight: lighter;
+  padding: 1rem 6rem 0;
+  letter-spacing: normal;
+  line-height: 1.7;
 }
 
 /* SHOP PAGE */
