@@ -50,6 +50,7 @@ header {
   max-width: 1260px;
   flex-grow: 1;
   padding: 0 2rem;
+  width: 100%;
 }
 
 img {
@@ -1869,6 +1870,31 @@ ul {
   margin: 0 0.5rem;
 }
 /* End Shipping & Return */
+
+/* Start Blog Page */
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background: #1c1b1e;
+  padding: 10rem 0 4rem;
+}
+
+.blog-container .intro {
+  width: 60%;
+}
+
+.blog-container .title {
+  padding: 1rem;
+}
+
+.blog-container .header-intro {
+  font-size: 3.8rem;
+  font-weight: lighter;
+  letter-spacing: normal;
+}
+/* End Blog Page */
 
 /* FOOTER STAYLE */
 footer {
