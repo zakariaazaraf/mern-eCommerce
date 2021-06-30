@@ -1424,6 +1424,46 @@ section.masterpiece .content .description {
   line-height: 1.7;
 }
 
+.community-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1c1b1e;
+}
+
+.community-section .testimonials {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.community-section .testimonials .testimonial {
+  flex-basis: 30%;
+  margin: 2rem 0;
+  letter-spacing: normal;
+}
+
+.community-section .testimonials .testimonial > * {
+  margin-bottom: 0.7rem;
+}
+.community-section .testimonials .testimonial .product-testimonial {
+  color: gray;
+}
+
+.community-section .testimonials .testimonial a {
+  display: flex;
+  font-size: 1.25rem;
+  color: #dbdbdb;
+  text-decoration: none;
+}
+
+.community-section .testimonials .testimonial a svg {
+  width: 25px;
+  margin-right: 10px;
+  fill: gray;
+}
+
 /* SHOP PAGE */
 
 .shop-container .categories {
