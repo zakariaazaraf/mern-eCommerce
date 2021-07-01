@@ -156,7 +156,7 @@ const setupNavigation = (padding)=>{
         break;
 
         case 'blog': 
-            defaultNavigation();
+            defaultNavigation(padding, 'transparent', 'FFF');
         break;
     
         case 'shopping': 
