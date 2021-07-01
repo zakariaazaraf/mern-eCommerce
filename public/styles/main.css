@@ -236,6 +236,7 @@ header nav .menu-overly {
   height: 100vh;
   display: flex;
   background-color: #fff;
+  color: #fff !important;
   z-index: 10;
   visibility: hidden;
   transition: all 1s ease;
