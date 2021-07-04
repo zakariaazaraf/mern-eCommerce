@@ -1365,6 +1365,7 @@ section.masterpiece .content .description {
 }
 
 .footer-hero-made-to-fade .wrapper .content .btn {
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -1773,6 +1774,7 @@ ul {
 
 .contact-body .contact-form .form .textarea {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -1780,6 +1782,7 @@ ul {
   position: absolute;
   bottom: 15px;
   right: 12px;
+  width: -moz-fit-content;
   width: fit-content;
   border: 2px solid #000;
   background: #fff;
