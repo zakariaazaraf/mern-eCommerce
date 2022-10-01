@@ -8,6 +8,7 @@ const product = require('./../models/product')
 router.get('/', async (req, res)=>{
     try{
         const products = await Product.find({})/* .populate('categorieId').limit(10).sort('asc') */
+        console.log(product)
         res.status(200).json({
             products: products
         })
