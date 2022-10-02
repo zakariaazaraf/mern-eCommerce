@@ -20,7 +20,7 @@ function App() {
     <Route path='/community' element={<Community />}/>
     <Route path='/contacts' element={<Contacts />}/>
     <Route path='/guarantee' element={<Guarantee />}/>
-    <Route path='/madetofade' element={<MadeToFade />}/>
+    <Route path='/made-to-fade' element={<MadeToFade />}/>
     <Route path='/shipping' element={<Shipping />}/>
     <Route path='/shop' element={<Shop />}/>
     <Route path='/product/:productId' element={<Home />}/>
