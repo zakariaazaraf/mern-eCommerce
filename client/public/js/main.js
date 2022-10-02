@@ -61,11 +61,11 @@ const svgLogo = document.querySelector('.svg-logo')
 const svgCart = document.querySelector('.svg-cart')
 const svgMobileLogo = document.querySelector('.mobile-logo svg')
 
-const proverbSection = document.querySelector('.proverb')
+// const proverbSection = document.querySelector('.proverb')
 const productSection = document.querySelector('.product')
 
-const proverbSvg = document.querySelector('.proverb svg')
-const proverbTitle = document.querySelector('.proverb h2')
+// const proverbSvg = document.querySelector('.proverb svg')
+// const proverbTitle = document.querySelector('.proverb h2')
 
 
 document.addEventListener('scroll', (e)=>{
@@ -94,18 +94,20 @@ document.addEventListener('scroll', (e)=>{
         
     }
     
-    // Animate Prover section while you get the section point
-    if(proverbSection){
+    // Animate Prover section while you get to the section point
+    // console.log(proverbSection)
+    // if(proverbSection){
 
-        if(proverbSection.offsetTop - 180 < window.pageYOffset){
-            proverbSvg.classList.add('active')
-            proverbTitle.classList.add('active')
-            
-        }else{
-            proverbSvg.classList.remove('active')
-            proverbTitle.classList.remove('active')
-        }
-    }
+    //     if(proverbSection.offsetTop - 180 < window.pageYOffset){
+    //         proverbSvg.classList.add('active')
+    //         proverbTitle.classList.add('active')
+    //         console.log('This the first change')
+    //     }else{
+    //         proverbSvg.classList.remove('active')
+    //         proverbTitle.classList.remove('active')
+    //         console.log('this the second change')
+    //     }
+    // }
 
 });
     
