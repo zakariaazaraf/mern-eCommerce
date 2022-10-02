@@ -2,6 +2,9 @@ import React from 'react'
 
 export const Home = () => {
 
+  /* Fetch the products for the index page, You should only fetch a limited number of products. */
+  /* It would be lovely to use Axios to call the endpoint API. */
+
   return <main>
   <section class='hero'>
       <div class="slides">
