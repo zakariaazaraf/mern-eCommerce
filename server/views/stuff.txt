@@ -1,0 +1,143 @@
+<main>
+    <section class='hero'>
+        <div class="slides">
+           <% products.forEach((product, index)=>{ %>
+            <div class="slide <%=index === 0 ? 'active' : ''%>" data-slide="<%= index + 1 %>">
+                <img src="images/1.jpg" alt="">
+                <div class="content-container">
+                    <div class="container">
+                        <div class="content">
+                            <div class="circles">
+                                <%
+                                    products.forEach((circle, circleIndex)=>{
+                                        %>
+                                            <span class="circle <%= circleIndex === 0 ? 'active' : ''%>" data-dot='<%= circleIndex + 1 %>'></span>
+                                        <%
+                                    }) 
+                                %>
+                            </div>
+                            <h2 class='title'>
+                                <%= product.name %>
+                            </h2>
+                        </div>
+                        <div class="shop-description">
+                            <p class="description"><%= product.description%></p>
+                            <a href="/products/<%=product.id%>" class='btn'>shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <% })%> 
+        </div>
+    </section>
+    <section class='proverb'>
+        <svg class="svg svg-logo-mobile" viewBox="0 0 40 55" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g stroke="none" stroke-width="1" fill="#000" fill-rule="evenodd">
+                <g transform="translate(-700.000000, -2515.000000)" fill="#000">
+                    <polygon
+                        points="732.533804 2518.98787 721.96305 2535.01955 724.353668 2538.75878 740 2515 700 2515 732.62205 2566.01157 707.514589 2566.01157 718.085912 2549.97988 715.694725 2546.24065 700.048393 2570 739.912323 2570 707.289704 2518.98787">
+                    </polygon>
+                </g>
+            </g>
+        </svg>
+        <h2>wear whatever you want</h2>
+    </section>
+    <section class='product d-flex'>
+        <article>
+            <a href="/product/">
+                <img src="/images/1.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/2.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/1.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/2.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/1.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/2.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/1.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="/product/">
+                <img src="/images/2.jpg" alt="contunium nicke">
+                <div class="content">
+                    <h3 class="title">contunium nicke</h3>
+                    <span class="price">$133</span>
+                    <span class="shop-link">shop now</span>
+                </div>
+            </a>
+        </article>
+    </section>
+    <section class='masterpiece'>
+        <div class="container">
+            <p class='title'>craftsmaship</p>
+            <div class="content">
+                <h2>A masterpiece takes time</h2>
+                <p class='description'>
+                    Each L.NOVUM piece is meticulously handcrafted in an intricate process to bring you artistry and quality that will
+                    last
+                    a lifetime. Our silver accessories are oxidized to create a dark grey finish that's made to fade with time, bringing
+                    another aspect of uniqueness to your piece.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+</main>
