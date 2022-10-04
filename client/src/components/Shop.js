@@ -1,27 +1,76 @@
-import React from 'react'
+import React, { createRef, useEffect } from 'react'
 
 export const Shop = () => {
+
+    // Create referance for elemnts
+    const categoryIconRef = createRef()
+    const categoryLinksRef = createRef()
+
+/* Handel The Category Product To Display */
+
+
+const handleToggleCategories = () => {
+    categoryIconRef.current.classList.toggle('rotate')
+    categoryLinksRef.current.classList.toggle('test-active')
+    console.log(categoryIconRef)
+}
+
+
+useEffect(() => {
+    const categories = document.querySelectorAll('.categories-links .category .category-name');
+
+    categories.forEach(category => {
+        category.addEventListener('click', displayProductsCategory, false);
+    });
+
+}, [])
+
+
+
+
+
+const displayProductsCategory = (event) => {
+    // Category Name
+    // Very Important: If the eventListner pass the function to the desired element's childs, Use `event.currentTarget`
+    let selectedCategory = event.currentTarget.dataset.category;
+    let products = document.querySelectorAll('.product article');
+
+    products.forEach(product => {
+
+        let productCategory = product.dataset.category;
+        
+        // Hide All Product 
+        product.classList.add('display-none');
+        
+        // Display Selected Product Category
+        if(productCategory === selectedCategory){
+            product.classList.remove('display-none');
+        }
+    })
+
+}
+
   return <main>
-  <div class="shop-container">
+  <div className="shop-container">
       
-          <div class="categories">
-              <div class="container">
-                  <div class="shop-by-collection">
-                      <div class='shop-by'>
+          <div className="categories">
+              <div className="container">
+                  <div className="shop-by-collection">
+                      <div className='shop-by'>
                           <span>shop by</span> 
-                          <div class="shop-name">
-                              <span class="name">category</span>
-                              <span class='category-btn-anchor'>
-                                  <svg viewBox="0 0 16.1 8.9" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                          <div className="shop-name">
+                              <span className="name">category</span>
+                              <span className='category-btn-anchor' onClick={handleToggleCategories}>
+                                  <svg ref={categoryIconRef} viewBox="0 0 16.1 8.9" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                       <path d="M15.7,0.6L8.2,8.2L0.4,0.4"></path>
                                   </svg>
                               </span>
                           </div>
                       </div>
-                      <ul class="categories-links">
+                      <ul ref={categoryLinksRef} className="categories-links">
                             
-                                <li class="category">
-                                    <a href="#product" class="category-name" data-category="short skirts">
+                                <li className="category">
+                                    <a href="#product" className="category-name" data-category="short skirts">
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                 <path d="M49.1,22.6l-0.6-0.5l1.6-0.6c0,0-0.4,2.3-0.2,3l1.6-0.6l-1.5-1 M22.5,7.5
@@ -73,8 +122,8 @@ export const Shop = () => {
                                     </a>
                                 </li>
                                 
-                                <li class="category">
-                                    <a href="#product" class="category-name" data-category="shoes">
+                                <li className="category">
+                                    <a href="#product" className="category-name" data-category="shoes">
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                 <path d="M49.1,22.6l-0.6-0.5l1.6-0.6c0,0-0.4,2.3-0.2,3l1.6-0.6l-1.5-1 M22.5,7.5
@@ -126,8 +175,8 @@ export const Shop = () => {
                                     </a>
                                 </li>
                                 
-                                <li class="category">
-                                    <a href="#product" class="category-name" data-category="baby cloths">
+                                <li className="category">
+                                    <a href="#product" className="category-name" data-category="baby cloths">
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                 <path d="M49.1,22.6l-0.6-0.5l1.6-0.6c0,0-0.4,2.3-0.2,3l1.6-0.6l-1.5-1 M22.5,7.5
@@ -179,8 +228,8 @@ export const Shop = () => {
                                     </a>
                                 </li>
                                 
-                                <li class="category">
-                                    <a href="#product" class="category-name" data-category="Beauty &amp; Personal Care">
+                                <li className="category">
+                                    <a href="#product" className="category-name" data-category="Beauty &amp; Personal Care">
                                         <span>
                                             <svg viewBox="0 0 69 38" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                 <path d="M49.1,22.6l-0.6-0.5l1.6-0.6c0,0-0.4,2.3-0.2,3l1.6-0.6l-1.5-1 M22.5,7.5
@@ -237,24 +286,24 @@ export const Shop = () => {
                                       
               </div>
           </div>
-          <section class="product d-flex" id="product">
+          <section className="product d-flex" id="product">
                 
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a86e470e34001582b069">
                             <img src="/images/shortSkirts/cb05471b55b4ee4c9717be44b814c99d.jpg" alt="Petite robe noire VS robe fleurie | Laugh of Artist" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$299</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$299</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Petite robe noire VS robe fleurie | Laug ...
                         </p>
                     </article>
@@ -262,20 +311,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a89d470e34001582b06a">
                             <img src="/images/shortSkirts/3a574c22e16d817395d99a17f2b92eb8.jpg" alt="robe longue soiree de couleur noir et décolleté en dentelle noire" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$132</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$132</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             robe longue soiree de couleur noir et dé ...
                         </p>
                     </article>
@@ -283,20 +332,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a8d1470e34001582b06b">
                             <img src="/images/shortSkirts/50591df9c3503f3a2c4129c8db11caec.jpg" alt="Formidable robe noire chic tenue chic la mode tendances" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$197</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$197</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Formidable robe noire chic tenue chic la ...
                         </p>
                     </article>
@@ -304,20 +353,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a90c470e34001582b06c">
                             <img src="/images/shortSkirts/447d374b94f642663bba92ea4f35f27c.jpg" alt="Comment s'habiller quand on a du ventre ?" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$121</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$121</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Comment s'habiller quand on a du ventre  ...
                         </p>
                     </article>
@@ -325,20 +374,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a973470e34001582b06d">
                             <img src="/images/shortSkirts/43fb4800cf22451a0c87d374cba31f82.jpg" alt="12 robes noires pour cet été 2019" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$333</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$333</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             12 robes noires pour cet été 2019
                         </p>
                     </article>
@@ -346,20 +395,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a9b1470e34001582b06e">
                             <img src="/images/shortSkirts/2e5d86088477e647e3d5e4882774f493.jpg" alt="La robe MARSHALL" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$250</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$250</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             La robe MARSHALL
                         </p>
                     </article>
@@ -367,20 +416,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a9e8470e34001582b06f">
                             <img src="/images/shortSkirts/409579d2ced1a1b66139057a511edc84.jpg" alt="Maje black dress" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$99</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$99</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Maje black dress
                         </p>
                     </article>
@@ -388,20 +437,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/606461d43bfd290015579e93">
                             <img src="/images/shortSkirts/business-casual-dress-code-men-style-j-crew-store-luxe-digital.jpg" alt="Petite robe noire Femmes Robes de patineur Sweetheart Lace Fit et robe évasée" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$99</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$99</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Petite robe noire Femmes Robes de patine ...
                         </p>
                     </article>
@@ -409,20 +458,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/606462293bfd290015579e94">
                             <img src="/images/shortSkirts/caa54fe3e7723caa12d42f329a15ca45.jpg" alt="La petite robe noire" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$100</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$100</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             La petite robe noire
                         </p>
                     </article>
@@ -430,20 +479,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/606462dd3bfd290015579e95">
                             <img src="/images/shortSkirts/cd2cbf126b97264021fe797bbe07186a.jpg" alt="changer l'ordinaire avec cette robe" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$77</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$77</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             changer l'ordinaire avec cette robe
                         </p>
                     </article>
@@ -451,20 +500,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6064633f3bfd290015579e96">
                             <img src="/images/shortSkirts/cd6359be0d03c91b9908c6a1230c11e7.jpg" alt="Robe Invitée mariage" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$250</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$250</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Robe Invitée mariage
                         </p>
                     </article>
@@ -472,20 +521,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6064639e3bfd290015579e97">
                             <img src="/images/shortSkirts/d14ec57689e617f81ab760e6efa01afc.jpg" alt="Robe noire évasé" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$180</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$180</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Robe noire évasé
                         </p>
                     </article>
@@ -493,20 +542,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="short skirts" data-category="short skirts">
+                        <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/606464043bfd290015579e98">
                             <img src="/images/shortSkirts/d14ec57689e617f81ab760e6efa01afc.jpg" alt="une robe longue avec des baskets" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$210</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$210</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             une robe longue avec des baskets
                         </p>
                     </article>
@@ -514,20 +563,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
+                        <article className="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
                         
                         
                         <a href="/products/60be4bf13a419c00155659a5">
                             <img src="/images/fashionStyle/4f12d50fa58b46127199aaff35a3ac74.jpg" alt="Duchess Dior" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$122</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$122</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Duchess Dior
                         </p>
                     </article>
@@ -535,20 +584,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
+                        <article className="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
                         
                         
                         <a href="/products/60be4c693a419c00155659a6">
                             <img src="/images/fashionStyle/2f96ffcf42ed9f50cc80f5968441a0f4.jpg" alt="Three Mothers lost to time" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$199</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$199</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Three Mothers lost to time
                         </p>
                     </article>
@@ -556,20 +605,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="baby cloths" data-category="baby cloths">
+                        <article className="baby cloths" data-category="baby cloths">
                         
                         
                         <a href="/products/60be4d5b3a419c00155659a7">
                             <img src="/images/babyCloths/9399a5bc24633996531ee875742d6152.jpg" alt="Grey Ribbed Head Wrap Grey Head Wrap:" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$89</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$89</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Grey Ribbed Head Wrap Grey Head Wrap:
                         </p>
                     </article>
@@ -577,20 +626,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="baby cloths" data-category="baby cloths">
+                        <article className="baby cloths" data-category="baby cloths">
                         
                         
                         <a href="/products/60be4ffe3a419c00155659a8">
                             <img src="/images/babyCloths/78f263bb2af2a851324dc39fdc19134e.jpg" alt="25 Of The Loveliest Girls Names Everyone Is Talking About" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$98</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$98</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             25 Of The Loveliest Girls Names Everyone ...
                         </p>
                     </article>
@@ -598,20 +647,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="baby cloths" data-category="baby cloths">
+                        <article className="baby cloths" data-category="baby cloths">
                         
                         
                         <a href="/products/60be51213a419c00155659a9">
                             <img src="/images/babyCloths/b9a5a75ea9a2c83734731fc64f26cf9d.jpg" alt="Dusty rose Organic Cotton Ribbed Footed Snap one piece - 6-12" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$127</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$127</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Dusty rose Organic Cotton Ribbed Footed  ...
                         </p>
                     </article>
@@ -619,20 +668,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="baby cloths" data-category="baby cloths">
+                        <article className="baby cloths" data-category="baby cloths">
                         
                         
                         <a href="/products/60be518d3a419c00155659aa">
                             <img src="/images/babyCloths/9a04b844d5e78ca7097c55bd8d9701a3.jpg" alt="Loved. - Organic Bodysuit - Black" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$77</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$77</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Loved. - Organic Bodysuit - Black
                         </p>
                     </article>
@@ -640,20 +689,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="baby cloths" data-category="baby cloths">
+                        <article className="baby cloths" data-category="baby cloths">
                         
                         
                         <a href="/products/60be52493a419c00155659ab">
                             <img src="/images/babyCloths/fdeecc321e7f6599309d864367063f35.jpg" alt="Daddy's Favorite Human - Organic Bodysuit - Long Sleeve" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$95</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$95</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Daddy's Favorite Human - Organic Bodysui ...
                         </p>
                     </article>
@@ -661,20 +710,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="shoes" data-category="shoes">
+                        <article className="shoes" data-category="shoes">
                         
                         
                         <a href="/products/60be532a3a419c00155659ac">
                             <img src="/images/womanShoes/9368486e627722065a27ed0a8bd4d4ae.jpg" alt="Basic Block Heels" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$313</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$313</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Basic Block Heels
                         </p>
                     </article>
@@ -682,20 +731,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="shoes" data-category="shoes">
+                        <article className="shoes" data-category="shoes">
                         
                         
                         <a href="/products/60be55c33a419c00155659ad">
                             <img src="/images/womanShoes/e91e7353bd64dcce8e6bfb4891e213ff.jpg" alt="Brown Heels" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$333</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$333</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Brown Heels
                         </p>
                     </article>
@@ -703,20 +752,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="shoes" data-category="shoes">
+                        <article className="shoes" data-category="shoes">
                         
                         
                         <a href="/products/60be566d3a419c00155659ae">
                             <img src="/images/womanShoes/404b9e777debf030323885a7e7f115dd.jpg" alt="Importée par 𝓅𝓇𝑒𝓈𝓁𝑒𝓎 🦋 ✰𝙋𝙄𝙉𝙏𝙀𝙍𝙀𝙎𝙏✰: @bluetidess" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$290</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$290</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Importée par 𝓅𝓇𝑒𝓈𝓁𝑒𝓎 🦋 ✰𝙋𝙄𝙉𝙏 ...
                         </p>
                     </article>
@@ -724,20 +773,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="shoes" data-category="shoes">
+                        <article className="shoes" data-category="shoes">
                         
                         
                         <a href="/products/60be56f63a419c00155659af">
                             <img src="/images/womanShoes/0a0d78a3b3770de321f7f2c1aa04c444.jpg" alt="&quot;Be Nice&quot; Tee &amp; Jeans High-Rise" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$220</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$220</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             "Be Nice" Tee &amp; Jeans High-Rise
                         </p>
                     </article>
@@ -745,20 +794,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="shoes" data-category="shoes">
+                        <article className="shoes" data-category="shoes">
                         
                         
                         <a href="/products/60be575e3a419c00155659b0">
                             <img src="/images/womanShoes/b112be9af42714d1f1a20f9e22f2bf59.jpg" alt="Best Shoe Websites: The Top 25 List" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$190</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$190</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Best Shoe Websites: The Top 25 List
                         </p>
                     </article>
@@ -766,20 +815,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
+                        <article className="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
                         
                         
                         <a href="/products/60be58723a419c00155659b1">
                             <img src="/images/selfCare/bf492dda593f1ad21d551c5d8310d568.jpg" alt="Juicy Plumping Gloss - 6" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$99</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$99</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Juicy Plumping Gloss - 6
                         </p>
                     </article>
@@ -787,20 +836,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
+                        <article className="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
                         
                         
                         <a href="/products/60be58db3a419c00155659b2">
                             <img src="/images/selfCare/9ff9b5d06d3e1e7ae31679f02d835bd1.jpg" alt="8 maquillages pour les yeux verts, vus sur Pinterest | Coup de Pouce" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$115</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$115</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             8 maquillages pour les yeux verts, vus s ...
                         </p>
                     </article>
@@ -808,20 +857,20 @@ export const Shop = () => {
                     
                     
                             
-                        <article class="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
+                        <article className="Beauty &amp; Personal Care" data-category="Beauty &amp; Personal Care">
                         
                         
                         <a href="/products/60be59623a419c00155659b3">
                             <img src="/images/selfCare/6faa816d3abb9e8d7eabfe2b4436fb0b.jpg" alt="Maquillage des yeux bleus" />
-                            <div class="content">
-                                <h3 class="title">
+                            <div className="content">
+                                <h3 className="title">
                                     
                                 </h3>
-                                <span class="price">$110</span>
-                                <span class="shop-link">shop now</span>
+                                <span className="price">$110</span>
+                                <span className="shop-link">shop now</span>
                             </div>
                         </a>
-                        <p class="product-title">
+                        <p className="product-title">
                             Maquillage des yeux bleus
                         </p>
                     </article>
