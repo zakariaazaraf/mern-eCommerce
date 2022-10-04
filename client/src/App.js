@@ -9,6 +9,7 @@ import { Guarantee } from './components/Guarantee'
 import { MadeToFade } from './components/MadeToFade'
 import { Shipping } from './components/Shipping'
 import { Shop } from './components/Shop'
+import { Product } from './components/Product'
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     <Route path='/made-to-fade' element={<MadeToFade />}/>
     <Route path='/shipping' element={<Shipping />}/>
     <Route path='/shop' element={<Shop />}/>
-    <Route path='/product/:productId' element={<Home />}/>
+    <Route path='/products/:productId' element={<Product />}/>
     <Route path='/category/:categoryId' element={<Home />}/>
     <Route path='/images/:imageId' element={<Home />}/>
     <Route path='/*' element={<Home />}/>

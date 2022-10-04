@@ -6,49 +6,46 @@ export const Shop = () => {
     const categoryIconRef = createRef()
     const categoryLinksRef = createRef()
 
-/* Handel The Category Product To Display */
+    /* Handel The Category Product To Display */
 
 
-const handleToggleCategories = () => {
-    categoryIconRef.current.classList.toggle('rotate')
-    categoryLinksRef.current.classList.toggle('test-active')
-    console.log(categoryIconRef)
-}
+    const handleToggleCategories = () => {
+        categoryIconRef.current.classList.toggle('rotate')
+        categoryLinksRef.current.classList.toggle('test-active')
+        console.log(categoryIconRef)
+    }
 
 
-useEffect(() => {
-    const categories = document.querySelectorAll('.categories-links .category .category-name');
+    useEffect(() => {
+        const categories = document.querySelectorAll('.categories-links .category .category-name');
 
-    categories.forEach(category => {
-        category.addEventListener('click', displayProductsCategory, false);
-    });
+        categories.forEach(category => {
+            category.addEventListener('click', displayProductsCategory, false);
+        });
 
-}, [])
-
-
+    }, [])
 
 
 
-const displayProductsCategory = (event) => {
-    // Category Name
-    // Very Important: If the eventListner pass the function to the desired element's childs, Use `event.currentTarget`
-    let selectedCategory = event.currentTarget.dataset.category;
-    let products = document.querySelectorAll('.product article');
+    const displayProductsCategory = (event) => {
+        // Category Name
+        // Very Important: If the eventListner pass the function to the desired element's childs, Use `event.currentTarget`
+        let selectedCategory = event.currentTarget.dataset.category;
+        let products = document.querySelectorAll('.product article');
 
-    products.forEach(product => {
+        products.forEach(product => {
 
-        let productCategory = product.dataset.category;
-        
-        // Hide All Product 
-        product.classList.add('display-none');
-        
-        // Display Selected Product Category
-        if(productCategory === selectedCategory){
-            product.classList.remove('display-none');
-        }
-    })
-
-}
+            let productCategory = product.dataset.category;
+            
+            // Hide All Product 
+            product.classList.add('display-none');
+            
+            // Display Selected Product Category
+            if(productCategory === selectedCategory){
+                product.classList.remove('display-none');
+            }
+        })
+    }
 
   return <main>
   <div className="shop-container">
