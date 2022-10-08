@@ -137,7 +137,7 @@ MenuClose.addEventListener('click', ()=>{
 
 const path = window.location.pathname.split('/')[1];
 
-const setupNavigation = (padding)=>{
+const setupNavigation = (padding) => {
    
     switch(path){
     

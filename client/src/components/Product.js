@@ -1,6 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 export const Product = () => {
+
+  let { productId } = useParams();
+
   return <div className="product-details">
   <div className="container">
       <div className="product-container">
