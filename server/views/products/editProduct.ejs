@@ -1,0 +1,42 @@
+<form action='/products/<%=product.id%>?_method=put' method="POST" class='form'>
+    <div>
+        <label for='name'>name: </label>
+        <input type='text' name='name' id='name' value='<%=product.name%>'>
+    </div>
+    <div>
+        <label for='description'>description: </label>
+        <input type='text' name='description' id='description' value='<%=product.description%>'>
+    </div>
+    <div>
+        <label for='price'>price: </label>
+        <input type='number' name='price' id='price' value='<%=product.price%>'>
+    </div>
+    <div>
+        <label for='coverImage'>coverImage: </label>
+        <input type='text' name='coverImage' id='coverImage' value='<%=product.coverImage%>'>
+    </div>
+    <div>
+        <label for='userId'>user: </label>
+        <select name="userId" id="userId">
+            <%users.forEach(user=>{
+                %>
+                <option value='<%=user.id%>' <%= user.id === product.userId ? selected : ''%>>
+                    <%=user.firstName%>
+                </option>
+                <% })%>
+        </select>
+
+    </div>
+    <div>
+        <label for='categorieId'>categorie: </label>
+        <select name="categorieId" id="categorieId">
+            <%categories.forEach(categorie=>{
+                %>
+                <option value='<%=categorie.id%>' <%= categorie.id===product.userId ? selected : '' %>>
+                    <%=categorie.name%>
+                </option>
+                <% })%>
+        </select>
+    </div>
+    <button type='submit' class='btn'>edit Product</button>
+</form>
