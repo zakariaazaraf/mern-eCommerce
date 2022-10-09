@@ -12,6 +12,7 @@ import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import { redirect } from 'react-router-dom'
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -30,26 +31,20 @@ export const AddProduct = () => {
         /** TODO: Preform the validation on the product image {size, type} */
         
         let formData = new FormData()
-        formData.append('title', name)
+        formData.append('name', name)
         formData.append('description', description)
         formData.append('price', price)
         formData.append('image', file)
 
         let response = await fetch(`http://localhost:5000/products`, {
             method: 'POST',
-            // body: JSON.stringify({ hi: 'hello' }), // convert Js object to a string
             body: formData,
-            // mode: 'no-cors',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'multipart/form-data'
-            },
-            
         })
 
         if (response.ok) {      
             let data = await response.json()
             console.log(data)
+            // redirect()
         }
 
     }
