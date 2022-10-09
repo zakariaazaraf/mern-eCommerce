@@ -10,6 +10,7 @@ import { MadeToFade } from './components/MadeToFade'
 import { Shipping } from './components/Shipping'
 import { Shop } from './components/Shop'
 import { Product } from './components/Product'
+import { AddProduct } from './components/AddProduct'
 
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
     <Route path='/made-to-fade' element={<MadeToFade />}/>
     <Route path='/shipping' element={<Shipping />}/>
     <Route path='/shop' element={<Shop />}/>
+    {/* Products routes CRUD */}
     <Route path='/products/:productId' element={<Product />}/>
+    <Route path='/products/new' element={<AddProduct />}/>
     <Route path='/category/:categoryId' element={<Home />}/>
     <Route path='/images/:imageId' element={<Home />}/>
     <Route path='/*' element={<Home />}/>

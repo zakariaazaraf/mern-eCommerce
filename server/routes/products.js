@@ -90,7 +90,22 @@ router.get('/:id/edit', async (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
+    // const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
+    // const {name, description, price, image} = req.body
+
+    console.log(req.body)
+    console.log(req.file)
+    // console.log(req)
+    // console.log(name, description, price)
+    // console.log(image)
+
+    /** Testing the functionality! */
+    res.status(200).json({
+        product: true,
+        message: 'Please wait for me, I am testing currently! Thank you for your understanding.'
+    })
+
+    return;
     
     const product = new Product({
         name : name,
@@ -101,6 +116,7 @@ router.post('/', async (req, res)=>{
         categorieId: categorieId
         //commentId: commentId 
     })
+
     try{
         const productCreated = await product.save()
         res.status(200).json({
