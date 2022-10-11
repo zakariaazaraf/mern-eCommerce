@@ -23,7 +23,7 @@ export const Product = () => {
             setDescription(description)
             setPrice(price)
             setImageSrc(coverImagePath)
-            setDateAdded()
+            setDateAdded(new Date(dateAdded).toDateString())
             return;
         } 
 
@@ -43,7 +43,7 @@ export const Product = () => {
   <div className="container">
       <div className="product-container">
           <div className="product-image">
-              <img src={imageSrc} alt={name} />
+              <img src={imageSrc} alt={name} style={{width: 236, height: 354}} />
           </div>
           <div className="product-info">
               <h4 className='product-name'>{name}</h4>
