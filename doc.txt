@@ -1,0 +1,2 @@
+** On the product pages, Check if the loged in user has a certain permissions to decide if we could show him a button to create a new projecct or even edit the current one
+    Probably, It's suited only for Admins.

@@ -3,7 +3,23 @@ const User = require('../models/user')
 const router = express.Router()
 const Product = require('./../models/product')
 const Categorie = require('./../models/categorie')
-const product = require('./../models/product')
+
+
+const multer = require('multer')
+// const upload = multer( {dest:'./upload/'} )
+
+const multerStorage = multer.memoryStorage();
+const upload = multer({ storage: multerStorage});
+
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+
+const saveCover = (book, image) =>{
+    if (image == null) return
+    if (image != null && imageMimeTypes.includes(image.mimetype)) {
+      book.coverImage = new Buffer.from(image.buffer, 'base64')
+      book.coverImageType = image.mimetype
+    }
+  }
 
 router.get('/', async (req, res)=>{
     try{
@@ -52,19 +68,21 @@ router.get('/:id', async (req, res)=>{
         }
 
 
-        if(product){
-            /* res.status(200).json({
-                product: product
-            }) */
-            res.render('products/product', {product: product, exists: exists})
+        if (product) {
+             res.status(200).json({
+                product: product,
+                exists: exists
+            }) 
+            // res.render('products/product', {product: product, exists: exists})
             return
         }
+
         res.status(201).json({
             message: 'There is No Such Product Id'
         })
-    }catch(e){
+    } catch(error) {
         res.status(500).json({
-            message: 'Failed Getting Product'
+            message: error
         })
 
         //console.log(e)
@@ -89,27 +107,34 @@ router.get('/:id/edit', async (req, res)=>{
     }
 })
 
-router.post('/', async (req, res)=>{
-    const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
-    
+router.post('/', upload.single('image'), async (req, res)=>{
+    // const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
+    const {name, description, price, image} = req.body
+
+    console.log(name)
+
     const product = new Product({
-        name : name,
+        name: name,
         description: description,
         price: price,
-        coverImage: coverImage,
-        userId: userId,
-        categorieId: categorieId
+        // userId: 1,
+        // categorieId: 1
         //commentId: commentId 
     })
-    try{
+
+    console.log(product)
+
+    try {
+        saveCover(product, req.file)
+        console.log(product)
         const productCreated = await product.save()
         res.status(200).json({
             product: productCreated,
             message: 'Product Created Successfully !!'
         })
-    }catch{
+    } catch (error) {
         res.status(500).json({
-            message: 'Failed Creating Product'
+            message: error
         })     
     }
 })

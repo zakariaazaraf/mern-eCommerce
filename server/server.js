@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
+const cors = require('cors')
 
 // Set The Template Engine
 app.set("view engine", "ejs");
@@ -24,6 +25,11 @@ app.use(express.static("public"));
 app.use(express.static("frontend"));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(bodyParser.json());
+
+// app.use(express.json()) // for json
+//   app.use(express.urlencoded({ extended: true })) // for form data
+app.use(cors())
+
 
 // ROUTERS
 const indexRouter = require("./routes/index");
