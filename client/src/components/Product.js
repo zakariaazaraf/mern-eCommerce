@@ -1,23 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 export const Product = () => {
 
+    // 6342fc02f9f45342942e6134
   let { productId } = useParams();
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [price, setPrice] = useState(0)
+  const [imageSrc, setImageSrc] = useState('')
+  const [dateAdded, setDateAdded] = useState('')
+
+  const getProductById = async productId => {
+    try {
+        let response = await fetch(`http://localhost:5000/products/${productId}`);
+
+        if (response.ok && response.status === 200) {
+            let { product, exists } = await response.json()
+            let { name, description, price, dateAdded, coverImagePath} = product
+            /** Display the product data */
+            setName(name)
+            setDescription(description)
+            setPrice(price)
+            setImageSrc(coverImagePath)
+            setDateAdded()
+            return;
+        } 
+
+        console.log(`Error encountered, status Code ${response.status}`)
+    } catch (error) {
+        console.log(error)
+        /** TODO: Inform the cliuent/user about the error */
+    }
+    
+  }
+
+  useEffect(() => {
+    getProductById(productId)
+  }, [])
 
   return <div className="product-details">
   <div className="container">
       <div className="product-container">
           <div className="product-image">
-              <img src='/images/shortSkirts/cb05471b55b4ee4c9717be44b814c99d.jpg' alt='<%=product.name%>' />
+              <img src={imageSrc} alt={name} />
           </div>
           <div className="product-info">
-              <h4 className='product-name'>Product Name</h4>
-              <p>Deux looks en robes Mark & Spencer : une robe chemise en soie noire et une robe à volants blanche fleurie !</p>
+              <h4 className='product-name'>{name}</h4>
+              <p>{description}</p>
               {/* <span><%=product.dateAdded.toDateString()%></span> */}
-              <span>Tue Mar 30 2021</span>
+              <span>{dateAdded}</span>
               <span>made in usa</span>
-              <span>$111</span>
+              <span>${price}</span>
               <div className="to-card-container">
                   
                     {/* TODO: check if the product does exist in the user's card, based on it, Show the appropriate link content */}

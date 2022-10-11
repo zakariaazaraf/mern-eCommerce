@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 /** 
  * Notes: Get back to the image model, Needs to change the storage mechanism {From buffer to SDN id possible, Actually It must}
 */
-const productSchema = mongoose.Schema({
+const productSchema = new mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String},
     price: {type: Number, required: true},
@@ -14,6 +14,10 @@ const productSchema = mongoose.Schema({
     // userId: {type: mongoose.Schema.Types.ObjectId, required: true, ref : 'User'},
     // categorieId: [{type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Categorie', default: 1}],
     // commentId: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
+},
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
 })
 
 /** This is only to simplify the encoded image buffer */

@@ -68,19 +68,21 @@ router.get('/:id', async (req, res)=>{
         }
 
 
-        if(product){
-            /* res.status(200).json({
-                product: product
-            }) */
-            res.render('products/product', {product: product, exists: exists})
+        if (product) {
+             res.status(200).json({
+                product: product,
+                exists: exists
+            }) 
+            // res.render('products/product', {product: product, exists: exists})
             return
         }
+
         res.status(201).json({
             message: 'There is No Such Product Id'
         })
-    }catch(e){
+    } catch(error) {
         res.status(500).json({
-            message: 'Failed Getting Product'
+            message: error
         })
 
         //console.log(e)
