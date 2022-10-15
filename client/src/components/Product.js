@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export const Product = () => {
-
+  const navigate = useNavigate()  
     // 6342fc02f9f45342942e6134
   let { productId } = useParams();
   const [name, setName] = useState('')
@@ -28,6 +28,11 @@ export const Product = () => {
         } 
 
         console.log(`Error encountered, status Code ${response.status}`)
+        /** Thing to redirect to the shop pages, And show the user a message informaing him about what's going on, besically, The product doesn't exist*/
+        navigate(`/shop`, {state: {
+            message: 'The product dioes not exist',
+            error: true
+        }})
     } catch (error) {
         console.log(error)
         /** TODO: Inform the cliuent/user about the error */

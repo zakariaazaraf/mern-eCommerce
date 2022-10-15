@@ -1,7 +1,14 @@
-import React, { createRef, useEffect } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Alert, IconButton } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close';
 
 export const Shop = () => {
-
+    const location = useLocation();
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    let {error, message} = location.state || {showError, errorMessage};
+    
     // Create referance for elemnts
     const categoryIconRef = createRef()
     const categoryLinksRef = createRef()
@@ -15,13 +22,15 @@ export const Shop = () => {
         console.log(categoryIconRef)
     }
 
-
     useEffect(() => {
         const categories = document.querySelectorAll('.categories-links .category .category-name');
 
         categories.forEach(category => {
             category.addEventListener('click', displayProductsCategory, false);
         });
+
+        setShowError(error)
+        setErrorMessage(message)
 
     }, [])
 
@@ -48,8 +57,25 @@ export const Shop = () => {
     }
 
   return <main>
+
+    {
+        showError && <Alert severity="error" style={{ position: 'absolute', top: 110, right: 30, zIndex: 100 }}
+                action={
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            size="small"
+                            onClick={() => setShowError(false)}
+                            >
+                            <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                }
+                >
+                {errorMessage}
+        </Alert>
+    }
+    
   <div className="shop-container">
-      
           <div className="categories">
               <div className="container">
                   <div className="shop-by-collection">
@@ -877,5 +903,6 @@ export const Shop = () => {
             </section>
       
   </div>
+  
 </main>
 }
