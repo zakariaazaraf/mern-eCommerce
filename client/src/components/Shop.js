@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export const Shop = () => {
     const location = useLocation();
+    const [products, setProducts] = useState([])
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     let {error, message} = location.state || {showError, errorMessage};
@@ -19,7 +20,26 @@ export const Shop = () => {
     const handleToggleCategories = () => {
         categoryIconRef.current.classList.toggle('rotate')
         categoryLinksRef.current.classList.toggle('test-active')
-        console.log(categoryIconRef)
+    }
+
+    // In the future, Implement the pagination. So get 20 per page
+    const getAllProducts = async () => {
+
+        try {
+            const response = await fetch(`http://localhost:5000/products`)
+
+            if (response.ok && response.status === 200) {
+                const data = await response.json();
+                let { products } = data;
+                setProducts(products)
+            } else {
+                console.log(`Something was not going well`)
+            }
+        } catch (error) {
+            console.log(error)
+            /** TODO: Show the error that we get either from the server or the try block. */
+        }
+        
     }
 
     useEffect(() => {
@@ -32,6 +52,8 @@ export const Shop = () => {
         setShowError(error)
         setErrorMessage(message)
 
+        /** Fetch all the products. */
+        getAllProducts()
     }, [])
 
 
@@ -59,6 +81,7 @@ export const Shop = () => {
   return <main>
 
     {
+        // Showing the error message only if there's an error happened.
         showError && <Alert severity="error" style={{ position: 'absolute', top: 110, right: 30, zIndex: 100 }}
                 action={
                         <IconButton
@@ -311,9 +334,24 @@ export const Shop = () => {
           </div>
           <section className="product d-flex" id="product">
                 
-                    
+            {
+                products.map(product => {
+                    let {id, name, description, price, dateAdded, coverImagePath} = product
+                    return <article key={id} className="short skirts" data-category="short skirts">
+                        <a href={`/products/${id}`}>
+                            <img src={coverImagePath} alt={name} style={{width: 236, height: 354}} />
+                            <div className="content">
+                                <h3 className="title"></h3>
+                                <span className="price">${price}</span>
+                                <span className="shop-link">shop now</span>
+                            </div>
+                        </a>
+                        <p className="product-title">{name}</p>
+                </article>
+            })
+        }
                             
-                        <article className="short skirts" data-category="short skirts">
+                        {/* <article className="short skirts" data-category="short skirts">
                         
                         
                         <a href="/products/6063a86e470e34001582b069">
@@ -896,7 +934,7 @@ export const Shop = () => {
                         <p className="product-title">
                             Maquillage des yeux bleus
                         </p>
-                    </article>
+                    </article> */}
                     
                     
 

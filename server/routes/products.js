@@ -23,8 +23,10 @@ const saveCover = (book, image) =>{
 
 router.get('/', async (req, res)=>{
     try{
+
+        /** TODO: Refactor this block, Should use try catch and return the appropriate status and message. */
         const products = await Product.find({})/* .populate('categorieId').limit(10).sort('asc') */
-        console.log(product)
+        
         res.status(200).json({
             products: products
         })
@@ -66,8 +68,6 @@ router.get('/:id', async (req, res)=>{
                 }
             });
         }
-
-            console.log(product)
 
         if (product) {
              res.status(200).json({
