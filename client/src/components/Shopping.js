@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+// const axios = require('axios')
+import axios, * as others from 'axios';
 
 export const Shopping = () => {
     const [orders, serOrders] = useState([]);
@@ -7,7 +9,10 @@ export const Shopping = () => {
     const getShoppingDate = async () => {
         
         try {
-            const response = await fetch(`http://localhost:5000/shopping`)
+            const response = await axios.get(`http://localhost:5000/shopping`, {
+                withCredentials: true
+            })
+            console.log(response)
 
             if (response.ok && response.status === 200) {
                 const data = await response.json();

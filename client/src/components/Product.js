@@ -5,6 +5,7 @@ export const Product = () => {
   const navigate = useNavigate()  
     // 6342fc02f9f45342942e6134
   let { productId } = useParams();
+  const [id, setId] = useState(0)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
@@ -17,8 +18,10 @@ export const Product = () => {
 
         if (response.ok && response.status === 200) {
             let { product, exists } = await response.json()
-            let { name, description, price, dateAdded, coverImagePath} = product
+            console.log(product)
+            let { _id, name, description, price, dateAdded, coverImagePath} = product
             /** Display the product data */
+            setId(_id)
             setName(name)
             setDescription(description)
             setPrice(price)
@@ -38,6 +41,11 @@ export const Product = () => {
         /** TODO: Inform the cliuent/user about the error */
     }
     
+  }
+
+  const handleOnAddProduct = event => {
+    let product = event.target.dataset;
+    addProduct(product)
   }
 
   useEffect(() => {
@@ -62,7 +70,7 @@ export const Product = () => {
                     {/* TODO: check if the product does exist in the user's card, based on it, Show the appropriate link content */}
                       {/* <a href='/shopping' className='in-card btn'>In Card</a> */}
                     
-                      <a href='/shopping' className='add-to-cart btn' data-id='<%=product.id%>' data-price='<%=product.price%>' >add to cart</a>
+                      <a href='shopping' className='add-to-cart btn' data-id={id} data-price={price} onClick={handleOnAddProduct}>add to cart</a>
                       
               </div>
           </div>
@@ -71,3 +79,87 @@ export const Product = () => {
   
 </div>
 }
+
+/* COOKIE FOR SHOPPING CARD */
+// const cardBtn = document.querySelector('.add-to-cart')
+// console.log(cardBtn) 
+// if(cardBtn){
+//     cardBtn.addEventListener('click', (event)=>{
+        
+//         let product = event.target.dataset;
+//         addProduct(product)
+        
+//     })
+// } 
+
+const addProduct = product =>{
+    
+    const {id, price} = product;
+
+    let orders = [];
+
+    if (document.cookie !== ""){
+        orders = [{id: id, price: price}, ...JSON.parse(document.cookie.split('=')[1])]
+    } else{
+        orders = [{id: id, price: price}]
+    }
+    
+    document.cookie = `orders=${JSON.stringify(orders)};path=/`
+}
+
+/* Delete Product From Shop Card */
+
+const deleteproduct = id => {
+
+    const products = getProducts();
+
+    let newOrders = [];
+
+    products.forEach(product => {
+        if (product.id !== id) {
+          newOrders = [{id: product.id, price: product.price}, ...newOrders]
+        }
+    })
+
+    // Override The Orders In The Coockies
+    document.cookie = "orders=" + JSON.stringify(newOrders) + ";path=/"
+
+    calculateTotla();
+}
+
+const getProducts = () => JSON.parse(document.cookie.split('=')[1]);
+
+const calculateTotla = () => {
+
+    let totlaCardPrice = document.querySelector('.checkout .total .total-price');
+
+    let cardTotla = 0;
+
+    const products = getProducts();
+
+    products.forEach(product => {
+        cardTotla += parseInt(product.price);
+    });
+    
+    totlaCardPrice.innerHTML = `$${cardTotla.toFixed(2)}`;
+}
+
+
+
+/** Attach event listener to all the card's products. This needs to be moved to the shopping component.*/
+const orderCancelBtns = document.querySelectorAll('.order-cancel .remove')
+
+orderCancelBtns.forEach(orderCancelBtn => {
+    
+    orderCancelBtn.addEventListener('click', event => {
+
+         let product = event.target.parentElement.parentElement;
+
+         let id = product.dataset.id;
+    
+        deleteproduct(id) 
+
+        product.outerHTML = '';
+        
+    });
+})
