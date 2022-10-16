@@ -3,28 +3,44 @@ import React, { useEffect, useState } from 'react'
 import axios, * as others from 'axios';
 
 export const Shopping = () => {
-    const [orders, serOrders] = useState([]);
     const [products, setProducts] = useState([])
+    const [total, setTotal] = useState(0)
 
-    const getShoppingDate = async () => {
+    const getCardProducts = async () => {
         
         try {
+
             const response = await axios.get(`http://localhost:5000/shopping`, {
                 withCredentials: true
             })
+            
+            let {status, statusText, data} = response
 
-            if (response.ok && response.status === 200) {
-                const data = await response.json();
-                let {orders, products} = data
-                console.log(orders, products)
+            if (status === 200 && statusText === 'OK') {
+                let { products } = data
+                setProducts(products)
             }
         } catch (error) {
             /** Redirect the user to another page if something unexpected happend. Or even better, Redirect them to 404 page*/
             console.log(error)
         }
     }
+
+    const calculateTotal = () => {
+        // Get the product prices from the cookies
+        const products = getProducts();
+        // Calculate the total
+        let total = 0
+        products.forEach(product => {
+            total += parseInt(product.price)
+        })
+
+        // pass the total to the state to be rendered.
+        setTotal(total)
+    }
     useEffect(() => {
-        getShoppingDate()
+        getCardProducts()
+        calculateTotal()
     }, [])
     
 
@@ -61,12 +77,33 @@ export const Shopping = () => {
                   }) 
               }) 
           %> */}
+
+          {
+    
+            products.map(product => {
+                let { _id, name, description, price, dateAdded, coverImagePath} = product
+                return <div className="card-order" key={_id} data-id={_id} data-price={price}>
+                    <div className="order-image">
+                        <img src={coverImagePath} alt={name} />
+                    </div>
+                    <div className="order-info">
+                        <p className='product-name'>{name}</p>
+                        <p className='product-description'>{description} </p>
+                        {/* If you implemented the quantity feature, refactor this */}
+                        <span className='quantity'>${`${price} x ${1}`}</span>
+                    </div>
+                    <div className="order-cancel" title="remove order">
+                        <span className='remove'></span>
+                    </div>
+                </div>
+            })
+          }
       </div>
       <div className="shipping">
           <div className="checkout">
               <div className="total">
                   <span>totla :</span>
-                  {/* <span className='total-price'>$<%=total.toFixed(2)%></span> */}
+                  <span className='total-price'>${total.toFixed(2)}</span>
               </div>
               <button className='btn'>checkout</button>
           </div>
@@ -110,3 +147,60 @@ export const Shopping = () => {
 </div>
 
 }
+
+/* Delete Product From Shop Card */
+
+const deleteproduct = id => {
+
+    const products = getProducts();
+
+    let newOrders = [];
+
+    products.forEach(product => {
+        if (product.id !== id) {
+          newOrders = [{id: product.id, price: product.price}, ...newOrders]
+        }
+    })
+
+    // Override The Orders In The Coockies
+    document.cookie = "orders=" + JSON.stringify(newOrders) + ";path=/"
+
+    calculateTotla();
+}
+
+const getProducts = () => JSON.parse(document.cookie.split('=')[1]);
+
+const calculateTotla = () => {
+
+    let totlaCardPrice = document.querySelector('.checkout .total .total-price');
+
+    let cardTotla = 0;
+
+    const products = getProducts();
+
+    products.forEach(product => {
+        cardTotla += parseInt(product.price);
+    });
+    
+    totlaCardPrice.innerHTML = `$${cardTotla.toFixed(2)}`;
+}
+
+
+
+/** Attach event listener to all the card's products. This needs to be moved to the shopping component.*/
+const orderCancelBtns = document.querySelectorAll('.order-cancel .remove')
+
+orderCancelBtns.forEach(orderCancelBtn => {
+    
+    orderCancelBtn.addEventListener('click', event => {
+
+         let product = event.target.parentElement.parentElement;
+
+         let id = product.dataset.id;
+    
+        deleteproduct(id) 
+
+        product.outerHTML = '';
+        
+    });
+})
