@@ -18,7 +18,6 @@ export const Product = () => {
 
         if (response.ok && response.status === 200) {
             let { product, exists } = await response.json()
-            console.log(product)
             let { _id, name, description, price, dateAdded, coverImagePath} = product
             /** Display the product data */
             setId(_id)
@@ -79,18 +78,6 @@ export const Product = () => {
   
 </div>
 }
-
-/* COOKIE FOR SHOPPING CARD */
-// const cardBtn = document.querySelector('.add-to-cart')
-// console.log(cardBtn) 
-// if(cardBtn){
-//     cardBtn.addEventListener('click', (event)=>{
-        
-//         let product = event.target.dataset;
-//         addProduct(product)
-        
-//     })
-// } 
 
 const addProduct = product =>{
     

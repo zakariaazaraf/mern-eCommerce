@@ -62,36 +62,6 @@ export const Shopping = () => {
   return <div className="orders-container">
   <div className="container">
       <div className="card-orders">
-          {/* <%  let total = 0
-              orders.forEach(order=>{
-                  products.forEach(product=>{
-                      if(product.id == order.id){
-                          %>
-                              <div className="card-order" data-id='<%= product.id %>' data-price='<%= product.price %>'>
-                                  <div className="order-image">
-                                      <img src='/images/<%= product.coverImage%>' alt='<%=product.name%>'>
-                                  </div>
-                                  <div className="order-info">
-                                      <p className='product-name'>
-                                          <%=product.name%>
-                                      </p>
-                                      <p className='product-description'>
-                                          <%=product.description%>
-                                      </p>
-                                      <span className='quantity'>$<%=product.price%> x <%= product.quantity ? product.quantity : 1%></span>
-                                  </div>
-                                  <div className="order-cancel" title="remove order">
-                                      <span className='remove'></span>
-                                  </div>
-                              </div>
-                          <% 
-                          
-                          total += product.price
-                      } 
-                  }) 
-              }) 
-          %> */}
-
           {
     
             products.map(product => {
