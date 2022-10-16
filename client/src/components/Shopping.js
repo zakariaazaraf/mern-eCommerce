@@ -38,6 +38,20 @@ export const Shopping = () => {
         // pass the total to the state to be rendered.
         setTotal(total)
     }
+
+    const removeProduct = event => {
+        let product = event.target.parentElement.parentElement;
+
+        let id = product.dataset.id;
+    
+        deleteproduct(id) 
+
+        product.outerHTML = '';
+
+        // Recalculate the total after the product has been removed from the user shop card.
+        calculateTotal()
+    }
+
     useEffect(() => {
         getCardProducts()
         calculateTotal()
@@ -93,7 +107,7 @@ export const Shopping = () => {
                         <span className='quantity'>${`${price} x ${1}`}</span>
                     </div>
                     <div className="order-cancel" title="remove order">
-                        <span className='remove'></span>
+                        <span className='remove' onClick={removeProduct}></span>
                     </div>
                 </div>
             })
@@ -149,7 +163,6 @@ export const Shopping = () => {
 }
 
 /* Delete Product From Shop Card */
-
 const deleteproduct = id => {
 
     const products = getProducts();
@@ -164,43 +177,7 @@ const deleteproduct = id => {
 
     // Override The Orders In The Coockies
     document.cookie = "orders=" + JSON.stringify(newOrders) + ";path=/"
-
-    calculateTotla();
 }
 
 const getProducts = () => JSON.parse(document.cookie.split('=')[1]);
 
-const calculateTotla = () => {
-
-    let totlaCardPrice = document.querySelector('.checkout .total .total-price');
-
-    let cardTotla = 0;
-
-    const products = getProducts();
-
-    products.forEach(product => {
-        cardTotla += parseInt(product.price);
-    });
-    
-    totlaCardPrice.innerHTML = `$${cardTotla.toFixed(2)}`;
-}
-
-
-
-/** Attach event listener to all the card's products. This needs to be moved to the shopping component.*/
-const orderCancelBtns = document.querySelectorAll('.order-cancel .remove')
-
-orderCancelBtns.forEach(orderCancelBtn => {
-    
-    orderCancelBtn.addEventListener('click', event => {
-
-         let product = event.target.parentElement.parentElement;
-
-         let id = product.dataset.id;
-    
-        deleteproduct(id) 
-
-        product.outerHTML = '';
-        
-    });
-})
