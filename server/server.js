@@ -28,7 +28,8 @@ app.use(bodyParser.json());
 
 // app.use(express.json()) // for json
 //   app.use(express.urlencoded({ extended: true })) // for form data
-app.use(cors())
+// app.use(cors())
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
 
 
 // ROUTERS

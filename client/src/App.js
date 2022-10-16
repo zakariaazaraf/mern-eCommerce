@@ -11,6 +11,7 @@ import { Shipping } from './components/Shipping'
 import { Shop } from './components/Shop'
 import { Product } from './components/Product'
 import { AddProduct } from './components/AddProduct'
+import { Shopping } from './components/Shopping'
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
     <Route path='/guarantee' element={<Guarantee />}/>
     <Route path='/made-to-fade' element={<MadeToFade />}/>
     <Route path='/shipping' element={<Shipping />}/>
-    <Route path='/shop' element={<Shop />}/>
+    <Route exact path='/shop' element={<Shop />}/>
+    <Route exact path='/shopping' element={<Shopping />}/>
     {/* Products routes CRUD */}
     <Route path='/products/:productId' element={<Product />}/>
     <Route path='/products/new' element={<AddProduct />}/>
