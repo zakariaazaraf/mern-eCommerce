@@ -12,7 +12,6 @@ export const Shopping = () => {
             const response = await axios.get(`http://localhost:5000/shopping`, {
                 withCredentials: true
             })
-            console.log(response)
 
             if (response.ok && response.status === 200) {
                 const data = await response.json();
