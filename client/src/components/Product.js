@@ -69,7 +69,7 @@ export const Product = () => {
                     {/* TODO: check if the product does exist in the user's card, based on it, Show the appropriate link content */}
                       {/* <a href='/shopping' className='in-card btn'>In Card</a> */}
                     
-                      <a href='shopping' className='add-to-cart btn' data-id={id} data-price={price} onClick={handleOnAddProduct}>add to cart</a>
+                      <a href='/shopping' className='add-to-cart btn' data-id={id} data-price={price} onClick={handleOnAddProduct}>add to cart</a>
                       
               </div>
           </div>
