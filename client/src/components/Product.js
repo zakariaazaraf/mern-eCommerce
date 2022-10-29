@@ -32,7 +32,7 @@ export const Product = () => {
         console.log(`Error encountered, status Code ${response.status}`)
         /** Thing to redirect to the shop pages, And show the user a message informaing him about what's going on, besically, The product doesn't exist*/
         navigate(`/shop`, {state: {
-            message: 'The product dioes not exist',
+            message: 'The product does not exist',
             error: true
         }})
     } catch (error) {

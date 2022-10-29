@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ErrorAlert } from './ErrorAlert'
 
 export const AddUser = () => {
     const [firstname, setFirstname] = useState('')
@@ -6,6 +7,8 @@ export const AddUser = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const submitTheForm = event => {
         event.preventDefault()
@@ -28,8 +31,6 @@ export const AddUser = () => {
             confirmPassword: confirmPassword
         }
 
-        console.log(user)
-
         try {
             const response = await fetch(`http://localhost:5000/users`, {
                 method: 'POST',
@@ -47,6 +48,11 @@ export const AddUser = () => {
                  * redirect the user to the manage users page, I presume the curent user is an admin.
                  * Ops, That is only if we successed to create a user, other way, redirect him to the apropriate page (error, index page)  
                  */
+            } else {
+                const data = await response.json()
+                let { message } = data
+                setIsError(true)
+                setErrorMessage(message)
             }
         } catch (error) {
             console.log(error)
@@ -54,6 +60,9 @@ export const AddUser = () => {
     }
 
   return <>
+  {
+    <ErrorAlert isError={isError} errorMessage={errorMessage} />
+  }
   {/* // TODO: Get back to the styling, It does not make sense to set the same styling for all the pages, make it dynamic */}
         <form method="POST" className='form' onSubmit={submitTheForm} style={{paddingTop: 145}}>
             <div>

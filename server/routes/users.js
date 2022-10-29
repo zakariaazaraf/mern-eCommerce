@@ -46,8 +46,13 @@ router.get('/:id/edit', (req, res) =>{
     res.send('User edit Router')
 })
 
-router.post('/', async (req, res)=>{
+router.post('/', async (req, res) => {
     const {firstname, lastname, email, password, confirmPassword} = req.body
+    console.log('I have got the data from the client server')
+    res.status(500).json({
+        message: 'Testing the error message'
+    })
+    return
 
     /** 
      * TODOs:
@@ -56,7 +61,6 @@ router.post('/', async (req, res)=>{
      * 3. Encript the password
      */
 
-    
     const user = new User({
         firstName: firstname,
         lastName: lastname,
@@ -64,6 +68,9 @@ router.post('/', async (req, res)=>{
         password: password,
         dateJoined: Date.now()
     })
+
+   
+
     try {  
         const newUser = await user.save()
         res.status(200).json({
