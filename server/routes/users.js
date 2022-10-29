@@ -47,9 +47,15 @@ router.get('/:id/edit', (req, res) =>{
 })
 
 router.post('/', async (req, res)=>{
-    const {firstname, lastname, email, password} = req.body
-    console.log(firstname, lastname, email, password)
-    /** Encript the password */
+    const {firstname, lastname, email, password, confirmPassword} = req.body
+
+    /** 
+     * TODOs:
+     * 1. validate duplicate usres
+     * 2. validate the password
+     * 3. Encript the password
+     */
+
     
     const user = new User({
         firstName: firstname,
@@ -66,7 +72,7 @@ router.post('/', async (req, res)=>{
         })
     } catch (error) {
         res.status(500).json({
-            message: 'User Creation Failed'
+            message: error
         })
     }
 })
