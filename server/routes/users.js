@@ -49,6 +49,7 @@ router.get('/:id/edit', (req, res) =>{
 router.post('/', async (req, res)=>{
     const {firstname, lastname, email, password} = req.body
     console.log(firstname, lastname, email, password)
+    /** Encript the password */
     
     const user = new User({
         firstName: firstname,
