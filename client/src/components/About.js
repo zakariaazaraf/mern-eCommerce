@@ -1,22 +1,22 @@
 import React from 'react'
 
 export const About = () => {
-  return <main class="about-container">
-  <div class="container">
+  return <main className="about-container">
+  <div className="container">
       <h2>Amazing can only be achieved by breaking boundaries.</h2>
       <p>This was the mindset of designer Logan Bailey that sparked the creation of Ben Salek. Having left America to travel and
       experience the world, Logan eventually stumbled upon Bali, Indonesia in 2008, where he put down roots.</p>
   </div>
-  <div class="about-image">
+  <div className="about-image">
       <img src="/images/backgroundWallpapers/about.jpg" alt="mountain" />
-      <div class="about-content">
-          <div class="container">
-              <div class="top-content">
+      <div className="about-content">
+          <div className="container">
+              <div className="top-content">
                   It was through these travels and living in various countries that he uncovered an unconventional way of living; one
                   where having a luxurious lifestyle and having freedom, both in time and mobility, were not mutually exclusive. This new
                   culture is referred to as the “New Rich”.
               </div>
-              <div class="bottom-content">
+              <div className="bottom-content">
                   Being “New Rich” means having the ability to abandon a deferred-life plan to find alternative careers that give the
                   fortune of living presently, the freedom in having a currency made of time and mobility, while also allowing a pursuit
                   in less conventional passions. In an effort to conceptualize the essence of Logan’s newfound way of living, the story of
@@ -25,10 +25,10 @@ export const About = () => {
           </div>
       </div>
   </div>
-  <div class="about-notation">
-      <div class="container">
-          <div class="logo">
-              <svg class="svg svg-logo-mobile active" viewBox="0 0 40 55" xmlns="http://www.w3.org/2000/svg"
+  <div className="about-notation">
+      <div className="container">
+          <div className="logo">
+              <svg className="svg svg-logo-mobile active" viewBox="0 0 40 55" xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink">
                   <g stroke="none" strokeWidth="1" fill="#000" fillRule="evenodd">
                       <g transform="translate(-700.000000, -2515.000000)" fill="#FFF">
@@ -39,14 +39,14 @@ export const About = () => {
                   </g>
               </svg>
           </div>
-          <div class="content">
+          <div className="content">
               The L.NOVUM logo is a synthesis of an hourglass and infinity symbol, representing infinite possibilities & the
               limitations of time.
           </div>
       </div>
   </div>
-  <div class="about-description">
-      <div class="container">
+  <div className="about-description">
+      <div className="container">
           <h3>We are a global collective</h3>
           <p>
               We choose to live in a world without boundaries. Sourcing talent from all over the world, our team stretches accross the
@@ -57,12 +57,12 @@ export const About = () => {
           </p>
       </div>
   </div>
-  <section class="footer-hero footer-hero-made-to-fade">
-      <div class="wrapper">
+  <section className="footer-hero footer-hero-made-to-fade">
+      <div className="wrapper">
           <img src="\images\backgroundWallpapers\bg-blackInFashion.jpg" alt="fashion week" />
-          <div class="content">
+          <div className="content">
               <h4>discover our shop now</h4>
-              <a href="/shop" class="btn">shop all product</a>
+              <a href="/shop" className="btn">shop all product</a>
           </div>
       </div>
   </section>
