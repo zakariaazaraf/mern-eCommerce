@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
+import { ProductModal} from './modals/ProductModal'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,6 +36,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const ManageProducts = () => {
 
     const [products, setProducts] = useState([])
+    const [showModal, setShowModal] = useState(true)
+    const [open, setOpen] = useState(false)
 
     const getProducts = async () => {
         try {
@@ -55,6 +58,7 @@ export const ManageProducts = () => {
 
     const editProduct = (id) => {
         console.log('Edit product', id)
+        setOpen(true)
     }
 
     const deleteProduct = id => {
@@ -132,6 +136,7 @@ export const ManageProducts = () => {
                 </TableBody>
             </Table>
         </TableContainer>
+        <ProductModal open={open} setOpen={setOpen}/>
         </div>
     </div>
 }
