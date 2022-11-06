@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,31 +44,102 @@ const rows = [
 ];
 
 export const ManageProducts = () => {
+
+    const [products, setProducts] = useState([])
+
+    const getProducts = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/products`)
+
+            if (response.ok && response.status === 200) {
+                const data = await response.json()
+                // Pass the products to its state then display them
+                let {products} = data
+                setProducts(products)
+            } else {
+                console.log(`something went wrong`)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const editProduct = (id) => {
+        console.log('Edit product', id)
+    }
+
+    const deleteProduct = id => {
+        // 1) Delete the row from the current array as well as the row in the DOM
+        removeProductFromList(id)
+        // 1) Delete the product from the DB, make a call to the backend and show the user a meesage
+        deleteProductById(id)
+    }
+
+    const deleteProductById = async id => {
+        try {
+            const response = await fetch(`http://localhost:5000/products/${id}`, {
+                method: 'delete'
+            })
+    
+            if (response.ok && response.status === 200) {
+                const data = await response.json()
+                console.log(data)
+            } else {
+                console.log(`something went wrong`)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const removeProductFromList = id => {
+        console.log(`deleting a product from a list`)
+    }
+
+    useEffect(() => {
+      getProducts()
+    }, [])
+    
+
   return <div style={{paddingTop: 145, display: 'flex', justifyContent: 'center'}}>
         <div className='container'>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                 <TableRow>
-                    <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                    <StyledTableCell align="right">Calories</StyledTableCell>
-                    <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                    <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                    <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                    <StyledTableCell>Name</StyledTableCell>
+                    <StyledTableCell align="right">Description</StyledTableCell>
+                    <StyledTableCell align="right">Price</StyledTableCell>
+                    <StyledTableCell align="right">Date created</StyledTableCell>
+                    <StyledTableCell align="right">Image</StyledTableCell>
+                    <StyledTableCell align="right">Action</StyledTableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {rows.map((row) => (
-                    <StyledTableRow key={row.name}>
-                    <StyledTableCell component="th" scope="row">
-                        {row.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                    <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                    <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                    <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                    </StyledTableRow>
-                ))}
+                    {
+                        products.map(product => {
+                            let {id, name, description, price, dateAdded, coverImagePath} = product
+                            return <StyledTableRow key={id}>
+                            <StyledTableCell component="th" scope="row">
+                                {name}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{description}</StyledTableCell>
+                            <StyledTableCell align="right">${price}</StyledTableCell>
+                            <StyledTableCell align="right">{dateAdded}</StyledTableCell>
+                            <StyledTableCell align="right">
+                                <img src={coverImagePath} style={{height: 80, width: 60}}/>
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                                <IconButton onClick={() => editProduct(id)} >
+                                    <EditIcon />
+                                </IconButton>
+                                <IconButton onClick={() => deleteProduct(id)}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </StyledTableCell>
+                        </StyledTableRow>
+                        })
+                    }
                 </TableBody>
             </Table>
         </TableContainer>

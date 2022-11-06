@@ -180,6 +180,12 @@ router.put('/:id', async (req, res)=>{
 
 router.delete('/:id', async (req, res)=>{
     const {id} = req.params
+    console.log(id)
+
+    res.status(200).json({
+        message: `Product Removed Successfully ${id}`
+    })
+    return
     try{
         const product = await Product.findById(id).remove()
         res.status(200).json({
