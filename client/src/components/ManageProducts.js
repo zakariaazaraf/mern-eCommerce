@@ -31,17 +31,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 export const ManageProducts = () => {
 
@@ -108,36 +97,36 @@ export const ManageProducts = () => {
                 <TableHead>
                 <TableRow>
                     <StyledTableCell>Name</StyledTableCell>
-                    <StyledTableCell align="right">Description</StyledTableCell>
-                    <StyledTableCell align="right">Price</StyledTableCell>
-                    <StyledTableCell align="right">Date created</StyledTableCell>
-                    <StyledTableCell align="right">Image</StyledTableCell>
-                    <StyledTableCell align="right">Action</StyledTableCell>
+                    <StyledTableCell align="left">Description</StyledTableCell>
+                    <StyledTableCell align="left">Price</StyledTableCell>
+                    <StyledTableCell align="left">Date created</StyledTableCell>
+                    <StyledTableCell align="left">Image</StyledTableCell>
+                    <StyledTableCell align="center">Action</StyledTableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                     {
                         products.map(product => {
-                            let {id, name, description, price, dateAdded, coverImagePath} = product
+                            let {id, name, description, price, created, coverImagePath} = product
                             return <StyledTableRow key={id}>
-                            <StyledTableCell component="th" scope="row">
-                                {name}
-                            </StyledTableCell>
-                            <StyledTableCell align="right">{description}</StyledTableCell>
-                            <StyledTableCell align="right">${price}</StyledTableCell>
-                            <StyledTableCell align="right">{dateAdded}</StyledTableCell>
-                            <StyledTableCell align="right">
-                                <img src={coverImagePath} style={{height: 80, width: 60}}/>
-                            </StyledTableCell>
-                            <StyledTableCell align="right">
-                                <IconButton onClick={() => editProduct(id)} >
-                                    <EditIcon />
-                                </IconButton>
-                                <IconButton onClick={() => deleteProduct(id)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            </StyledTableCell>
-                        </StyledTableRow>
+                                <StyledTableCell component="th" scope="row">
+                                    {name}
+                                </StyledTableCell>
+                                <StyledTableCell align="left">{description}</StyledTableCell>
+                                <StyledTableCell align="left">${price}</StyledTableCell>
+                                <StyledTableCell align="left">{created}</StyledTableCell>
+                                <StyledTableCell align="left">
+                                    <img src={coverImagePath} style={{height: 80, width: 60}}/>
+                                </StyledTableCell>
+                                <StyledTableCell align="center">
+                                    <IconButton onClick={() => editProduct(id)} >
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton onClick={() => deleteProduct(id)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </StyledTableCell>
+                            </StyledTableRow>
                         })
                     }
                 </TableBody>

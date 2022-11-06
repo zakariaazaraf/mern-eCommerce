@@ -27,4 +27,12 @@ productSchema.virtual('coverImagePath').get(function() {
     }
   })
 
+  productSchema.virtual('created').get(function() {
+    if (this.dateAdded) {
+      return new Date(this.dateAdded).toDateString()
+    }
+  })
+
+  
+
 module.exports = mongoose.model('Product', productSchema)
