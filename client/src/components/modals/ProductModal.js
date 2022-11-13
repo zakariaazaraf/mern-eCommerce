@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
@@ -17,6 +18,9 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+import MenuItem from '@mui/material/MenuItem';
+
 
 
 
@@ -56,64 +60,89 @@ export const ProductModal = ({productId, open, setOpen}) => {
   const handleClose = () => setOpen(false);
 
   const [files, setFiles] = useState([])
-    const [title, setTitle] = useState('product title')
-    const [description, setDescription] = useState('the description of the product')
-    const [price, setPrice] = useState(120)
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [price, setPrice] = useState(0)
+  const [category, setCategory] = useState('1');
 
-    /** Handle on submit form */
-    const onSubmitForm = async (event) => {
-        event.preventDefault();
-        let { file } = files[0]
-        /** TODO: Preform the validation on the product image {size, type} */
-        
-        let formData = new FormData()
-        formData.append('name', title)
-        formData.append('description', description)
-        formData.append('price', price)
-        formData.append('image', file)
 
-        let response = await fetch(`http://localhost:5000/products`, {
-            method: 'POST',
-            body: formData,
-        })
+  /** Handle on submit form */
+  const onSubmitForm = async (event) => {
+      event.preventDefault();
+      let { file } = files[0]
+      /** TODO: Preform the validation on the product image {size, type} */
+      
+      let formData = new FormData()
+      formData.append('name', title)
+      formData.append('description', description)
+      formData.append('price', price)
+      formData.append('image', file)
 
-        if (response.ok) {      
-            let data = await response.json()
-            console.log(data)
-            // redirect()
-        }
+      let response = await fetch(`http://localhost:5000/products`, {
+          method: 'POST',
+          body: formData,
+      })
 
-    }
-
-    const handleTitle = event => setTitle(event.target.value)
-    const handleDescription = event => setDescription(event.target.value)
-    const handlePrice = event => setPrice(event.target.value)
-
-    /** Get the product for the modal */
-    const getProduct = async () => {
-
-      try {
-        let response = await fetch(`http://localhost:5000/products/${productId}`);
-
-        if (response.ok && response.status === 200) {
-            let { product, exists } = await response.json()
-            let { _id, name, description, price, dateAdded, coverImagePath} = product
-            /** Display the product data */
-            setTitle(name)
-            setDescription(description)
-            setPrice(price)
-            // setImageSrc(coverImagePath)
-        } else {
-          console.log(`Something went wrong`)
-        }
-      } catch (error) {
-        console.log(error)
+      if (response.ok) {      
+          let data = await response.json()
+          console.log(data)
+          // redirect()
       }
-    }
 
-    useEffect(() => {
-      getProduct()
-    }, [productId])
+  }
+
+  const handleTitle = event => setTitle(event.target.value)
+  const handleDescription = event => setDescription(event.target.value)
+  const handlePrice = event => setPrice(event.target.value)
+
+  /** Get the product for the modal */
+  const getProduct = async () => {
+
+    try {
+      let response = await fetch(`http://localhost:5000/products/${productId}`);
+
+      if (response.ok && response.status === 200) {
+          let { product, exists } = await response.json()
+          let { _id, name, description, price, dateAdded, coverImagePath} = product
+          /** Display the product data */
+          setTitle(name)
+          setDescription(description)
+          setPrice(price)
+          // setImageSrc(coverImagePath)
+      } else {
+        console.log(`Something went wrong`)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const categories = [
+    {
+      value: '1',
+      label: 'Category 1',
+    },
+    {
+      value: '2',
+      label: 'Category 2',
+    },
+    {
+      value: '3',
+      label: 'Category 3',
+    },
+    {
+      value: '4',
+      label: 'Category 4',
+    },
+  ];
+
+  useEffect(() => {
+    getProduct()
+  }, [productId])
 
   return (
     <div>
@@ -158,20 +187,45 @@ export const ProductModal = ({productId, open, setOpen}) => {
                   value={description}
                   onChange={handleDescription}
                   label="Description"
+                  multiline
+                  minRows={3}
+                  maxRows={Infinity}
                 />
+                {/* <TextField
+                  placeholder="MultiLine with rows: 2 and rowsMax: 4"
+                  multiline
+                  rows={2}
+                  maxRows={4}
+                /> */}
               </FormControl> 
-                <FormControl fullWidth sx={{ m: 1 }}>
-                  <InputLabel htmlFor="price">Price</InputLabel>
-                  <OutlinedInput
-                    id="price"
-                    value={price}
-                    onChange={handlePrice}
-                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                    label="Price"
-                  />
-              </FormControl>      
-            
-           
+
+              <FormControl fullWidth sx={{ m: 1 }}>
+                <InputLabel htmlFor="price">Price</InputLabel>
+                <OutlinedInput
+                  id="price"
+                  value={price}
+                  onChange={handlePrice}
+                  startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                  label="Price"
+                />
+              </FormControl>  
+
+              <FormControl fullWidth sx={{ m: 1 }}>
+                <TextField
+                  id="outlined-select-currency"
+                  select
+                  label="Category"
+                  value={category}
+                  onChange={handleCategory}
+                >
+                  {categories.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </FormControl> 
+
           </form>
           </Box>
         </Fade>
