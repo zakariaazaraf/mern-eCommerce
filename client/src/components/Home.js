@@ -1,9 +1,35 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 export const Home = () => {
 
   /* Fetch the products for the index page, You should only fetch a limited number of products. */
   /* It would be lovely to use Axios to call the endpoint API. */
+  const [products, setProducts] = useState([])
+
+      // In the future, Implement the pagination. So get 20 per page
+      const getAllProducts = async () => {
+
+        try {
+            const response = await fetch(`http://localhost:5000/products`)
+
+            if (response.ok && response.status === 200) {
+                const data = await response.json();
+                let { products } = data;
+                setProducts(products)
+            } else {
+                console.log(`Something was not going well`)
+            }
+        } catch (error) {
+            console.log(error)
+            /** TODO: Show the error that we get either from the server or the try block. */
+        }
+        
+    }
+
+    useEffect(() => {
+        /** Fetch all the products. */
+        getAllProducts()
+    }, [])
 
   document.addEventListener('scroll', (event) => {
     const proverbSection = document.querySelector('.proverb')
@@ -158,108 +184,22 @@ export const Home = () => {
       <h2>wear whatever you want</h2>
   </section>
   <section className='product d-flex'>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/fashionStyle/2f96ffcf42ed9f50cc80f5968441a0f4.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 1</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/fashionStyle/4f12d50fa58b46127199aaff35a3ac74.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 2</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>     
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/babyCloths/9a04b844d5e78ca7097c55bd8d9701a3.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 3</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/babyCloths/78f263bb2af2a851324dc39fdc19134e.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 4</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/babyCloths/9399a5bc24633996531ee875742d6152.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 5</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/babyCloths/b9a5a75ea9a2c83734731fc64f26cf9d.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 6</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/babyCloths/fdeecc321e7f6599309d864367063f35.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 7</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-
-    {/* { This the start Self care product section} */}
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/selfCare/6faa816d3abb9e8d7eabfe2b4436fb0b.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 8</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/selfCare/9ff9b5d06d3e1e7ae31679f02d835bd1.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 9</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
-    <article>
-        <a href="/products/<%=product.id%>">
-            <img src="/images/selfCare/bf492dda593f1ad21d551c5d8310d568.jpg" alt="<%=product.name%>" />
-            <div className="content">
-                <h3 className="title">This the product 10</h3>
-                <span className="price">$100</span>
-                <span className="shop-link">shop now</span>
-            </div>
-        </a>
-    </article>
+            {
+                products.map(product => {
+                    let {id, name, description, price, dateAdded, coverImagePath} = product
+                    return <article key={id}>
+                        <a href={`/products/${id}`}>
+                            <img src={coverImagePath} alt={name} style={{width: 236, height: 354}} />
+                            <div className="content">
+                                <h3 className="title">{name}</h3>
+                                <span className="price">${price}</span>
+                                <span className="shop-link">shop now</span>
+                            </div>
+                        </a>
+                    </article>
+                })
+            }
+   
     {/* { This the end Self care product section} */}
   </section>
   <section className='masterpiece'>

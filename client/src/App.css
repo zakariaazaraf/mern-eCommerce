@@ -1309,6 +1309,8 @@ section.masterpiece .content .description {
   padding: 3rem 5rem;
   color: #2c2c2c;
   letter-spacing: normal;
+  display: flex;
+  justify-content: center;
 }
 
 .fade-description > * {
@@ -1323,6 +1325,8 @@ section.masterpiece .content .description {
 }
 
 .fade-information {
+  display: flex;
+  justify-content: center;
   background: #f6f6f7;
   padding: 4rem;
   color: #2c2c2c;

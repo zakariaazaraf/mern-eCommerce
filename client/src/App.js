@@ -12,6 +12,8 @@ import { Shop } from './components/Shop'
 import { Product } from './components/Product'
 import { AddProduct } from './components/AddProduct'
 import { Shopping } from './components/Shopping'
+import { AddUser } from './components/AddUser'
+import { ManageProducts } from './components/ManageProducts'
 
 
 function App() {
@@ -32,6 +34,10 @@ function App() {
     <Route path='/products/new' element={<AddProduct />}/>
     <Route path='/category/:categoryId' element={<Home />}/>
     <Route path='/images/:imageId' element={<Home />}/>
+    {/* Users's CRUD routes */}
+    <Route path='/users/new' element={<AddUser />}/>
+    {/* Testing the manage product component */}
+    <Route path='/products/manage' element={<ManageProducts />}/>
     <Route path='/*' element={<Home />}/>
   </Routes>
 </Router>
