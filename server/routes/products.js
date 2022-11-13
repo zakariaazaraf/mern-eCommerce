@@ -112,8 +112,6 @@ router.post('/', upload.single('image'), async (req, res)=>{
     // const {name, description, price, coverImage, userId, categorieId, commentId} = req.body
     const {name, description, price, image} = req.body
 
-    console.log(name)
-
     const product = new Product({
         name: name,
         description: description,
@@ -123,11 +121,8 @@ router.post('/', upload.single('image'), async (req, res)=>{
         //commentId: commentId 
     })
 
-    console.log(product)
-
     try {
         saveCover(product, req.file)
-        console.log(product)
         const productCreated = await product.save()
         res.status(200).json({
             product: productCreated,
@@ -140,18 +135,30 @@ router.post('/', upload.single('image'), async (req, res)=>{
     }
 })
 
-router.put('/:id', async (req, res)=>{
+router.put('/:id', upload.single('image'), async (req, res)=>{
     const {id} = req.params
-    const {name, description, price, coverImage, userId, categorieId} = req.body
+    const {name, description, price, image} = req.body
+
+    const product = await Product.findById(id)
+    console.log(name, description, price, image)
+    console.log(product)
+
+
+    res.status(200).json({
+        product: productUpdate,
+        message: 'Product Updated Successfully'
+    })
+    return
+
     try{
         const product = await Product.findById(id)
         if(product){
             product.name = name || product.name
             product.description = description || product.description
             product.price = price || product.price
-            product.coverImage = coverImage || product.coverImage
-            product.userId = userId || product.userId
-            product.categorieId = categorieId || product.categorieId
+            // product.coverImage = coverImage || product.coverImage
+            // product.userId = userId || product.userId
+            // product.categorieId = categorieId || product.categorieId
             try{
                 const productUpdate = await product.save()
                 res.status(200).json({

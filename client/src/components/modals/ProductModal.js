@@ -50,7 +50,7 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
-  boxShadow: 24,
+  boxShadow: 2,
   p: 4,
 };
 
@@ -68,7 +68,8 @@ export const ProductModal = ({productId, open, setOpen}) => {
 
   /** Handle on submit form */
   const onSubmitForm = async (event) => {
-      event.preventDefault();
+    console.log(`We are editing the form`)
+      // event.preventDefault();
       let { file } = files[0]
       /** TODO: Preform the validation on the product image {size, type} */
       
@@ -78,18 +79,28 @@ export const ProductModal = ({productId, open, setOpen}) => {
       formData.append('price', price)
       formData.append('image', file)
 
-      let response = await fetch(`http://localhost:5000/products`, {
-          method: 'POST',
+      try {
+        let response = await fetch(`http://localhost:5000/products`, {
+          method: 'PUT',
           body: formData,
-      })
+        })
 
-      if (response.ok) {      
-          let data = await response.json()
-          console.log(data)
-          // redirect()
+        if (response.ok && response.status === 200) {      
+            let data = await response.json()
+            console.log(data)
+            // redirect()
+        } else {
+          console.log(`Something went wrong`)
+        }
+      } catch (error) {
+        console.log(error)
       }
 
+    
+
   }
+
+  const onCancel = () => setOpen(false)
 
   const handleTitle = event => setTitle(event.target.value)
   const handleDescription = event => setDescription(event.target.value)
@@ -225,6 +236,15 @@ export const ProductModal = ({productId, open, setOpen}) => {
                   ))}
                 </TextField>
               </FormControl> 
+
+              <Box>
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <Button variant="contained" onClick={onSubmitForm}>Submit</Button>
+                </FormControl> 
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <Button variant="outlined" onClick={onCancel}>Cancel</Button>
+                </FormControl> 
+              </Box>
 
           </form>
           </Box>
