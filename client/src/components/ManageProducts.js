@@ -61,11 +61,13 @@ export const ManageProducts = () => {
         setOpen(true)
     }
 
-    const deleteProduct = id => {
-        // 1) Delete the row from the current array as well as the row in the DOM
-        removeProductFromList(id)
+    const deleteProduct = (id) => {
+
         // 1) Delete the product from the DB, make a call to the backend and show the user a meesage
-        deleteProductById(id)
+        // deleteProductById(id)
+
+        // 2) Delete the row from the current array as well as the row in the DOM
+        removeProductFromList(id)
     }
 
     const deleteProductById = async id => {
@@ -86,7 +88,8 @@ export const ManageProducts = () => {
     }
 
     const removeProductFromList = id => {
-        console.log(`deleting a product from a list`)
+        let filteredProducts = products.filter(product => product.id !== id)
+        setProducts(filteredProducts)
     }
 
     useEffect(() => {
