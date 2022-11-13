@@ -43,6 +43,7 @@ export const ManageProducts = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [display, setDisplay] = useState(false)
     const [message, setMessage] = useState('')
+    const [productId, setProductId] = useState(0)
 
     const getProducts = async () => {
         try {
@@ -63,6 +64,7 @@ export const ManageProducts = () => {
 
     const editProduct = (id) => {
         console.log('Edit product', id)
+        setProductId(id)
         setOpen(true)
     }
 
@@ -107,10 +109,10 @@ export const ManageProducts = () => {
   return <>
       {
         // <ErrorAlert isError={isError} errorMessage={errorMessage} />
-        <SuccessAlert message={message} display={true} />
+        <SuccessAlert message={message} display={display} />
       }
        <div style={{paddingTop: 145, display: 'flex', justifyContent: 'center'}}>
-        <div className='container'>
+        <div className='container' style={{position: 'relative'}}>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
@@ -151,7 +153,7 @@ export const ManageProducts = () => {
                 </TableBody>
             </Table>
         </TableContainer>
-        <ProductModal open={open} setOpen={setOpen}/>
+        <ProductModal productId={productId} open={open} setOpen={setOpen}/>
         </div>
     </div>
   </>
