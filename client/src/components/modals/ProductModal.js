@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+
 
 
 // Import React FilePond
@@ -36,13 +50,13 @@ const style = {
   p: 4,
 };
 
-export const ProductModal = ({open, setOpen}) => {
+export const ProductModal = ({productId, open, setOpen}) => {
 //   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [files, setFiles] = useState([])
-    const [name, setName] = useState('product name')
+    const [title, setTitle] = useState('product title')
     const [description, setDescription] = useState('the description of the product')
     const [price, setPrice] = useState(120)
 
@@ -53,7 +67,7 @@ export const ProductModal = ({open, setOpen}) => {
         /** TODO: Preform the validation on the product image {size, type} */
         
         let formData = new FormData()
-        formData.append('name', name)
+        formData.append('name', title)
         formData.append('description', description)
         formData.append('price', price)
         formData.append('image', file)
@@ -71,9 +85,35 @@ export const ProductModal = ({open, setOpen}) => {
 
     }
 
-    const handleNameChange = event => setName(event.target.value)
-    const handleDescriptionChange = event => setDescription(event.target.value)
-    const handlePriceChange = event => setPrice(event.target.value)
+    const handleTitle = event => setTitle(event.target.value)
+    const handleDescription = event => setDescription(event.target.value)
+    const handlePrice = event => setPrice(event.target.value)
+
+    /** Get the product for the modal */
+    const getProduct = async () => {
+
+      try {
+        let response = await fetch(`http://localhost:5000/products/${productId}`);
+
+        if (response.ok && response.status === 200) {
+            let { product, exists } = await response.json()
+            let { _id, name, description, price, dateAdded, coverImagePath} = product
+            /** Display the product data */
+            setTitle(name)
+            setDescription(description)
+            setPrice(price)
+            // setImageSrc(coverImagePath)
+        } else {
+          console.log(`Something went wrong`)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    useEffect(() => {
+      getProduct()
+    }, [productId])
 
   return (
     <div>
@@ -90,12 +130,6 @@ export const ProductModal = ({open, setOpen}) => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            {/* <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography> */}
             <form action='http://localhost:5000/products' method="POST" onSubmit={onSubmitForm} className='form'>
               <div>
               <FilePond
@@ -107,30 +141,37 @@ export const ProductModal = ({open, setOpen}) => {
                   labelIdle='Drag & Drop your product image or <span class="filepond--label-action">Browse</span>'
                 />
               </div>
-            <div>
-                <label htmlFor='name'>name: </label>
-                <input type='text' name='name' id='name' onChange={handleNameChange} value={name} />
-            </div>
-            <div>
-                <label htmlFor='description'>description: </label>
-                <input type='text' name='description' id='description' onChange={handleDescriptionChange} value={description} />
-            </div>
-            <div>
-                <label htmlFor='price'>price: </label>
-                <input type='number' name='price' id='price' onChange={handlePriceChange} value={price} />
-            </div>
-            <div>
-                <label htmlFor='categorieId'>categorie: </label>
-                  {/* TODO: Please fetch all the categories from the DB and display them for the below component */}
-                {/* <select name="categorieId" id="categorieId">
-                    <option value={1}>Category 1</option>
-                    <option value={2}>Category 2</option>
-                    <option value={3}>Category 3</option>
-                    <option value={4}>Category 4</option>
-                    <option value={5}>Category 5</option>
-                </select> */}
-            </div>
-            <button type='submit' className='btn'>Add User</button>
+              <FormControl fullWidth sx={{ m: 1 }}>
+                  <InputLabel htmlFor="title">Title</InputLabel>
+                  <OutlinedInput
+                    id="title"
+                    value={title}
+                    onChange={handleTitle}
+                    label="Title"
+                  />
+              </FormControl> 
+
+              <FormControl fullWidth sx={{ m: 1 }}>
+                <InputLabel htmlFor="description">Description</InputLabel>
+                <OutlinedInput
+                  id="description"
+                  value={description}
+                  onChange={handleDescription}
+                  label="Description"
+                />
+              </FormControl> 
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <InputLabel htmlFor="price">Price</InputLabel>
+                  <OutlinedInput
+                    id="price"
+                    value={price}
+                    onChange={handlePrice}
+                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                    label="Price"
+                  />
+              </FormControl>      
+            
+           
           </form>
           </Box>
         </Fade>
