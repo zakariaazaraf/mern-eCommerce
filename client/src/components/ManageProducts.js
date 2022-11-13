@@ -11,6 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import { ProductModal} from './modals/ProductModal'
+import { SuccessAlert } from './SuccessAlert'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,6 +39,10 @@ export const ManageProducts = () => {
     const [products, setProducts] = useState([])
     const [showModal, setShowModal] = useState(true)
     const [open, setOpen] = useState(false)
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [display, setDisplay] = useState(false)
+    const [message, setMessage] = useState('')
 
     const getProducts = async () => {
         try {
@@ -64,7 +69,7 @@ export const ManageProducts = () => {
     const deleteProduct = (id) => {
 
         // 1) Delete the product from the DB, make a call to the backend and show the user a meesage
-        // deleteProductById(id)
+        deleteProductById(id)
 
         // 2) Delete the row from the current array as well as the row in the DOM
         removeProductFromList(id)
@@ -78,7 +83,9 @@ export const ManageProducts = () => {
     
             if (response.ok && response.status === 200) {
                 const data = await response.json()
-                console.log(data)
+                let {error, message} = data
+                setDisplay(true)
+                setMessage(message)
             } else {
                 console.log(`something went wrong`)
             }
@@ -97,7 +104,12 @@ export const ManageProducts = () => {
     }, [])
     
 
-  return <div style={{paddingTop: 145, display: 'flex', justifyContent: 'center'}}>
+  return <>
+      {
+        // <ErrorAlert isError={isError} errorMessage={errorMessage} />
+        <SuccessAlert message={message} display={true} />
+      }
+       <div style={{paddingTop: 145, display: 'flex', justifyContent: 'center'}}>
         <div className='container'>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -142,5 +154,8 @@ export const ManageProducts = () => {
         <ProductModal open={open} setOpen={setOpen}/>
         </div>
     </div>
+  </>
+  
+ 
 }
 
