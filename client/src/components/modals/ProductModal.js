@@ -80,7 +80,7 @@ export const ProductModal = ({productId, open, setOpen}) => {
       formData.append('image', file)
 
       try {
-        let response = await fetch(`http://localhost:5000/products`, {
+        let response = await fetch(`http://localhost:5000/products/${productId}`, {
           method: 'PUT',
           body: formData,
         })

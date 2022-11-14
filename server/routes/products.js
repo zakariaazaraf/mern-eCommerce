@@ -139,17 +139,6 @@ router.put('/:id', upload.single('image'), async (req, res)=>{
     const {id} = req.params
     const {name, description, price, image} = req.body
 
-    const product = await Product.findById(id)
-    console.log(name, description, price, image)
-    console.log(product)
-
-
-    res.status(200).json({
-        product: productUpdate,
-        message: 'Product Updated Successfully'
-    })
-    return
-
     try{
         const product = await Product.findById(id)
         if(product){
@@ -159,14 +148,15 @@ router.put('/:id', upload.single('image'), async (req, res)=>{
             // product.coverImage = coverImage || product.coverImage
             // product.userId = userId || product.userId
             // product.categorieId = categorieId || product.categorieId
-            try{
+            try {
+                saveCover(product, req.file)
                 const productUpdate = await product.save()
                 res.status(200).json({
                     product: productUpdate,
                     message: 'Product Updated Successfully'
                 })
                 
-            }catch (err){
+            } catch (err){
                 res.status(500).json({
                     message: 'Failed Upading Product'
                 })
@@ -177,7 +167,7 @@ router.put('/:id', upload.single('image'), async (req, res)=>{
         res.status(201).json({
             message: 'There is No Such Product With This ID'
         })
-    }catch (err){
+    } catch (err){
         res.status(500).json({
             message: 'Failed Getting Product Data'
         })
