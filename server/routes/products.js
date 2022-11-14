@@ -137,7 +137,7 @@ router.post('/', upload.single('image'), async (req, res)=>{
 
 router.put('/:id', upload.single('image'), async (req, res)=>{
     const {id} = req.params
-    const {name, description, price, image} = req.body
+    const {name, description, price, category, image} = req.body
 
     try{
         const product = await Product.findById(id)
@@ -153,7 +153,7 @@ router.put('/:id', upload.single('image'), async (req, res)=>{
                 const productUpdate = await product.save()
                 res.status(200).json({
                     product: productUpdate,
-                    message: 'Product Updated Successfully'
+                    message: `The product with ID: '${id}' has been updated successfully`
                 })
                 
             } catch (err){

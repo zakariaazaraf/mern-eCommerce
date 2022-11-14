@@ -153,7 +153,7 @@ export const ManageProducts = () => {
                 </TableBody>
             </Table>
         </TableContainer>
-        <ProductModal productId={productId} open={open} setOpen={setOpen}/>
+        <ProductModal productId={productId} open={open} setOpen={setOpen} setProducts={setProducts} getProducts={getProducts}/>
         </div>
     </div>
   </>

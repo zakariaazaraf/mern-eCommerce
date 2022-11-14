@@ -20,6 +20,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import MenuItem from '@mui/material/MenuItem';
+import { SuccessAlert } from '../SuccessAlert'
+
 
 
 
@@ -54,7 +56,7 @@ const style = {
   p: 4,
 };
 
-export const ProductModal = ({productId, open, setOpen}) => {
+export const ProductModal = ({productId, open, setOpen, getProducts, setProducts}) => {
 //   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -64,11 +66,12 @@ export const ProductModal = ({productId, open, setOpen}) => {
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
   const [category, setCategory] = useState('1');
+  const [display, setDisplay] = useState(false)
+  const [message, setMessage] = useState('')
 
 
   /** Handle on submit form */
   const onSubmitForm = async (event) => {
-    console.log(`We are editing the form`)
       // event.preventDefault();
       let { file } = files[0]
       /** TODO: Preform the validation on the product image {size, type} */
@@ -77,6 +80,7 @@ export const ProductModal = ({productId, open, setOpen}) => {
       formData.append('name', title)
       formData.append('description', description)
       formData.append('price', price)
+      formData.append('category', category)
       formData.append('image', file)
 
       try {
@@ -87,7 +91,11 @@ export const ProductModal = ({productId, open, setOpen}) => {
 
         if (response.ok && response.status === 200) {      
             let data = await response.json()
-            console.log(data)
+           let {product, message} = data
+           setOpen(false)
+           setMessage(message)
+           setDisplay(true)
+           getProducts()
             // redirect()
         } else {
           console.log(`Something went wrong`)
@@ -157,6 +165,11 @@ export const ProductModal = ({productId, open, setOpen}) => {
 
   return (
     <div>
+      <Box>
+        {
+          <SuccessAlert message={message} display={display} />
+        }
+      </Box>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
