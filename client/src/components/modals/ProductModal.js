@@ -49,7 +49,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  display: 'flex',
+  width: '70%',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 2,
@@ -183,81 +184,84 @@ export const ProductModal = ({productId, open, setOpen, getProducts, setProducts
       >
         <Fade in={open}>
           <Box sx={style}>
-            <form action='http://localhost:5000/products' method="POST" onSubmit={onSubmitForm} className='form'>
-              <div>
-              <FilePond
-                  files={files}
-                  onupdatefiles={setFiles}
-                  allowMultiple={false}
-                  maxFiles={1}
-                  name="image" 
-                  labelIdle='Drag & Drop your product image or <span class="filepond--label-action">Browse</span>'
-                />
-              </div>
-              <FormControl fullWidth sx={{ m: 1 }}>
-                  <InputLabel htmlFor="title">Title</InputLabel>
-                  <OutlinedInput
-                    id="title"
-                    value={title}
-                    onChange={handleTitle}
-                    label="Title"
+            <form action='http://localhost:5000/products' method="POST" onSubmit={onSubmitForm} className='form' style={{display: 'flex', flexDirection: 'row'}}>
+              <Box sx={{flexBasis: '50%'}}>
+                <FilePond
+                    files={files}
+                    onupdatefiles={setFiles}
+                    allowMultiple={false}
+                    maxFiles={1}
+                    name="image" 
+                    labelIdle='Drag & Drop your product image or <span class="filepond--label-action">Browse</span>'
                   />
-              </FormControl> 
-
-              <FormControl fullWidth sx={{ m: 1 }}>
-                <InputLabel htmlFor="description">Description</InputLabel>
-                <OutlinedInput
-                  id="description"
-                  value={description}
-                  onChange={handleDescription}
-                  label="Description"
-                  multiline
-                  minRows={3}
-                  maxRows={Infinity}
-                />
-                {/* <TextField
-                  placeholder="MultiLine with rows: 2 and rowsMax: 4"
-                  multiline
-                  rows={2}
-                  maxRows={4}
-                /> */}
-              </FormControl> 
-
-              <FormControl fullWidth sx={{ m: 1 }}>
-                <InputLabel htmlFor="price">Price</InputLabel>
-                <OutlinedInput
-                  id="price"
-                  value={price}
-                  onChange={handlePrice}
-                  startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                  label="Price"
-                />
-              </FormControl>  
-
-              <FormControl fullWidth sx={{ m: 1 }}>
-                <TextField
-                  id="outlined-select-currency"
-                  select
-                  label="Category"
-                  value={category}
-                  onChange={handleCategory}
-                >
-                  {categories.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </FormControl> 
-
-              <Box>
-                <FormControl fullWidth sx={{ m: 1 }}>
-                  <Button variant="contained" onClick={onSubmitForm}>Submit</Button>
-                </FormControl> 
-                <FormControl fullWidth sx={{ m: 1 }}>
-                  <Button variant="outlined" onClick={onCancel}>Cancel</Button>
-                </FormControl> 
               </Box>
+              <Box sx={{flexBasis: '50%'}}>
+                <FormControl fullWidth sx={{ m: 1 }}>
+                    <InputLabel htmlFor="title">Title</InputLabel>
+                    <OutlinedInput
+                      id="title"
+                      value={title}
+                      onChange={handleTitle}
+                      label="Title"
+                    />
+                </FormControl> 
+
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <InputLabel htmlFor="description">Description</InputLabel>
+                  <OutlinedInput
+                    id="description"
+                    value={description}
+                    onChange={handleDescription}
+                    label="Description"
+                    multiline
+                    minRows={3}
+                    maxRows={Infinity}
+                  />
+                  {/* <TextField
+                    placeholder="MultiLine with rows: 2 and rowsMax: 4"
+                    multiline
+                    rows={2}
+                    maxRows={4}
+                  /> */}
+                </FormControl> 
+
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <InputLabel htmlFor="price">Price</InputLabel>
+                  <OutlinedInput
+                    id="price"
+                    value={price}
+                    onChange={handlePrice}
+                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                    label="Price"
+                  />
+                </FormControl>  
+
+                <FormControl fullWidth sx={{ m: 1 }}>
+                  <TextField
+                    id="outlined-select-currency"
+                    select
+                    label="Category"
+                    value={category}
+                    onChange={handleCategory}
+                  >
+                    {categories.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </FormControl> 
+
+                <Box>
+                  <FormControl fullWidth sx={{ m: 1 }}>
+                    <Button variant="contained" onClick={onSubmitForm}>Submit</Button>
+                  </FormControl> 
+                  <FormControl fullWidth sx={{ m: 1 }}>
+                    <Button variant="outlined" onClick={onCancel}>Cancel</Button>
+                  </FormControl> 
+                </Box>
+              </Box>
+
 
           </form>
           </Box>
